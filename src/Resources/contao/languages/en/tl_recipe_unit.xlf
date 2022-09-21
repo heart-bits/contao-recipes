@@ -1,0 +1,70 @@
+<?xml version="1.0" ?><xliff version="1.1">
+    <file datatype="php" original="src/Resources/contao/languages/en/tl_recipe_unit.php" source-language="en" target-language="en">
+        <body>
+            <trans-unit id="tl_recipe_unit.unit_legend">
+                <source>Unit</source>
+                <target>Unit</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_unit.expert_legend">
+                <source>Expert settings</source>
+                <target>Expert settings</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_unit.new.0">
+                <source>New unit</source>
+                <target>New unit</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_unit.new.1">
+                <source>Add a new unit</source>
+                <target>Add a new unit</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_unit.edit.0">
+                <source>Edit unit</source>
+                <target>Edit unit</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_unit.edit.1">
+                <source>Edit unit ID %s</source>
+                <target>Edit unit ID %s</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_unit.delete.0">
+                <source>Delete unit</source>
+                <target>Delete unit</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_unit.delete.1">
+                <source>Delete unit ID %s</source>
+                <target>Delete unit ID %s</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_unit.show.0">
+                <source>Unit details</source>
+                <target>Unit details</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_unit.show.1">
+                <source>Details of the unit ID %s</source>
+                <target>Details of the unit ID %s</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_unit.title.0">
+                <source>Name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_unit.title.1">
+                <source>Add the name of the unit.</source>
+                <target>Add the name of the unit.</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_unit.alias.0">
+                <source>Alias</source>
+                <target>Alias</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_unit.alias.1">
+                <source>Add the alias of the unit.</source>
+                <target>Add the alias of the unit.</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_unit.shortcode.0">
+                <source>Shortcode</source>
+                <target>Shortcode</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_unit.shortcode.1">
+                <source>Add the alias of the unit.</source>
+                <target>Add the alias of the unit.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

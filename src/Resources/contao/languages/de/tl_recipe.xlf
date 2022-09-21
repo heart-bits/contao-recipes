@@ -1,0 +1,118 @@
+<?xml version="1.0" ?><xliff version="1.1">
+    <file datatype="php" original="src/Resources/contao/languages/en/tl_recipe.php" source-language="en" target-language="de">
+        <body>
+            <trans-unit id="tl_recipe.ingredient_legend">
+                <source>Ingredients</source>
+                <target>Zutaten</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.image_legend">
+                <source>Images</source>
+                <target>Bilder</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.expert_legend">
+                <source>Expert settings</source>
+                <target>Experten-Einstellungen</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.unit_legend.0">
+                <source>Units</source>
+                <target>Maßeinheiten</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.unit_legend.1">
+                <source>Edit units</source>
+                <target>Maßeinheiten verwalten</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.ingredient_legend.0">
+                <source>Ingredients</source>
+                <target>Zutaten</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.ingredient_legend.1">
+                <source>Edit ingredients</source>
+                <target>Zutaten verwalten</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.category_legend.0">
+                <source>Categories</source>
+                <target>Kategorien</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.category_legend.1">
+                <source>Edit categories</source>
+                <target>Kategorien verwalten</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.new.0">
+                <source>New recipe</source>
+                <target>Neues Rezept</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.new.1">
+                <source>Add a new recipe</source>
+                <target>Ein neues Rezept hinzufügen</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.edit.0">
+                <source>Edit recipe</source>
+                <target>Rezept bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.edit.1">
+                <source>Edit recipe ID %s</source>
+                <target>Rezept ID %s bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.delete.0">
+                <source>Delete recipe</source>
+                <target>Rezept löschen</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.delete.1">
+                <source>Delete recipe ID %s</source>
+                <target>Rezept ID %s löschen</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.show.0">
+                <source>Details</source>
+                <target>Details</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.show.1">
+                <source>Details of the recipe ID %s</source>
+                <target>Details des Rezept ID %s</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.feature.0">
+                <source>Feature/unfeature</source>
+                <target>Hervorheben</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.feature.1">
+                <source>Feature/unfeature recipe ID %s</source>
+                <target>Das Rezept ID %s (nicht) hervorheben</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.toggle.0">
+                <source>Publish/unpublish</source>
+                <target>Publish/unpublish</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.toggle.1">
+                <source>Publish/unpublish the recipe ID %s</source>
+                <target>Das Rezept ID %s veröffentlichen/verstecken</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.title.0">
+                <source>Name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.title.1">
+                <source>Add the name of the recipe.</source>
+                <target>Fügen Sie den Namen des Rezept hinzu.</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.alias.0">
+                <source>Alias</source>
+                <target>Alias</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.alias.1">
+                <source>Add the alias of the recipe.</source>
+                <target>Fügen Sie das Alias des Rezept hinzu.</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.invisible.0">
+                <source>Invisible</source>
+                <target>Invisible</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.invisible.1">
+                <source>Hide the recipe on the website.</source>
+                <target>Rezept auf der Webseite verstecken.</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.noEntriesFound">
+                <source>There were no recipes found for your selection.</source>
+                <target>Es gab keine Rezepte zu Ihrer Auswahl.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

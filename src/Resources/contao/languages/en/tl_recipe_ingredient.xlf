@@ -1,0 +1,66 @@
+<?xml version="1.0" ?><xliff version="1.1">
+    <file datatype="php" original="src/Resources/contao/languages/en/tl_recipe_ingredient.php" source-language="en" target-language="en">
+        <body>
+            <trans-unit id="tl_recipe_ingredient.ingredient_legend">
+                <source>Ingredient</source>
+                <target>Ingredient</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_ingredient.image_legend">
+                <source>Image</source>
+                <target>Image</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_ingredient.expert_legend">
+                <source>Expert settings</source>
+                <target>Expert settings</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_ingredient.new.0">
+                <source>New ingredient</source>
+                <target>New ingredient</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_ingredient.new.1">
+                <source>Add a new ingredient</source>
+                <target>Add a new ingredient</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_ingredient.edit.0">
+                <source>Edit ingredient</source>
+                <target>Edit ingredient</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_ingredient.edit.1">
+                <source>Edit ingredient ID %s</source>
+                <target>Edit ingredient ID %s</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_ingredient.delete.0">
+                <source>Delete ingredient</source>
+                <target>Delete ingredient</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_ingredient.delete.1">
+                <source>Delete ingredient ID %s</source>
+                <target>Delete ingredient ID %s</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_ingredient.show.0">
+                <source>Ingredient details</source>
+                <target>Ingredient details</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_ingredient.show.1">
+                <source>Details of the ingredient ID %s</source>
+                <target>Details of the ingredient ID %s</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_ingredient.title.0">
+                <source>Name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_ingredient.title.1">
+                <source>Add the name of the ingredient</source>
+                <target>Add the name of the ingredient</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_ingredient.alias.0">
+                <source>Alias</source>
+                <target>Alias</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_ingredient.alias.1">
+                <source>Add the alias of the ingredient</source>
+                <target>Add the alias of the ingredient</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
