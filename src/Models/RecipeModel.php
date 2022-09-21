@@ -6,10 +6,7 @@ namespace Heartbits\ContaoRecipes\Models;
 
 use Contao\Model;
 
-/**
- * Reads and writes companies.
- */
-class Recipe extends Model
+class RecipeModel extends Model
 {
     protected static string $strTable = 'tl_recipe';
 }

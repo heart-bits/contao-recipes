@@ -6,10 +6,7 @@ namespace Heartbits\ContaoRecipes\Models;
 
 use Contao\Model;
 
-/**
- * Reads and writes contacts.
- */
-class Ingredient extends Model
+class IngredientModel extends Model
 {
     protected static string $strTable = 'tl_recipe_ingredient';
 }

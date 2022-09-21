@@ -1,6 +1,7 @@
 <?php
 
 use Contao\System;
+use Heartbits\Widgets\InputIngredients;
 use Symfony\Component\HttpFoundation\Request;
 
 // Backend css
@@ -12,6 +13,9 @@ if (System::getContainer()->get('contao.routing.scope_matcher')->isBackendReques
 $GLOBALS['BE_MOD']['recipes']['recipe'] = [
     'tables' => ['tl_recipe', 'tl_recipe_ingredient', 'tl_recipe_category', 'tl_recipe_unit']
 ];
+
+// Backend form fields
+$GLOBALS['BE_FFL']['inputIngredient'] = InputIngredients::class;
 
 // Content elements
 $GLOBALS['TL_CTE']['recipes'] = [
@@ -25,7 +29,7 @@ $GLOBALS['TL_FMD']['recipes'] = [
 ];
 
 // Models
-$GLOBALS['TL_MODELS']['tl_recipe'] = 'Heartbits\ContaoRecipes\Models\Recipe';
-$GLOBALS['TL_MODELS']['tl_recipe_ingredient'] = 'Heartbits\ContaoRecipes\Models\Ingredient';
-$GLOBALS['TL_MODELS']['tl_recipe_category'] = 'Heartbits\ContaoRecipes\Models\Category';
-$GLOBALS['TL_MODELS']['tl_recipe_unit'] = 'Heartbits\ContaoRecipes\Models\Unit';
+$GLOBALS['TL_MODELS']['tl_recipe'] = 'Heartbits\ContaoRecipes\Models\RecipeModel';
+$GLOBALS['TL_MODELS']['tl_recipe_ingredient'] = 'Heartbits\ContaoRecipes\Models\IngredientModel';
+$GLOBALS['TL_MODELS']['tl_recipe_category'] = 'Heartbits\ContaoRecipes\Models\CategoryModel';
+$GLOBALS['TL_MODELS']['tl_recipe_unit'] = 'Heartbits\ContaoRecipes\Models\UnitModel';
