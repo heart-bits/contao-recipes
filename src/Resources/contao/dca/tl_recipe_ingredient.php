@@ -1,7 +1,10 @@
 <?php
 
 use Contao\Config;
+use Contao\System;
 use Heartbits\ContaoRecipes\EventListener\DataContainer\RecipeCallbackListener;
+
+System::loadLanguageFile('default');
 
 $GLOBALS['TL_DCA']['tl_recipe_ingredient'] = [
     // Config

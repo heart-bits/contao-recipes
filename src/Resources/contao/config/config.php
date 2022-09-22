@@ -1,7 +1,7 @@
 <?php
 
 use Contao\System;
-use Heartbits\Widgets\InputIngredients;
+use Heartbits\ContaoRecipes\Widgets\InputIngredients;
 use Symfony\Component\HttpFoundation\Request;
 
 // Backend css
@@ -11,7 +11,7 @@ if (System::getContainer()->get('contao.routing.scope_matcher')->isBackendReques
 
 // Backend modules
 $GLOBALS['BE_MOD']['recipes']['recipe'] = [
-    'tables' => ['tl_recipe', 'tl_recipe_ingredient', 'tl_recipe_category', 'tl_recipe_unit']
+    'tables' => ['tl_recipe', 'tl_recipe_ingredient', 'tl_recipe_category', 'tl_recipe_unit', 'tl_content']
 ];
 
 // Backend form fields

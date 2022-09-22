@@ -1,7 +1,10 @@
 <?php
 
 use Contao\Config;
+use Contao\System;
 use Heartbits\ContaoRecipes\EventListener\DataContainer\RecipeCallbackListener;
+
+System::loadLanguageFile('default');
 
 $GLOBALS['TL_DCA']['tl_recipe'] = [
     // Config
@@ -61,8 +64,8 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
             [
                 'edit' => [
                     'label' => &$GLOBALS['TL_LANG']['tl_recipe']['edit'],
-                    'href' => 'table=tl_contacts',
-                    'icon' => 'bundles/heartbitscontaorecipes/user.svg',
+                    'href' => 'table=tl_content',
+                    'icon' => 'edit.svg',
                 ],
                 'editheader' => [
                     'label' => &$GLOBALS['TL_LANG']['tl_recipe']['editheader'],
@@ -128,7 +131,7 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
     // Palettes
     'palettes' => [
         '__selector__' => ['title'],
-        'default' => '{recipe_legend},title,alias;{image_legend},singleSRC;{expert_legend:hide},invisible;',
+        'default' => '{recipe_legend},title,alias;{ingredients_legend},ingredients;{image_legend},singleSRC;{expert_legend:hide},invisible;',
     ],
 
     // Fields
@@ -180,6 +183,14 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
                     'extensions' => Config::get('validImageTypes')
                 ],
                 'sql' => "binary(16) NULL"
+            ],
+
+            'ingredients' => [
+                'inputType' => 'inputIngredient',
+                'eval' => [
+                    'tl_class' => 'w50',
+                ],
+                'sql' => "blob NULL"
             ],
 
             'featured' => [

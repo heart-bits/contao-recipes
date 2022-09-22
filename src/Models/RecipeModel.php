@@ -8,5 +8,5 @@ use Contao\Model;
 
 class RecipeModel extends Model
 {
-    protected static string $strTable = 'tl_recipe';
+    protected static $strTable = 'tl_recipe';
 }
