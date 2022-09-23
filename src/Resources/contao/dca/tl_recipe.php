@@ -131,7 +131,7 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
     // Palettes
     'palettes' => [
         '__selector__' => ['title'],
-        'default' => '{recipe_legend},title,alias;{ingredients_legend},ingredients;{image_legend},singleSRC;{expert_legend:hide},invisible;',
+        'default' => '{recipe_legend},title,alias,teaser;{ingredients_legend},ingredients,portions;{image_legend},singleSRC;{nutritional_legend},calories,protein,fat,carbohydrates;{expert_legend:hide},invisible;',
     ],
 
     // Fields
@@ -173,6 +173,19 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
                 'sql' => "varchar(255) NOT NULL default ''"
             ],
 
+            'teaser' => [
+                'exclude' => true,
+                'inputType' => 'textarea',
+                'eval' => [
+                    'mandatory' => true,
+                    'rte' => 'tinyMCE',
+                    'helpwizard' => true,
+                    'tl_class' => 'clr'
+                ],
+                'explanation' => 'insertTags',
+                'sql' => "mediumtext NULL"
+            ],
+
             'singleSRC' => [
                 'exclude' => true,
                 'inputType' => 'fileTree',
@@ -188,9 +201,61 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
             'ingredients' => [
                 'inputType' => 'inputIngredient',
                 'eval' => [
-                    'tl_class' => 'w50',
+                    'mandatory' => true,
+                    'tl_class' => 'clr',
                 ],
                 'sql' => "blob NULL"
+            ],
+
+            'portions' => [
+                'inputType' => 'text',
+                'exclude' => true,
+                'eval' => [
+                    'mandatory' => true,
+                    'maxlength' => 3,
+                    'tl_class' => 'w50'
+                ],
+                'sql' => "int(3) NOT NULL default 1"
+            ],
+
+            'calories' => [
+                'inputType' => 'text',
+                'exclude' => true,
+                'eval' => [
+                    'maxlength' => 10,
+                    'tl_class' => 'w50'
+                ],
+                'sql' => "int(10) NOT NULL default ''"
+            ],
+
+            'protein' => [
+                'inputType' => 'text',
+                'exclude' => true,
+                'eval' => [
+                    'maxlength' => 10,
+                    'tl_class' => 'w50'
+                ],
+                'sql' => "int(10) NOT NULL default ''"
+            ],
+
+            'fat' => [
+                'inputType' => 'text',
+                'exclude' => true,
+                'eval' => [
+                    'maxlength' => 10,
+                    'tl_class' => 'w50'
+                ],
+                'sql' => "int(10) NOT NULL default ''"
+            ],
+
+            'carbohydrates' => [
+                'inputType' => 'text',
+                'exclude' => true,
+                'eval' => [
+                    'maxlength' => 10,
+                    'tl_class' => 'w50'
+                ],
+                'sql' => "int(10) NOT NULL default ''"
             ],
 
             'featured' => [

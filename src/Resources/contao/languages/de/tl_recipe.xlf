@@ -6,8 +6,12 @@
                 <target>Zutaten</target>
             </trans-unit>
             <trans-unit id="tl_recipe.image_legend">
-                <source>Images</source>
-                <target>Bilder</target>
+                <source>Image</source>
+                <target>Bild</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.nutritional_legend">
+                <source>Nutritional values</source>
+                <target>Nährwert-Angaben</target>
             </trans-unit>
             <trans-unit id="tl_recipe.expert_legend">
                 <source>Expert settings</source>
@@ -101,13 +105,69 @@
                 <source>Add the alias of the recipe.</source>
                 <target>Fügen Sie das Alias des Rezept hinzu.</target>
             </trans-unit>
+            <trans-unit id="tl_recipe.teaser.0">
+                <source>Recipe teaser</source>
+                <target>Teasertext</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.teaser.1">
+                <source>The recipe teaser can be shown in a recipe list instead of the full recipe. A &quot;read more …&quot; link will be added automatically.</source>
+                <target>Der Teasertext kann in einer Rezepteliste anstatt des ganzen Rezeptes angezeigt werden. Ein &quot;Weiterlesen …&quot;-Link wird automatisch hinzugefügt.</target>
+            </trans-unit>
             <trans-unit id="tl_recipe.ingredients.0">
-                <source>Ingredients</source>
-                <target>Zutaten</target>
+                <source></source>
+                <target></target>
             </trans-unit>
             <trans-unit id="tl_recipe.ingredients.1">
                 <source>Enter the ingredients for this recipe.</source>
                 <target>Wählen Sie die Zutaten für dieses Rezept.</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.portions.0">
+                <source>Portions</source>
+                <target>Portionen</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.portions.1">
+                <source>Enter the amount of portions included for this recipe.</source>
+                <target>Geben Sie die Anzahl der Portionen, für die diese Zutaten reichen, ein.</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.singleSRC.0">
+                <source>Source file</source>
+                <target>Quelldatei</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.singleSRC.1">
+                <source>Please select a file or folder from the files directory.</source>
+                <target>Bitte wählen Sie eine Datei oder einen Ordner aus der Dateiübersicht.</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.calories.0">
+                <source>Calories</source>
+                <target>Kalorien</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.calories.1">
+                <source>Enter the calories value for 1 portion in kcal.</source>
+                <target>Geben Sie den Kaloriengehalt je Portion in kcal an.</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.protein.0">
+                <source>Protein</source>
+                <target>Eiweiß</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.protein.1">
+                <source>Enter the protein value for 1 portion in g.</source>
+                <target>Geben Sie den Eiweißgehalt je Portion in g an.</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.fat.0">
+                <source>Fat</source>
+                <target>Fett</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.fat.1">
+                <source>Enter the fat value for 1 portion in g.</source>
+                <target>Geben Sie den Fettgehalt je Portion in g an.</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.carbohydrates.0">
+                <source>Carbohydrates</source>
+                <target>Kohlenhydrate</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.carbohydrates.1">
+                <source>Enter the carbohydrates value for 1 portion in g.</source>
+                <target>Geben Sie den Kohlenhydrategehalt je Portion in g an.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.invisible.0">
                 <source>Invisible</source>

@@ -6,8 +6,12 @@
                 <target>Ingredients</target>
             </trans-unit>
             <trans-unit id="tl_recipe.image_legend">
-                <source>Images</source>
-                <target>Images</target>
+                <source>Image</source>
+                <target>Image</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.nutritional_legend">
+                <source>Nutritional values</source>
+                <target>Nutritional values</target>
             </trans-unit>
             <trans-unit id="tl_recipe.expert_legend">
                 <source>Expert settings</source>
@@ -101,13 +105,37 @@
                 <source>Add the alias of the recipe</source>
                 <target>Add the alias of the recipe</target>
             </trans-unit>
+            <trans-unit id="tl_recipe.teaser.0">
+                <source>Recipe teaser</source>
+                <target>Recipe teaser</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.teaser.1">
+                <source>The recipe teaser can be shown in a recipe list instead of the full recipe. A &quot;read more …&quot; link will be added automatically.</source>
+                <target>The recipe teaser can be shown in a recipe list instead of the full recipe. A &quot;read more …&quot; link will be added automatically.</target>
+            </trans-unit>
             <trans-unit id="tl_recipe.ingredients.0">
-                <source>Ingredients</source>
-                <target>Ingredients</target>
+                <source></source>
+                <target></target>
             </trans-unit>
             <trans-unit id="tl_recipe.ingredients.1">
                 <source>Enter the ingredients for this recipe.</source>
                 <target>Enter the ingredients for this recipe.</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.portions.0">
+                <source>Portions</source>
+                <target>Portions</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.portions.1">
+                <source>Enter the amount of portions included for this recipe.</source>
+                <target>Enter the amount of portions included for this recipe.</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.singleSRC.0">
+                <source>Source file</source>
+                <target>Source file</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.singleSRC.1">
+                <source>Please select a file or folder from the files directory.</source>
+                <target>Please select a file or folder from the files directory.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.invisible.0">
                 <source>Invisible</source>
