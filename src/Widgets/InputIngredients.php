@@ -45,12 +45,12 @@ class InputIngredients extends Widget
 
     public function setTableHeaderString($id, $class): string
     {
-        return '<div id="tl_tablewizard"><table id="ctrl_' . $id . '" class="' . $class . '"><thead><tr><th>' . $GLOBALS['TL_LANG']['tl_recipe']['headers']['amount'] . '</th><th>' . $GLOBALS['TL_LANG']['tl_recipe']['headers']['unit'] . '</th><th>' . $GLOBALS['TL_LANG']['tl_recipe']['headers']['ingredient'] . '</th><th></th></tr></thead><tbody class="sortable">';
+        return '<div id="inputIngredient"><table id="ctrl_' . $id . '" class="' . $class . '"><thead><tr><th class="recipe_amount">' . $GLOBALS['TL_LANG']['tl_recipe']['headers']['amount'] . '</th><th class="recipe_unit">' . $GLOBALS['TL_LANG']['tl_recipe']['headers']['unit'] . '</th><th class="recipe_ingredient">' . $GLOBALS['TL_LANG']['tl_recipe']['headers']['ingredient'] . '</th><th class="recipe_buttons"></th></tr></thead><tbody class="sortable">';
     }
 
     public function setTableRowString($id, $value, $name, $i, $arrUnits, $arrIngredients, $arrButtons): string
     {
-        return '<tr><td>' . $this->setAmountInputString($id, $value, $name, $i) . '</td><td>' . $this->setUnitSelectString($id, $value, $name, $i, $arrUnits) . '</td><td>' . $this->setIngredientSelectString($id, $value, $name, $i, $arrIngredients) . '</td><td>' . $this->setButtonString($arrButtons) . '</td></tr>';
+        return '<tr><td class="recipe_amount">' . $this->setAmountInputString($id, $value, $name, $i) . '</td><td class="recipe_unit">' . $this->setUnitSelectString($id, $value, $name, $i, $arrUnits) . '</td><td class="recipe_ingredient">' . $this->setIngredientSelectString($id, $value, $name, $i, $arrIngredients) . '</td><td class="recipe_buttons">' . $this->setButtonString($arrButtons) . '</td></tr>';
     }
 
     public function setAmountInputString($id, $currentValue, $name, $i): string
@@ -60,7 +60,7 @@ class InputIngredients extends Widget
 
     public function setUnitSelectString($id, $currentValue, $name, $i, $arrUnits): string
     {
-        $unitSelect = '<select id="' . $id . '_unit_' . $i . ' " name="' . $id . '[' . $i . '][1]" class="tl_select" onfocus="Backend.getScrollOffset()">';
+        $unitSelect = '<select id="' . $id . '_unit_' . $i . ' " name="' . $id . '[' . $i . '][1]" class="tl_select tl_chosen" onfocus="Backend.getScrollOffset()">';
         ($currentValue[1] == '') ? $unitSelect .= '<option value="" selected>-</option>' : $unitSelect .= '<option value="">-</option>';
         foreach ($arrUnits as $key => $value) {
             ($currentValue[1] == $key) ? $unitSelect .= '<option value="' . $key . '" selected>' . $value . '</option>' : $unitSelect .= '<option value="' . $key . '">' . $value . '</option>';
@@ -71,7 +71,7 @@ class InputIngredients extends Widget
 
     public function setIngredientSelectString($id, $currentValue, $name, $i, $arrIngredients): string
     {
-        $ingredientSelect = '<select id="' . $id . '_ingredient_' . $i . '" name="' . $id . '[' . $i . '][2]" class="tl_select" onfocus="Backend.getScrollOffset()">';
+        $ingredientSelect = '<select id="' . $id . '_ingredient_' . $i . '" name="' . $id . '[' . $i . '][2]" class="tl_select tl_chosen" onfocus="Backend.getScrollOffset()">';
         ($currentValue[2] == '') ? $ingredientSelect .= '<option value="" selected>-</option>' : $ingredientSelect .= '<option value="">-</option>';
         foreach ($arrIngredients as $key => $value) {
             ($currentValue[2] == $key) ? $ingredientSelect .= '<option value="' . $key . '" selected>' . $value . '</option>' : $ingredientSelect .= '<option value="' . $key . '">' . $value . '</option>';
