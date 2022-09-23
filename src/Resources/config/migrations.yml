@@ -1,0 +1,17 @@
+services:
+    _defaults:
+        autoconfigure: true
+
+    heartbits.contaorecipes.migration.ingredient:
+        class: Heartbits\ContaoRecipes\Migration\BasicIngredientMigration
+        arguments:
+            - '@database_connection'
+        tags:
+            - { name: contao.migration, priority: 0 }
+
+    heartbits.contaorecipes.migration.unit:
+        class: Heartbits\ContaoRecipes\Migration\BasicUnitMigration
+        arguments:
+            - '@database_connection'
+        tags:
+            - { name: contao.migration, priority: 0 }

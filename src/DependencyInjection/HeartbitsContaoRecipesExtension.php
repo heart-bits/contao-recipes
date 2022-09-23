@@ -18,5 +18,6 @@ class HeartbitsContaoRecipesExtension extends Extension
 
         $loader->load('services.yml');
         $loader->load('listener.yml');
+        $loader->load('migrations.yml');
     }
 }
