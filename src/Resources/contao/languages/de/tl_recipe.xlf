@@ -138,32 +138,32 @@
                 <target>Bitte wählen Sie eine Datei oder einen Ordner aus der Dateiübersicht.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.calories.0">
-                <source>Calories</source>
-                <target>Kalorien</target>
+                <source>Calories (kcal)</source>
+                <target>Kalorien (kcal)</target>
             </trans-unit>
             <trans-unit id="tl_recipe.calories.1">
                 <source>Enter the calories value for 1 portion in kcal.</source>
                 <target>Geben Sie den Kaloriengehalt je Portion in kcal an.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.protein.0">
-                <source>Protein</source>
-                <target>Eiweiß</target>
+                <source>Protein (g)</source>
+                <target>Eiweiß (g)</target>
             </trans-unit>
             <trans-unit id="tl_recipe.protein.1">
                 <source>Enter the protein value for 1 portion in g.</source>
                 <target>Geben Sie den Eiweißgehalt je Portion in g an.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.fat.0">
-                <source>Fat</source>
-                <target>Fett</target>
+                <source>Fat (g)</source>
+                <target>Fett (g)</target>
             </trans-unit>
             <trans-unit id="tl_recipe.fat.1">
                 <source>Enter the fat value for 1 portion in g.</source>
                 <target>Geben Sie den Fettgehalt je Portion in g an.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.carbohydrates.0">
-                <source>Carbohydrates</source>
-                <target>Kohlenhydrate</target>
+                <source>Carbohydrates (g)</source>
+                <target>Kohlenhydrate (g)</target>
             </trans-unit>
             <trans-unit id="tl_recipe.carbohydrates.1">
                 <source>Enter the carbohydrates value for 1 portion in g.</source>
