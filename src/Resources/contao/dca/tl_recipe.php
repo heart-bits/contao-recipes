@@ -225,7 +225,7 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
                     'maxlength' => 10,
                     'tl_class' => 'w50'
                 ],
-                'sql' => "int(10) NOT NULL default ''"
+                'sql' => "int(10) NOT NULL default 0"
             ],
 
             'protein' => [
@@ -235,7 +235,7 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
                     'maxlength' => 10,
                     'tl_class' => 'w50'
                 ],
-                'sql' => "int(10) NOT NULL default ''"
+                'sql' => "int(10) NOT NULL default 0"
             ],
 
             'fat' => [
@@ -245,7 +245,7 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
                     'maxlength' => 10,
                     'tl_class' => 'w50'
                 ],
-                'sql' => "int(10) NOT NULL default ''"
+                'sql' => "int(10) NOT NULL default 0"
             ],
 
             'carbohydrates' => [
@@ -255,7 +255,7 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
                     'maxlength' => 10,
                     'tl_class' => 'w50'
                 ],
-                'sql' => "int(10) NOT NULL default ''"
+                'sql' => "int(10) NOT NULL default 0"
             ],
 
             'featured' => [
