@@ -201,7 +201,6 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
             'ingredients' => [
                 'inputType' => 'inputIngredient',
                 'eval' => [
-                    'mandatory' => true,
                     'tl_class' => 'clr',
                 ],
                 'sql' => "blob NULL"
