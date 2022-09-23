@@ -1,3 +1,11 @@
 services:
     _defaults:
         autoconfigure: true
+
+    heartbits.contaorecipes.listener.cache_warmup:
+        class: Heartbits\ContaoRecipes\EventListener\CacheListener
+        arguments:
+            - '@contao.framework'
+            - '%kernel.project_dir%'
+        tags:
+            - { name: kernel.cache_warmer, priority: 0 }
