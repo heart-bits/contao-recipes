@@ -131,7 +131,7 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
     // Palettes
     'palettes' => [
         '__selector__' => ['title'],
-        'default' => '{recipe_legend},title,alias,teaser;{ingredients_legend},ingredients,portions;{image_legend},singleSRC;{nutritional_legend},calories,protein,fat,carbohydrates;{expert_legend:hide},invisible;',
+        'default' => '{recipe_legend},title,alias,teaser;{ingredients_legend},ingredients,portions;{image_legend},singleSRC;{nutritional_legend},calories,protein,fat,carbohydrates;{expert_legend:hide},published,featured;',
     ],
 
     // Fields
