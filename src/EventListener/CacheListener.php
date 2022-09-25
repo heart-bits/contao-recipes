@@ -34,9 +34,15 @@ class CacheListener implements CacheWarmerInterface
         $pluginPath = $rootPath . 'web/bundles/contaocore/core.min.js';
 
         if (file_exists($pluginPath)) {
-            $oldContent = file_get_contents($pluginPath);
-            $updatedContent = str_replace('t=n[o].getFirst("textarea")', 't=n[o].getFirst("textarea,input,select")', $oldContent);
+            $content = file_get_contents($pluginPath);
+            $updatedContent = str_replace('t=n[o].getFirst("textarea")', 't=n[o].getFirst("textarea,input,select")', $content);
             file_put_contents($pluginPath, $updatedContent);
+
+            /*if (str_contains($content, ',(a=s[c].getFirst("textarea"))&&(i.getFirst("textarea").value=a.value);')) {
+                $content = file_get_contents($pluginPath);
+                $updatedContent = str_replace(',(a=s[c].getFirst("textarea"))&&(i.getFirst("textarea").value=a.value);', ',(a=s[c].getFirst("textarea"))&&(i.getFirst("textarea").value=a.value);', $content);
+                file_put_contents($pluginPath, $updatedContent);
+            }*/
         }
     }
 }
