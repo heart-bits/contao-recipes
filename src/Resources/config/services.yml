@@ -1,3 +1,18 @@
 services:
     _defaults:
         autoconfigure: true
+
+    heartbits.contaorecipes.service.recipe_list:
+        class: Heartbits\ContaoRecipes\Controller\FrontendModule\RecipeListController
+        tags:
+            - { name: contao.frontend_module, category: recipes }
+
+    heartbits.contaorecipes.service.recipe_reader:
+        class: Heartbits\ContaoRecipes\Controller\FrontendModule\RecipeReaderController
+        tags:
+            - { name: contao.frontend_module, category: recipes }
+
+    heartbits.contaorecipes.service.recipe_step:
+        class: Heartbits\ContaoRecipes\Controller\ContentElement\RecipeStepController
+        tags:
+            - { name: contao.content_element, category: recipes }

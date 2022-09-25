@@ -9,3 +9,8 @@ services:
             - '%kernel.project_dir%'
         tags:
             - { name: kernel.cache_warmer, priority: 0 }
+
+    heartbits.contaorecipes.listener.content:
+        class: Heartbits\ContaoRecipes\EventListener\DataContainer\ContentCallbackListener
+        tags:
+            - { name: contao.callback, table: tl_content, target: fields.type.options, method: onLoadTypeCallback, priority: 100 }

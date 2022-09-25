@@ -41,6 +41,22 @@
                 <source>Manage units</source>
                 <target>Manage units</target>
             </trans-unit>
+            <trans-unit id="FMD.recipe_list.0">
+                <source>Recipe list</source>
+                <target>Recipe list</target>
+            </trans-unit>
+            <trans-unit id="FMD.recipe_list.1">
+                <source>Adds a list of recipes to the page</source>
+                <target>Adds a list of recipes to the page</target>
+            </trans-unit>
+            <trans-unit id="FMD.recipe_reader.0">
+                <source>Recipe reader</source>
+                <target>Recipe reader</target>
+            </trans-unit>
+            <trans-unit id="FMD.recipe_reader.1">
+                <source>Shows the details of a recipe</source>
+                <target>Shows the details of a recipe</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

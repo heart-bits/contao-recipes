@@ -2,6 +2,9 @@
 
 use Contao\System;
 use Heartbits\ContaoRecipes\Widgets\InputIngredients;
+use Heartbits\ContaoRecipes\Controller\ContentElement\RecipeStepController;
+use Heartbits\ContaoRecipes\Controller\FrontendModule\RecipeListController;
+use Heartbits\ContaoRecipes\Controller\FrontendModule\RecipeReaderController;
 use Symfony\Component\HttpFoundation\Request;
 
 // Backend css
@@ -16,17 +19,6 @@ $GLOBALS['BE_MOD']['recipes']['recipe'] = [
 
 // Backend form fields
 $GLOBALS['BE_FFL']['inputIngredient'] = InputIngredients::class;
-
-// Content elements
-$GLOBALS['TL_CTE']['recipes'] = [
-    'recipe_step' => 'Heartbits\ContaoRecipes\Controller\ContentElements\RecipeStep'
-];
-
-// Frontend modules
-$GLOBALS['TL_FMD']['recipes'] = [
-    'recipe_list' => 'Heartbits\ContaoRecipes\Controller\FrontendModules\RecipeList',
-    'recipe_reader' => 'Heartbits\ContaoRecipes\Controller\FrontendModules\RecipeReader'
-];
 
 // Models
 $GLOBALS['TL_MODELS']['tl_recipe'] = 'Heartbits\ContaoRecipes\Models\RecipeModel';

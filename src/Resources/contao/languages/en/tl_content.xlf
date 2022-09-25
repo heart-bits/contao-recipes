@@ -1,0 +1,18 @@
+<?xml version="1.0" ?><xliff version="1.1">
+    <file datatype="php" original="src/Resources/contao/languages/en/tl_content.php" source-language="en" target-language="en">
+        <body>
+            <trans-unit id="CTE.recipes">
+                <source>Recipes</source>
+                <target>Recipes</target>
+            </trans-unit>
+            <trans-unit id="CTE.recipe_step.0">
+                <source>Recipe step</source>
+                <target>Recipe step</target>
+            </trans-unit>
+            <trans-unit id="CTE.recipe_step.1">
+                <source>Generates a recipe step.</source>
+                <target>Generates a recipe step.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Heartbits\Controller\FrontendModule;
+namespace Heartbits\ContaoRecipes\Controller\FrontendModule;
 
 use Contao\CoreBundle\Controller\FrontendModule\AbstractFrontendModuleController;
 use Contao\CoreBundle\Exception\RedirectResponseException;

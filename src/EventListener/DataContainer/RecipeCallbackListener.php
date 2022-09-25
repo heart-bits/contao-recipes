@@ -2,7 +2,6 @@
 
 namespace Heartbits\ContaoRecipes\EventListener\DataContainer;
 
-use Contao\CoreBundle\DependencyInjection\Attribute\AsCallback;
 use Contao\Database;
 use Contao\DataContainer;
 use Contao\System;
@@ -10,16 +9,6 @@ use Symfony\Component\Config\Definition\Exception\Exception;
 
 class RecipeCallbackListener
 {
-    #[AsCallback(table: 'tl_recipe', target: 'list.operations.test.button', priority: 100)]
-    public function onToggleCallback(array $record, ?string $href, string $label, string $title, ?string $icon, string $attributes, string $table, array $rootRecords, ?array $childRecords, bool $isCircular, ?string $prevLabel, ?string $nextLabel, DataContainer $dc): string
-    {
-        return '<a href="">TEST</a>';
-    }
-
-    #[AsCallback(table: 'tl_recipe', target: 'fields.alias.save', priority: 100)]
-    #[AsCallback(table: 'tl_recipe_unit', target: 'fields.alias.save', priority: 100)]
-    #[AsCallback(table: 'tl_recipe_ingredient', target: 'fields.alias.save', priority: 100)]
-    #[AsCallback(table: 'tl_recipe_category', target: 'fields.alias.save', priority: 100)]
     public function onSaveCallback(string $value, DataContainer $dc): string
     {
         $aliasExists = function (string $alias) use ($dc): bool {
