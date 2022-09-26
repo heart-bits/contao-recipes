@@ -61,6 +61,14 @@
                 <source>Add the alias of the ingredient.</source>
                 <target>Geben Sie das Alias der Zutat ein.</target>
             </trans-unit>
+            <trans-unit id="tl_recipe_ingredient.singleSRC.0">
+                <source>Source file</source>
+                <target>Quelldatei</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_ingredient.singleSRC.1">
+                <source>Please select a file from the files directory.</source>
+                <target>Wählen Sie ein Bild aus der Dateiverwaltung.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

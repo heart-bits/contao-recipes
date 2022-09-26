@@ -5,6 +5,7 @@ namespace Heartbits\ContaoRecipes\EventListener\DataContainer;
 use Contao\Database;
 use Contao\DataContainer;
 use Contao\System;
+use Heartbits\ContaoRecipes\Models\CategoryModel;
 use Symfony\Component\Config\Definition\Exception\Exception;
 
 class RecipeCallbackListener
@@ -26,5 +27,17 @@ class RecipeCallbackListener
         }
 
         return $value;
+    }
+
+    public function loadCategoriesCallback(DataContainer $dc): array
+    {
+        $options = [];
+        $objCategories = CategoryModel::findPublished([]);
+        if ($objCategories) {
+            foreach ($objCategories as $category) {
+                $options[$category->id] = $category->title;
+            }
+        }
+        return $options;
     }
 }

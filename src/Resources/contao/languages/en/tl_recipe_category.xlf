@@ -62,12 +62,12 @@
                 <target>Please select a file from the files directory.</target>
             </trans-unit>
             <trans-unit id="tl_recipe_category.published.0">
-                <source>Invisible</source>
-                <target>Invisible</target>
+                <source>Publish category</source>
+                <target>Publish category</target>
             </trans-unit>
             <trans-unit id="tl_recipe_category.published.1">
-                <source>Hide the category on the website.</source>
-                <target>Hide the category on the website.</target>
+                <source>Make the category publicly visible on the website.</source>
+                <target>Make the category publicly visible on the website.</target>
             </trans-unit>
         </body>
     </file>

@@ -59,7 +59,6 @@ $GLOBALS['TL_DCA']['tl_recipe_category'] = [
             'toggle' => [
                 'label' => &$GLOBALS['TL_LANG']['tl_recipe']['toggle'],
                 'icon' => 'visible.svg',
-                'attributes' => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleVisibility(this,%s)"',
                 'haste_ajax_operation' => [
                     'field' => 'published',
                     'options' => [
@@ -86,7 +85,7 @@ $GLOBALS['TL_DCA']['tl_recipe_category'] = [
     // Palettes
     'palettes' => [
         '__selector__' => ['title'],
-        'default' => '{category_legend},title,alias;{expert_legend:hide},invisible;',
+        'default' => '{category_legend},title,alias,singleSRC;{expert_legend:hide},published;',
     ],
 
     // Fields
@@ -121,9 +120,6 @@ $GLOBALS['TL_DCA']['tl_recipe_category'] = [
                 'maxlength' => 255,
                 'tl_class' => 'w50',
                 'doNotCopy' => true
-            ],
-            'save_callback' => [
-                [RecipeCallbackListener::class, 'onSaveCallback']
             ],
             'sql' => "varchar(255) NOT NULL default ''"
         ],

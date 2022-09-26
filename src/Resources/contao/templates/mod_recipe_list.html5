@@ -2,5 +2,35 @@
 
 <?php $this->block('content'); ?>
 
+<?php if ($this->recipes): ?>
+
+    <?php foreach ($this->recipes as $recipe): ?>
+    <div class="recipe">
+        <?php if ($recipe['singleSRC']): ?>
+            <div class="recipe-image">
+                <?php $this->insert('image', $recipe['singleSRC']); ?>
+            </div>
+        <div class="recipe-info">
+            <h3><?= $recipe['title'] ?></h3>
+            <?php if (!empty($recipe['categories'])): ?>
+                <div class="categories">
+                    <?php foreach ($recipe['categories'] as $category): ?>
+                        <span class="category category_<?= $category['alias'] ?>"><?= $category['title'] ?></span>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+            <?php if ($recipe['time'] !== 0): ?><span class="recipe-time"><?= $recipe['time'] ?></span><?php endif; ?>
+            <?php if ($recipe['teaser']): ?><div class="ce_text"><?= $recipe['teaser'] ?></div><?php endif; ?>
+            <?php if ($recipe['hasContent']): ?><a href="">Zur Detailseite</a><?php endif; ?>
+        </div>
+        <?php endif; ?>
+    </div>
+    <?php endforeach; ?>
+
+<?php else: ?>
+
+    <p><?= $this->message ?></p>
+
+<?php endif; ?>
 
 <?php $this->endblock(); ?>

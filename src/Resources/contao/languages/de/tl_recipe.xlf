@@ -17,6 +17,10 @@
                 <source>Nutritional values</source>
                 <target>Nährwert-Angaben</target>
             </trans-unit>
+            <trans-unit id="tl_recipe.categories_legend">
+                <source>Categories</source>
+                <target>Kategorien</target>
+            </trans-unit>
             <trans-unit id="tl_recipe.expert_legend">
                 <source>Expert settings</source>
                 <target>Experten-Einstellungen</target>
@@ -109,6 +113,14 @@
                 <source>Add the alias of the recipe.</source>
                 <target>Fügen Sie das Alias des Rezept hinzu.</target>
             </trans-unit>
+            <trans-unit id="tl_recipe.categories.0">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.categories.1">
+                <source>Select the categories for this recipe.</source>
+                <target>Wählen Sie die Kategorien für dieses Rezept.</target>
+            </trans-unit>
             <trans-unit id="tl_recipe.teaser.0">
                 <source>Recipe teaser</source>
                 <target>Teasertext</target>
@@ -132,6 +144,14 @@
             <trans-unit id="tl_recipe.portions.1">
                 <source>Enter the amount of portions included for this recipe.</source>
                 <target>Geben Sie die Anzahl der Portionen, für die diese Zutaten reichen, ein.</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.time.0">
+                <source>Preparation time (m)</source>
+                <target>Zubereitungs-Zeit (m)</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.time.1">
+                <source>Enter an estimated preparation time for this recipe in minutes.</source>
+                <target>Geben Sie eine ungefähre Zubereitungs-Zeit für dieses Rzept in Minuten ein.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.singleSRC.0">
                 <source>Source file</source>
@@ -173,13 +193,21 @@
                 <source>Enter the carbohydrates value for 1 portion in g.</source>
                 <target>Geben Sie den Kohlenhydrategehalt je Portion in g an.</target>
             </trans-unit>
-            <trans-unit id="tl_recipe.invisible.0">
-                <source>Invisible</source>
-                <target>Invisible</target>
+            <trans-unit id="tl_recipe.published.0">
+                <source>Publish recipe</source>
+                <target>Rezept veröffentlichen</target>
             </trans-unit>
-            <trans-unit id="tl_recipe.invisible.1">
-                <source>Hide the recipe on the website.</source>
-                <target>Rezept auf der Webseite verstecken.</target>
+            <trans-unit id="tl_recipe.published.1">
+                <source>Make the recipe publicly visible on the website.</source>
+                <target>Das Rezept auf der Webseite anzeigen.</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.featured.0">
+                <source>Feature recipe</source>
+                <target>Rezept hervorheben</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.featured.1">
+                <source>Feature the recipe on the website.</source>
+                <target>Das Rezept auf der Webseite hervorheben.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.noEntriesFound">
                 <source>There were no recipes found for your selection.</source>

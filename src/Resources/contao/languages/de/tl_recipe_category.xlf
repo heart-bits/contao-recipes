@@ -66,12 +66,12 @@
                 <target>Wählen Sie ein Bild aus der Dateiverwaltung.</target>
             </trans-unit>
             <trans-unit id="tl_recipe_category.published.0">
-                <source>Invisible</source>
-                <target>Unsichtbar</target>
+                <source>Publish category</source>
+                <target>Kategorie veröffentlichen</target>
             </trans-unit>
             <trans-unit id="tl_recipe_category.published.1">
-                <source>Hide the category on the website.</source>
-                <target>Kategorie auf der Webseite verstecken.</target>
+                <source>Make the category publicly visible on the website.</source>
+                <target>Die Kategorie auf der Webseite anzeigen.</target>
             </trans-unit>
         </body>
     </file>

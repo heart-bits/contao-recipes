@@ -108,9 +108,6 @@ $GLOBALS['TL_DCA']['tl_recipe_ingredient'] = [
                 'tl_class' => 'w50',
                 'doNotCopy' => true
             ],
-            'save_callback' => [
-                [RecipeCallbackListener::class, 'onSaveCallback']
-            ],
             'sql' => "varchar(255) NOT NULL default ''"
         ],
 

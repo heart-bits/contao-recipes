@@ -2,5 +2,22 @@
 
 <?php $this->block('content'); ?>
 
+<?php if ($this->singleSRC): ?>
+    <div class="recipe-image">
+        <?php $this->insert('image', $this->singleSRC); ?>
+    </div>
+    <div class="recipe-info">
+        <h3><?= $this->title ?></h3>
+        <?php if (!empty($this->categories)): ?>
+            <div class="categories">
+                <?php foreach ($this->categories as $category): ?>
+                    <span class="category category_<?= $category['alias'] ?>"><?= $category['title'] ?></span>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+        <?php if ($this->time !== 0): ?><span class="recipe-time"><?= $this->time ?></span><?php endif; ?>
+        <?php if ($this->teaser): ?><div class="ce_text"><?= $this->teaser ?></div><?php endif; ?>
+    </div>
+<?php endif; ?>
 
 <?php $this->endblock(); ?>

@@ -61,6 +61,14 @@
                 <source>Add the alias of the ingredient</source>
                 <target>Add the alias of the ingredient</target>
             </trans-unit>
+            <trans-unit id="tl_recipe_ingredient.singleSRC.0">
+                <source>Source file</source>
+                <target>Source file</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe_ingredient.singleSRC.1">
+                <source>Please select a file from the files directory.</source>
+                <target>Please select a file from the files directory.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

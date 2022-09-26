@@ -91,9 +91,8 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
                 'feature' => [
                     'label' => &$GLOBALS['TL_LANG']['tl_recipe']['feature'],
                     'icon' => 'featured.svg',
-                    'attributes' => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleVisibility(this,%s)"',
                     'haste_ajax_operation' => [
-                        'field' => 'published',
+                        'field' => 'featured',
                         'options' => [
                             [
                                 'value' => '',
@@ -109,7 +108,6 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
                 'toggle' => [
                     'label' => &$GLOBALS['TL_LANG']['tl_recipe']['toggle'],
                     'icon' => 'visible.svg',
-                    'attributes' => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleVisibility(this,%s)"',
                     'haste_ajax_operation' => [
                         'field' => 'published',
                         'options' => [
@@ -131,7 +129,7 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
     // Palettes
     'palettes' => [
         '__selector__' => ['title'],
-        'default' => '{recipe_legend},title,alias,teaser;{ingredients_legend},ingredients,portions;{image_legend},singleSRC;{nutritional_legend},calories,protein,fat,carbohydrates;{expert_legend:hide},published,featured;',
+        'default' => '{recipe_legend},title,alias,time,teaser;{ingredients_legend},ingredients,portions;{image_legend},singleSRC;{nutritional_legend},calories,protein,fat,carbohydrates;{categories_legend},categories;{expert_legend:hide},published,featured;',
     ],
 
     // Fields
@@ -167,10 +165,18 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
                     'tl_class' => 'w50',
                     'doNotCopy' => true
                 ],
-                'save_callback' => [
-                    [RecipeCallbackListener::class, 'onSaveCallback']
-                ],
                 'sql' => "varchar(255) NOT NULL default ''"
+            ],
+
+            'categories' => [
+                'inputType' => 'checkbox',
+                'exclude' => true,
+                'eval' => [
+                    'tl_class' => 'clr',
+                    'doNotCopy' => true,
+                    'multiple' => true
+                ],
+                'sql' => "blob"
             ],
 
             'teaser' => [
@@ -217,6 +223,18 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
                 'sql' => "int(3) NOT NULL default 1"
             ],
 
+            'time' => [
+                'inputType' => 'text',
+                'exclude' => true,
+                'eval' => [
+                    'mandatory' => true,
+                    'maxlength' => 3,
+                    'tl_class' => 'w50 clr',
+                    'rgxp' => 'natural'
+                ],
+                'sql' => "int(3) NOT NULL default 0"
+            ],
+
             'calories' => [
                 'inputType' => 'text',
                 'exclude' => true,
@@ -261,6 +279,9 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
                 'exclude' => true,
                 'filter' => true,
                 'inputType' => 'checkbox',
+                'eval' => [
+                    'tl_class' => 'w50'
+                ],
                 'sql' => "char(1) NOT NULL default ''"
             ],
 
@@ -268,6 +289,9 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
                 'exclude' => true,
                 'filter' => true,
                 'inputType' => 'checkbox',
+                'eval' => [
+                    'tl_class' => 'w50'
+                ],
                 'sql' => "char(1) NOT NULL default ''"
             ],
         ]
