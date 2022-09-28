@@ -15,8 +15,23 @@
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-        <?php if ($this->time !== 0): ?><span class="recipe-time"><?= $this->time ?></span><?php endif; ?>
-        <?php if ($this->teaser): ?><div class="ce_text"><?= $this->teaser ?></div><?php endif; ?>
+        <?php if ($this->time > 0): ?><span class="recipe-time"><?= $this->time ?></span><?php endif; ?>
+        <?php if ($this->ingredients): ?>
+            <div class="recipe-ingredients">
+                <?php foreach ($this->ingredients as $ingredient): ?>
+                    <div class="ingredient ingredient_<?= $ingredient['ingredient']['alias'] ?>">
+                        <span class="amount"><?= $ingredient['amount'] ?></span>
+                        <span class="unit unit_<?= $ingredient['unit']['alias'] ?>"><?= $ingredient['unit']['title'] ?></span>
+                        <span class="title"><?= $ingredient['ingredient']['title'] ?></span>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+        <?php if ($this->content): ?>
+            <div class="recipe-details">
+                <?= $this->content ?>
+            </div>
+        <?php endif; ?>
     </div>
 <?php endif; ?>
 
