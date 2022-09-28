@@ -3,7 +3,6 @@
 namespace Heartbits\ContaoRecipes\Controller\ContentElement;
 
 use Contao\CoreBundle\Controller\ContentElement\AbstractContentElementController;
-use Contao\CoreBundle\DependencyInjection\Attribute\AsContentElement;
 use Contao\BackendTemplate;
 use Contao\ContentModel;
 use Contao\FilesModel;

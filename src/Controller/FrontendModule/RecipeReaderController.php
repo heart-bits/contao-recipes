@@ -3,18 +3,16 @@
 namespace Heartbits\ContaoRecipes\Controller\FrontendModule;
 
 use Contao\CoreBundle\Controller\FrontendModule\AbstractFrontendModuleController;
-use Contao\CoreBundle\Exception\RedirectResponseException;
 use Contao\CoreBundle\Exception\PageNotFoundException;
 use Contao\CoreBundle\ServiceAnnotation\FrontendModule;
+use Contao\CoreBundle\Routing\ResponseContext\HtmlHeadBag\HtmlHeadBag;
 use Contao\BackendTemplate;
-use Contao\Config;
 use Contao\ContentModel;
 use Contao\Controller;
 use Contao\Environment;
 use Contao\FilesModel;
 use Contao\Input;
 use Contao\ModuleModel;
-use Contao\PageModel;
 use Contao\System;
 use Contao\StringUtil;
 use Contao\Template;
@@ -160,17 +158,17 @@ class RecipeReaderController extends AbstractFrontendModuleController
 
             if ($objRecipe->title)
             {
-                $htmlHeadBag->setTitle($objArticle->pageTitle); // Already stored decoded
+                $htmlHeadBag->setTitle($objRecipe->title); // Already stored decoded
             }
 
             if ($objRecipe->teaser)
             {
-                $htmlHeadBag->setMetaDescription($htmlDecoder->htmlToPlainText($objArticle->teaser));
+                $htmlHeadBag->setMetaDescription($htmlDecoder->htmlToPlainText($objRecipe->teaser));
             }
 
-            if ($objArticle->robots)
+            if ($objRecipe->robots)
             {
-                $htmlHeadBag->setMetaRobots($objArticle->robots);
+                $htmlHeadBag->setMetaRobots($objRecipe->robots);
             }
         }
     }

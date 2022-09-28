@@ -5,7 +5,6 @@ namespace Heartbits\ContaoRecipes\Widgets;
 use Contao\Image;
 use Contao\Input;
 use Contao\StringUtil;
-use Contao\System;
 use Contao\Widget;
 use Heartbits\ContaoRecipes\Models\IngredientModel;
 use Heartbits\ContaoRecipes\Models\UnitModel;

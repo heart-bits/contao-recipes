@@ -3,12 +3,10 @@
 namespace Heartbits\ContaoRecipes\Controller\FrontendModule;
 
 use Contao\CoreBundle\Controller\FrontendModule\AbstractFrontendModuleController;
-use Contao\CoreBundle\Exception\RedirectResponseException;
 use Contao\CoreBundle\ServiceAnnotation\FrontendModule;
 use Contao\ContentModel;
 use Contao\FilesModel;
 use Contao\ModuleModel;
-use Contao\PageModel;
 use Contao\StringUtil;
 use Contao\System;
 use Contao\Template;
