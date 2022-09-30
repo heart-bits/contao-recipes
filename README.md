@@ -24,13 +24,19 @@ If you don't want to import these at all, you can also skip the migrations by ad
 ### Modules
 
 The bundle provides a list and reader module which can be created and should be added to separate pages.
-The list modules should redirect to the page, where the reader module was placed. After that the page with the reader module must also have the `Require an item` setting checked.
-After that, recipes inside the list module will automatically redirect to the reader page correctly.
+
+The list modules should redirect to the page, where the reader module was placed. 
+
+After that the page with the reader module must also have the `Require an item` setting checked.
+
+Recipes inside the list module will then automatically add a `read more` link for the reader page correctly, if contents exist inside them.
 
 ### Elements
 
 Inside the recipes, you have the possibility to add detailed contents to it.
+
 Possible elements currently include:
 * `Recipe step` Adds numbered steps to the recipe
 
-**It is not possible to choose other Contao core or third party elements inside the recipe without overwriting the `options_callback` of the `type` field in `tl_content`.**
+
+**NOTE: It is not possible to choose other Contao core or third party elements inside the recipe without overwriting the `options_callback` of the `type` field in `tl_content`.**
