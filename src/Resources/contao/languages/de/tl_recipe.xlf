@@ -105,6 +105,14 @@
                 <source>Add the name of the recipe.</source>
                 <target>Fügen Sie den Namen des Rezept hinzu.</target>
             </trans-unit>
+            <trans-unit id="tl_recipe.subheadline.0">
+                <source>Subheadline</source>
+                <target>Unterüberschrift</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.subheadline.1">
+                <source>Here you can enter a subheadline.</source>
+                <target>Hier können Sie eine Unterüberschrift eingeben.</target>
+            </trans-unit>
             <trans-unit id="tl_recipe.alias.0">
                 <source>Alias</source>
                 <target>Alias</target>

@@ -12,6 +12,7 @@
             </div>
         <div class="recipe-info">
             <h3><?= $recipe['title'] ?></h3>
+            <?php if ($recipe['subheadline']): ?><span class="subheadline"><?= $recipe['subheadline'] ?></span><?php endif; ?>
             <?php if (!empty($recipe['categories'])): ?>
                 <div class="categories">
                     <?php foreach ($recipe['categories'] as $category): ?>

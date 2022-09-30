@@ -105,6 +105,14 @@
                 <source>Add the name of the recipe</source>
                 <target>Add the name of the recipe</target>
             </trans-unit>
+            <trans-unit id="tl_recipe.subheadline.0">
+                <source>Subheadline</source>
+                <target>Subheadline</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.subheadline.1">
+                <source>Here you can enter a subheadline.</source>
+                <target>Here you can enter a subheadline.</target>
+            </trans-unit>
             <trans-unit id="tl_recipe.alias.0">
                 <source>Alias</source>
                 <target>Alias</target>

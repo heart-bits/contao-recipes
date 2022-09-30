@@ -129,7 +129,7 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
     // Palettes
     'palettes' => [
         '__selector__' => ['title'],
-        'default' => '{recipe_legend},title,alias,time,teaser;{ingredients_legend},ingredients,portions;{image_legend},singleSRC;{nutritional_legend},calories,protein,fat,carbohydrates;{categories_legend},categories;{expert_legend:hide},published,featured;',
+        'default' => '{recipe_legend},title,alias,subheadline,time,teaser;{ingredients_legend},ingredients,portions;{image_legend},singleSRC;{nutritional_legend},calories,protein,fat,carbohydrates;{categories_legend},categories;{expert_legend:hide},published,featured;',
     ],
 
     // Fields
@@ -152,6 +152,16 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
                     'mandatory' => true,
                     'maxlength' => 255,
                     'tl_class' => 'w50 clr'
+                ],
+                'sql' => "varchar(255) NOT NULL default ''"
+            ],
+
+            'subheadline' => [
+                'inputType' => 'text',
+                'exclude' => true,
+                'eval' => [
+                    'maxlength' => 255,
+                    'tl_class' => 'w50'
                 ],
                 'sql' => "varchar(255) NOT NULL default ''"
             ],
@@ -229,7 +239,7 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
                 'eval' => [
                     'mandatory' => true,
                     'maxlength' => 3,
-                    'tl_class' => 'w50 clr',
+                    'tl_class' => 'w50',
                     'rgxp' => 'natural'
                 ],
                 'sql' => "int(3) NOT NULL default 0"
