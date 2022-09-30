@@ -21,7 +21,7 @@
             <?php endif; ?>
             <?php if ($recipe['time'] !== 0): ?><span class="recipe-time"><?= $recipe['time'] ?></span><?php endif; ?>
             <?php if ($recipe['teaser']): ?><div class="ce_text"><?= $recipe['teaser'] ?></div><?php endif; ?>
-            <?php if ($recipe['hasContent']): ?><a href="">Zur Detailseite</a><?php endif; ?>
+            <?php if ($recipe['jumpTo'] && $recipe['hasContent']): ?><a href="<?= $recipe['jumpTo'] ?>">Zur Detailseite</a><?php endif; ?>
         </div>
         <?php endif; ?>
     </div>

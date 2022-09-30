@@ -7,6 +7,7 @@ use Contao\CoreBundle\ServiceAnnotation\FrontendModule;
 use Contao\ContentModel;
 use Contao\FilesModel;
 use Contao\ModuleModel;
+use Contao\PageModel;
 use Contao\StringUtil;
 use Contao\System;
 use Contao\Template;
@@ -28,6 +29,7 @@ class RecipeListController extends AbstractFrontendModuleController
             $template = new BackendTemplate('be_wildcard');
             $template->title = $GLOBALS['TL_LANG']['FMD'][RecipeListController::TYPE][0];
         } else {
+            $objJumpTo = PageModel::findPublishedById($model->jumpTo);
             $objRecipes = RecipeModel::findPublished(false, 0, []);
             $arrRecipes = [];
             if ($objRecipes) {
@@ -43,6 +45,12 @@ class RecipeListController extends AbstractFrontendModuleController
                                 $arrRecipes[$i][$key] = $value;
                                 $objContent = ContentModel::findBy(["$ct.ptable='$t'", "$ct.pid='$value'", "$ct.invisible=''"], null);
                                 (!$objContent) ? $arrRecipes[$i]['hasContent'] = false : $arrRecipes[$i]['hasContent'] = true;
+                                break;
+                            case 'alias':
+                                if ($objJumpTo instanceof PageModel) {
+                                    $arrRecipes[$i]['jumpTo'] = $objJumpTo->getAbsoluteUrl('/' . $value);
+                                }
+                                $arrRecipes[$i][$key] = $value;
                                 break;
                             case 'categories':
                                 if ($value) {
