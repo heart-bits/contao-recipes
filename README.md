@@ -1,4 +1,36 @@
-contao-recipes
-===================
+# Recipe bundle for Contao Open Source CMS
 
-This contao extension allows the backend user to create recipes, categories, ingredients and units to display in the frontend.
+This bundle provides a way for Contao to manage recipes as well as recipe categories, units and ingredients.
+
+## Installation
+
+Install the bundle via Composer:
+
+```
+composer require heart-bits/contao-recipes-bundle
+```
+
+## Configuration
+
+### Migrations
+
+Once installed, if you don't have any units and/or ingredients set, the migration/s will import a basic set of units/ingredients into your system:
+```
+vendor/bin/contao-console contao:migrate
+```
+You can edit these imported values afterwards or add more to the list of course.
+If you don't want to import these at all, you can also skip the migrations by adding `--schema-only` to the command above and add your individual values.
+
+### Modules
+
+The bundle provides a list and reader module which can be created and should be added to separate pages.
+The list modules should redirect to the page, where the reader module was placed. After that the page with the reader module must also have the `Require an item` setting checked.
+After that, recipes inside the list module will automatically redirect to the reader page correctly.
+
+### Elements
+
+Inside the recipes, you have the possibility to add detailed contents to it.
+Possible elements currently include:
+* `Recipe step` Adds numbered steps to the recipe
+
+**It is not possible to choose other Contao core or third party elements inside the recipe without overwriting the `options_callback` of the `type` field in `tl_content`.**
