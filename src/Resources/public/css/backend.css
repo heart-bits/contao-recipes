@@ -84,8 +84,8 @@ input.tl_rating::-webkit-slider-thumb {
     border: 0;
     border-radius: 0;
     filter: drop-shadow(-1em 0 gold) drop-shadow(-2em 0 gold)
-    drop-shadow(-3em 0 gold) drop-shadow(3em 0 #555) drop-shadow(2em 0 #555)
-    drop-shadow(1em 0 #555);
+    drop-shadow(-3em 0 gold) drop-shadow(3em 0 #999) drop-shadow(2em 0 #999)
+    drop-shadow(1em 0 #999);
 }
 
 input.tl_rating::-moz-range-thumb {
@@ -100,8 +100,8 @@ input.tl_rating::-moz-range-thumb {
     border: 0;
     border-radius: 0;
     filter: drop-shadow(-1em 0 gold) drop-shadow(-2em 0 gold)
-    drop-shadow(-3em 0 gold) drop-shadow(3em 0 #555) drop-shadow(2em 0 #555)
-    drop-shadow(1em 0 #555);
+    drop-shadow(-3em 0 gold) drop-shadow(3em 0 #999) drop-shadow(2em 0 #999)
+    drop-shadow(1em 0 #999);
 }
 
 input.tl_rating::-ms-thumb {
