@@ -17,7 +17,8 @@ class ContentCallbackListener
         if ($dc->activeRecord->ptable === 'tl_recipe') {
             $options = [
                 RecipeStepController::TYPE => $GLOBALS['TL_LANG']['CTE'][RecipeStepController::TYPE][0],
-                RecipeImageController::TYPE => $GLOBALS['TL_LANG']['CTE'][RecipeImageController::TYPE][0]
+                RecipeImageController::TYPE => $GLOBALS['TL_LANG']['CTE'][RecipeImageController::TYPE][0],
+                'gallery' => $GLOBALS['TL_LANG']['CTE']['gallery'][0]
             ];
         } else {
             foreach ($GLOBALS['TL_CTE'] as $k=>$v)

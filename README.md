@@ -37,6 +37,8 @@ Inside the recipes, you have the possibility to add detailed contents to it.
 
 Possible elements currently include:
 * `Recipe step` Adds numbered steps to the recipe
+* `Recipe image` Adds an image to the recipe
+* `Gallery` Adds a Contao core gallery to the recipe
 
 
 **NOTE: It is not possible to choose other Contao core or third party elements inside the recipe without overwriting the `options_callback` of the `type` field in `tl_content`.**
