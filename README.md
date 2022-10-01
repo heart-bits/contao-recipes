@@ -46,3 +46,8 @@ Possible elements currently include:
 
 
 **NOTE: It is not possible to choose other Contao core or third party elements inside the recipe without overwriting the `options_callback` of the `type` field in `tl_content`.**
+
+## Roadmap
+
+* `tl_chosen` functionality for InputIngredient
+* Filter frontend module for ingredients and categories
