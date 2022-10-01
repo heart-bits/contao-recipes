@@ -16,6 +16,7 @@ use Contao\ModuleModel;
 use Contao\System;
 use Contao\StringUtil;
 use Contao\Template;
+use Heartbits\ContaoRecipes\Controller\ContentElement\RecipeStepController;
 use Heartbits\ContaoRecipes\Models\CategoryModel;
 use Heartbits\ContaoRecipes\Models\IngredientModel;
 use Heartbits\ContaoRecipes\Models\RecipeModel;
@@ -43,6 +44,7 @@ class RecipeReaderController extends AbstractFrontendModuleController
 
             if ($objRecipe && $objContent) {
                 $this->overwriteMetaData($objRecipe);
+                $GLOBALS['TL_HEAD'][] = '<script type="application/ld+json">' . $this->writeStructuredData($objRecipe) . '</script>';
 
                 foreach ($objRecipe->row() as $key => $value) {
                     switch ($key) {
@@ -171,5 +173,76 @@ class RecipeReaderController extends AbstractFrontendModuleController
                 $htmlHeadBag->setMetaRobots($objRecipe->robots);
             }
         }
+    }
+
+    public function writeStructuredData(RecipeModel $objRecipe): string
+    {
+        $json = [];
+
+        $json['@context'] = 'https://schema.org/';
+
+        $json['@type'] = 'type';
+
+        if ($objRecipe->title) $json['name'] = $objRecipe->title;
+
+        if ($objRecipe->singleSRC) $json['image'] = [
+            '1x1',
+            '4x3',
+            '16x9'
+        ];
+
+        if ($objRecipe->author) $json['author'] = [
+            '@type' => 'Person',
+            'name' => $objRecipe->author
+        ];
+
+        if ($objRecipe->tstamp) $json['datePublished'] = date('Y-m-d', $objRecipe->tstamp);
+
+        if ($objRecipe->teaser) $json['description'] = strip_tags($objRecipe->teaser);
+
+        if ($objRecipe->time > 0) $json['cookTime'] = 'PT' . $objRecipe->time . 'M'; $json['totalTime'] = 'PT' . $objRecipe->time . 'M';
+
+        if (is_array($arrCategories = StringUtil::deserialize($objRecipe->categories))) {
+            $categories = '';
+            $i = 0;
+            foreach ($arrCategories as $category) {
+                $objCategory = CategoryModel::findByIdOrAlias($category);
+                ($i === 0) ? $categories .= $objCategory->alias : $categories .= ',' . $objCategory->alias;
+                $i++;
+            }
+            $json['keywords'] = $categories;
+        }
+
+        if ($objRecipe->portion) $json['description'] = $objRecipe->portion . 'portion';
+
+        if ($objRecipe->calories) $json['nutrition'] = [
+            '@type' => 'NutritionInformation',
+            'calories' => $objRecipe->calories . ' Kalorien'
+        ];
+
+        /*if ($objRecipe->rating) $json['aggregateRating'] = [
+            '@type' => 'AggregateRating',
+            'ratingValue' => (string) $objRecipe->rating,
+            'ratingCount' => '1',
+        ];*/
+
+        if (is_array($arrIngredients = StringUtil::deserialize($objRecipe->ingredients))) {
+            foreach ($arrIngredients as $ingredient) {
+                $objUnit = UnitModel::findOneByAlias($ingredient[1]);
+                $objIngredient = IngredientModel::findOneByAlias($ingredient[2]);
+                if ($objUnit instanceof UnitModel && $objIngredient instanceof IngredientModel) $json['recipeIngredient'][] = $ingredient[0] . ' ' . $objUnit->title . ' ' . $objIngredient->title;
+            }
+        }
+        if (($objContent = ContentModel::findBy(['tl_content.pid=? AND tl_content.ptable=? AND tl_content.type=?'], [$objRecipe->id, 'tl_recipe', RecipeStepController::TYPE], ['order' => 'tl_content.sorting'])) instanceof ContentModel) {
+            foreach ($objContent as $content) {
+                $json['recipeIngredient'][] = [
+                    '@type' => 'HowToStep',
+                    'name' => strip_tags(StringUtil::deserialize($content->headline)['value']),
+                    'text' => strip_tags($content->text),
+                ];
+            }
+        }
+
+        return json_encode($json);
     }
 }
