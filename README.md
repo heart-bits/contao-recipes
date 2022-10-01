@@ -2,6 +2,8 @@
 
 This bundle provides a way for Contao to manage recipes as well as recipe categories, units and ingredients.
 
+![](docs/contao-recipes-overview.png)
+
 ## Installation
 
 Install the bundle via Composer:
