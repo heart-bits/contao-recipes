@@ -18,7 +18,9 @@ Once installed, if you don't have any units and/or ingredients set, the migratio
 ```
 vendor/bin/contao-console contao:migrate
 ```
-You can edit these imported values afterwards or add more to the list of course.
+Currently, the ingredients and units are only imported in german language.
+But you can edit these imported values afterwards or add more to the list of course.
+
 If you don't want to import these at all, you can also skip the migrations by adding `--schema-only` to the command above and add your individual values.
 
 ### Modules
