@@ -5,6 +5,14 @@
                 <source>Recipes</source>
                 <target>Rezepte</target>
             </trans-unit>
+            <trans-unit id="CTE.recipe_image.0">
+                <source>Recipe image</source>
+                <target>Rezept-Bild</target>
+            </trans-unit>
+            <trans-unit id="CTE.recipe_image.1">
+                <source>Generates a recipe image.</source>
+                <target>Erzeugt einen Rezept-Bild.</target>
+            </trans-unit>
             <trans-unit id="CTE.recipe_step.0">
                 <source>Recipe step</source>
                 <target>Rezept-Schritt</target>

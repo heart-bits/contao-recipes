@@ -16,3 +16,8 @@ services:
         class: Heartbits\ContaoRecipes\Controller\ContentElement\RecipeStepController
         tags:
             - { name: contao.content_element, category: recipes }
+
+    heartbits.contaorecipes.service.recipe_image:
+        class: Heartbits\ContaoRecipes\Controller\ContentElement\RecipeImageController
+        tags:
+            - { name: contao.content_element, category: recipes }
