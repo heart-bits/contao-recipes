@@ -145,6 +145,14 @@
                 <source>Enter the ingredients for this recipe.</source>
                 <target>Enter the ingredients for this recipe.</target>
             </trans-unit>
+            <trans-unit id="tl_recipe.rating.0">
+                <source>Rating</source>
+                <target>Rating</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.rating.1">
+                <source>Enter your rating for this recipe.</source>
+                <target>Enter your rating for this recipe.</target>
+            </trans-unit>
             <trans-unit id="tl_recipe.portions.0">
                 <source>Portions</source>
                 <target>Portions</target>

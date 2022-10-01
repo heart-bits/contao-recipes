@@ -129,7 +129,7 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
     // Palettes
     'palettes' => [
         '__selector__' => ['title'],
-        'default' => '{recipe_legend},title,alias,subheadline,time,teaser;{ingredients_legend},ingredients,portions;{image_legend},singleSRC;{nutritional_legend},calories,protein,fat,carbohydrates;{categories_legend},categories;{expert_legend:hide},published,featured;',
+        'default' => '{recipe_legend},title,alias,subheadline,time,rating,teaser;{ingredients_legend},ingredients,portions;{image_legend},singleSRC;{nutritional_legend},calories,protein,fat,carbohydrates;{categories_legend},categories;{expert_legend:hide},published,featured;',
     ],
 
     // Fields
@@ -243,6 +243,16 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
                     'rgxp' => 'natural'
                 ],
                 'sql' => "int(3) NOT NULL default 0"
+            ],
+
+            'rating' => [
+                'inputType' => 'inputRating',
+                'exclude' => true,
+                'eval' => [
+                    'tl_class' => 'w50 clr',
+                    'rgxp' => 'natural'
+                ],
+                'sql' => "int(1) NOT NULL default 0"
             ],
 
             'calories' => [

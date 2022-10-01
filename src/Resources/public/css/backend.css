@@ -1,1 +1,134 @@
-#tl_navigation .group-recipes{background: url('../img/recipes.svg') 3px 2px no-repeat}#inputIngredient table{width:100%}#inputIngredient .recipe_amount{max-width:100px}#inputIngredient .recipe_unit{max-width:100px}#inputIngredient .recipe_ingredient{min-width:200px}
+#tl_navigation .group-recipes {
+    background: url('../img/recipes.svg') 3px 2px no-repeat
+}
+
+#inputIngredient table {
+    width: 100%
+}
+
+#inputIngredient .recipe_amount {
+    max-width: 100px
+}
+
+#inputIngredient .recipe_unit {
+    max-width: 100px
+}
+
+#inputIngredient .recipe_ingredient {
+    min-width: 200px
+}
+
+.rating-container {
+    padding: 10px 0;
+}
+
+.zero-based-rating,
+input.tl_rating {
+    font-size: 1.5rem;
+}
+
+.zero-based-rating {
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.zero-based-rating .tl_rating {
+    margin: 0 0 0 -1em;
+    width: 6em;
+}
+
+.zero-based-rating::after {
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    display: block;
+    left: -0.5em;
+    top: 0;
+    bottom: 0;
+    background-color: white;
+    width: 0.5em;
+    pointer-events: none;
+}
+
+input.tl_rating {
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg fill="#555" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 458.7 458.7"><path d="M210.2 22.1a21.4 21.4 0 0 1 38.3 0l54.3 110a21.4 21.4 0 0 0 16.2 11.7l121.4 17.7a21.4 21.4 0 0 1 11.9 36.5l-88 85.6c-5 5-7.3 12-6 19l20.7 121a21.4 21.4 0 0 1-31 22.5L239.2 389a21.4 21.4 0 0 0-19.9 0l-108.6 57a21.4 21.4 0 0 1-31-22.5l20.7-121c1.2-6.9-1.1-14-6.2-18.9L6.5 198a21.4 21.4 0 0 1 11.8-36.5l121.5-17.7c7-1 13-5.3 16-11.7l54.4-110z"/></svg>');
+    background-size: 1em 1em;
+    width: 5em;
+    height: 1em;
+    padding: 0;
+    margin: 0 0 0 0.5em;
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+input.tl_rating::-webkit-slider-thumb {
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg fill="gold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 458.7 458.7"><path d="M210.2 22.1a21.4 21.4 0 0 1 38.3 0l54.3 110a21.4 21.4 0 0 0 16.2 11.7l121.4 17.7a21.4 21.4 0 0 1 11.9 36.5l-88 85.6c-5 5-7.3 12-6 19l20.7 121a21.4 21.4 0 0 1-31 22.5L239.2 389a21.4 21.4 0 0 0-19.9 0l-108.6 57a21.4 21.4 0 0 1-31-22.5l20.7-121c1.2-6.9-1.1-14-6.2-18.9L6.5 198a21.4 21.4 0 0 1 11.8-36.5l121.5-17.7c7-1 13-5.3 16-11.7l54.4-110z"/></svg>');
+    background-size: 1em 1em;
+    width: 1em;
+    height: 1em;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    filter: drop-shadow(-1em 0 gold) drop-shadow(-2em 0 gold)
+    drop-shadow(-3em 0 gold) drop-shadow(3em 0 #555) drop-shadow(2em 0 #555)
+    drop-shadow(1em 0 #555);
+}
+
+input.tl_rating::-moz-range-thumb {
+    box-sizing: border-box;
+    -moz-appearance: none;
+    appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg fill="gold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 458.7 458.7"><path d="M210.2 22.1a21.4 21.4 0 0 1 38.3 0l54.3 110a21.4 21.4 0 0 0 16.2 11.7l121.4 17.7a21.4 21.4 0 0 1 11.9 36.5l-88 85.6c-5 5-7.3 12-6 19l20.7 121a21.4 21.4 0 0 1-31 22.5L239.2 389a21.4 21.4 0 0 0-19.9 0l-108.6 57a21.4 21.4 0 0 1-31-22.5l20.7-121c1.2-6.9-1.1-14-6.2-18.9L6.5 198a21.4 21.4 0 0 1 11.8-36.5l121.5-17.7c7-1 13-5.3 16-11.7l54.4-110z"/></svg>');
+    background-size: 1em 1em;
+    width: 1em;
+    height: 1em;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    filter: drop-shadow(-1em 0 gold) drop-shadow(-2em 0 gold)
+    drop-shadow(-3em 0 gold) drop-shadow(3em 0 #555) drop-shadow(2em 0 #555)
+    drop-shadow(1em 0 #555);
+}
+
+input.tl_rating::-ms-thumb {
+    box-sizing: border-box;
+    -ms-appearance: none;
+    appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg fill="gold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 458.7 458.7"><path d="M210.2 22.1a21.4 21.4 0 0 1 38.3 0l54.3 110a21.4 21.4 0 0 0 16.2 11.7l121.4 17.7a21.4 21.4 0 0 1 11.9 36.5l-88 85.6c-5 5-7.3 12-6 19l20.7 121a21.4 21.4 0 0 1-31 22.5L239.2 389a21.4 21.4 0 0 0-19.9 0l-108.6 57a21.4 21.4 0 0 1-31-22.5l20.7-121c1.2-6.9-1.1-14-6.2-18.9L6.5 198a21.4 21.4 0 0 1 11.8-36.5l121.5-17.7c7-1 13-5.3 16-11.7l54.4-110z"/></svg>');
+    background-size: 1em 1em;
+    width: 1em;
+    height: 1em;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    filter: drop-shadow(-1em 0 gold) drop-shadow(-2em 0 gold)
+    drop-shadow(-3em 0 gold) drop-shadow(3em 0 #999) drop-shadow(2em 0 #999)
+    drop-shadow(1em 0 #999);
+}
+
+input.tl_rating::-ms-fill-lower {
+    box-sizing: border-box;
+    -ms-appearance: none;
+    appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg fill="gold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 458.7 458.7"><path d="M210.2 22.1a21.4 21.4 0 0 1 38.3 0l54.3 110a21.4 21.4 0 0 0 16.2 11.7l121.4 17.7a21.4 21.4 0 0 1 11.9 36.5l-88 85.6c-5 5-7.3 12-6 19l20.7 121a21.4 21.4 0 0 1-31 22.5L239.2 389a21.4 21.4 0 0 0-19.9 0l-108.6 57a21.4 21.4 0 0 1-31-22.5l20.7-121c1.2-6.9-1.1-14-6.2-18.9L6.5 198a21.4 21.4 0 0 1 11.8-36.5l121.5-17.7c7-1 13-5.3 16-11.7l54.4-110z"/></svg>');
+    background-size: 1em 1em;
+    height: 1em;
+    padding: 0;
+    margin-left: -1px;
+    border: 0;
+    border-radius: 0;
+}
