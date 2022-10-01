@@ -154,13 +154,14 @@ class RecipeReaderController extends AbstractFrontendModuleController
 
         if ($responseContext && $responseContext->has(HtmlHeadBag::class))
         {
-            /** @var HtmlHeadBag $htmlHeadBag */
             $htmlHeadBag = $responseContext->get(HtmlHeadBag::class);
             $htmlDecoder = System::getContainer()->get('contao.string.html_decoder');
 
             if ($objRecipe->title)
             {
-                $htmlHeadBag->setTitle($objRecipe->title); // Already stored decoded
+                $title = $objRecipe->title;
+                if ($objRecipe->subheadline) $title .= ' – ' . $objRecipe->subheadline;
+                $htmlHeadBag->setTitle($title);
             }
 
             if ($objRecipe->teaser)
