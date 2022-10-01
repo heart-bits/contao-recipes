@@ -250,7 +250,8 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
                 'exclude' => true,
                 'eval' => [
                     'tl_class' => 'w50 clr',
-                    'rgxp' => 'natural'
+                    'rgxp' => 'natural',
+                    'doNotCopy' => true
                 ],
                 'sql' => "int(1) NOT NULL default 0"
             ],
@@ -260,7 +261,8 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
                 'exclude' => true,
                 'eval' => [
                     'maxlength' => 10,
-                    'tl_class' => 'w50'
+                    'tl_class' => 'w50',
+                    'doNotCopy' => true
                 ],
                 'sql' => "int(10) NOT NULL default 0"
             ],
@@ -270,7 +272,8 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
                 'exclude' => true,
                 'eval' => [
                     'maxlength' => 10,
-                    'tl_class' => 'w50'
+                    'tl_class' => 'w50',
+                    'doNotCopy' => true
                 ],
                 'sql' => "int(10) NOT NULL default 0"
             ],
@@ -280,7 +283,8 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
                 'exclude' => true,
                 'eval' => [
                     'maxlength' => 10,
-                    'tl_class' => 'w50'
+                    'tl_class' => 'w50',
+                    'doNotCopy' => true
                 ],
                 'sql' => "int(10) NOT NULL default 0"
             ],
@@ -290,7 +294,8 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
                 'exclude' => true,
                 'eval' => [
                     'maxlength' => 10,
-                    'tl_class' => 'w50'
+                    'tl_class' => 'w50',
+                    'doNotCopy' => true
                 ],
                 'sql' => "int(10) NOT NULL default 0"
             ],
@@ -300,7 +305,8 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
                 'filter' => true,
                 'inputType' => 'checkbox',
                 'eval' => [
-                    'tl_class' => 'w50'
+                    'tl_class' => 'w50',
+                    'doNotCopy' => true
                 ],
                 'sql' => "char(1) NOT NULL default ''"
             ],
@@ -310,7 +316,8 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
                 'filter' => true,
                 'inputType' => 'checkbox',
                 'eval' => [
-                    'tl_class' => 'w50'
+                    'tl_class' => 'w50',
+                    'doNotCopy' => true
                 ],
                 'sql' => "char(1) NOT NULL default ''"
             ],
