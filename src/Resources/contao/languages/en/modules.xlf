@@ -41,6 +41,10 @@
                 <source>Manage units</source>
                 <target>Manage units</target>
             </trans-unit>
+            <trans-unit id="FMD.recipes">
+                <source>Recipes</source>
+                <target>Recipes</target>
+            </trans-unit>
             <trans-unit id="FMD.recipe_list.0">
                 <source>Recipe list</source>
                 <target>Recipe list</target>

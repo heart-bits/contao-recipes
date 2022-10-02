@@ -12,6 +12,11 @@ services:
         tags:
             - { name: contao.frontend_module, category: recipes }
 
+    heartbits.contaorecipes.service.recipe_filter:
+        class: Heartbits\ContaoRecipes\Controller\FrontendModule\RecipeFilterController
+        tags:
+            - { name: contao.frontend_module, category: recipes }
+
     heartbits.contaorecipes.service.recipe_step:
         class: Heartbits\ContaoRecipes\Controller\ContentElement\RecipeStepController
         tags:
