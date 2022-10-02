@@ -169,6 +169,22 @@
                 <source>Enter an estimated preparation time for this recipe in minutes.</source>
                 <target>Geben Sie eine ungefähre Zubereitungs-Zeit für dieses Rzept in Minuten ein.</target>
             </trans-unit>
+            <trans-unit id="tl_recipe.recipe_author.0">
+                <source>Author</source>
+                <target>Autor</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.recipe_author.1">
+                <source>Here you can change the author of the recipe.</source>
+                <target>Hier können Sie den Autor des Rezepts ändern.</target>
+            </trans-unit>
+            <trans-unit id="tl_recipe.recipe_date.0">
+                <source>Date</source>
+                <target>Datum</target>
+            </trans-unit>
+            <trans-unit id="tl_news.recipe_date.1">
+                <source>Please enter the date according to the global date format.</source>
+                <target>Bitte geben Sie das Datum gemäß des globalen Datumsformats ein.</target>
+            </trans-unit>
             <trans-unit id="tl_recipe.singleSRC.0">
                 <source>Source file</source>
                 <target>Quelldatei</target>

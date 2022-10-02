@@ -28,6 +28,8 @@
     </div>
     <?php endforeach; ?>
 
+    <?= $this->pagination ?>
+
 <?php else: ?>
 
     <p><?= $this->message ?></p>

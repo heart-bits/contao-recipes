@@ -38,7 +38,7 @@ class RecipeReaderController extends AbstractFrontendModuleController
             $template->title = $GLOBALS['TL_LANG']['FMD'][RecipeReaderController::TYPE][0];
         } else {
             $alias = Input::get('auto_item');
-            $t = 'tl_recipe';
+            $t = RecipeModel::getTable();
             $objRecipe = RecipeModel::findOneByAlias($alias);
             $objContent = ContentModel::findPublishedByPidAndTable($objRecipe->id, $t);
 

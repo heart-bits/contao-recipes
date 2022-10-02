@@ -101,7 +101,7 @@ class InputIngredients extends Widget
     {
         $units = [];
 
-        $objUnits = UnitModel::findAll(['order' => 'tl_recipe_unit.title']);
+        $objUnits = UnitModel::findAll(['order' => UnitModel::getTable() . '.title']);
         if ($objUnits !== null) {
             while ($objUnits->next()) {
                 $units[$objUnits->alias] = $objUnits->shortcode;
@@ -115,7 +115,7 @@ class InputIngredients extends Widget
     {
         $units = [];
 
-        $objIngredients = IngredientModel::findAll(['order' => 'tl_recipe_ingredient.title']);
+        $objIngredients = IngredientModel::findAll(['order' => IngredientModel::getTable() . '.title']);
         if ($objIngredients !== null) {
             while ($objIngredients->next()) {
                 $units[$objIngredients->alias] = $objIngredients->title;
