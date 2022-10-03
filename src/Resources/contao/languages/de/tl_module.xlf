@@ -1,0 +1,58 @@
+<?xml version="1.0" ?><xliff version="1.1">
+    <file datatype="php" original="src/Resources/contao/languages/en/tl_module.php" source-language="en" target-language="de">
+        <body>
+            <trans-unit id="tl_module.recipe_featured.0">
+                <source>Featured recipes</source>
+                <target>Hervorgehobene Rezepte</target>
+            </trans-unit>
+            <trans-unit id="tl_module.recipe_featured.1">
+                <source>Here you can choose how featured recipes are handled.</source>
+                <target>Hier legen Sie fest, wie hervorgehobene Rezepte gehandhabt werden.</target>
+            </trans-unit>
+            <trans-unit id="tl_module.recipe_order.0">
+                <source>Sort order</source>
+                <target>Sortierreihenfolge</target>
+            </trans-unit>
+            <trans-unit id="tl_module.recipe_order.1">
+                <source>Here you can choose the sort order.</source>
+                <target>Hier können Sie die Sortierreihenfolge festlegen.</target>
+            </trans-unit>
+            <trans-unit id="tl_module.all_recipes">
+                <source>Show all recipes</source>
+                <target>Alle Rezepte anzeigen</target>
+            </trans-unit>
+            <trans-unit id="tl_module.featured_recipes">
+                <source>Show featured recipes only</source>
+                <target>Nur hervorgehobene Rezepte anzeigen</target>
+            </trans-unit>
+            <trans-unit id="tl_module.unfeatured_recipes">
+                <source>Skip featured recipes</source>
+                <target>Hervorgehobene Rezepte überspringen</target>
+            </trans-unit>
+            <trans-unit id="tl_module.featured_recipes_first">
+                <source>Show featured recipes first</source>
+                <target>Hervorgehobene Rezepte zuerst anzeigen</target>
+            </trans-unit>
+            <trans-unit id="tl_module.order_date_asc">
+                <source>Date ascending</source>
+                <target>Datum aufsteigend</target>
+            </trans-unit>
+            <trans-unit id="tl_module.order_date_desc">
+                <source>Date descending</source>
+                <target>Datum absteigend</target>
+            </trans-unit>
+            <trans-unit id="tl_module.order_title_asc">
+                <source>Title ascending</source>
+                <target>Name aufsteigend</target>
+            </trans-unit>
+            <trans-unit id="tl_module.order_title_desc">
+                <source>Title descending</source>
+                <target>Name absteigend</target>
+            </trans-unit>
+            <trans-unit id="tl_module.order_random">
+                <source>Random order</source>
+                <target>Zufällige Reihenfolge</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

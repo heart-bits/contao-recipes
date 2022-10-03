@@ -49,5 +49,4 @@ Possible elements currently include:
 
 ## Roadmap
 
-* `tl_chosen` functionality for InputIngredient
 * Filter frontend module for ingredients and categories

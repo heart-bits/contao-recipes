@@ -2,6 +2,7 @@
 
 namespace Heartbits\ContaoRecipes\EventListener\DataContainer;
 
+use Contao\BackendUser;
 use Contao\Database;
 use Contao\DataContainer;
 use Contao\System;
@@ -39,5 +40,10 @@ class RecipeCallbackListener
             }
         }
         return $options;
+    }
+
+    public function loadDate($value, DataContainer $dc): string
+    {
+        return strtotime(date('Y-m-d', $value) . ' 00:00:00');
     }
 }

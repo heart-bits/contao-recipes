@@ -20,6 +20,7 @@ services:
         tags:
             - { name: contao.callback, table: tl_recipe, target: fields.categories.options, method: loadCategoriesCallback, priority: 100 }
             - { name: contao.callback, table: tl_recipe, target: fields.alias.save, method: onSaveCallback, priority: 100 }
+            - { name: contao.callback, table: tl_recipe, target: fields.recipe_date.load, method: loadDate, priority: 100 }
             - { name: contao.callback, table: tl_recipe_category, target: fields.alias.save, method: onSaveCallback, priority: 100 }
             - { name: contao.callback, table: tl_recipe_ingredient, target: fields.alias.save, method: onSaveCallback, priority: 100 }
             - { name: contao.callback, table: tl_recipe_unit, target: fields.alias.save, method: onSaveCallback, priority: 100 }

@@ -5,7 +5,13 @@
     "recipes",
     "categories",
     "ingredients",
-    "units"
+    "units",
+    "cooking",
+    "rezepte",
+    "kategorien",
+    "zutaten",
+    "maßeinheiten",
+    "kochen"
   ],
   "type": "contao-bundle",
   "license": "LGPL-3.0+",

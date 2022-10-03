@@ -41,6 +41,10 @@
                 <source>Manage units</source>
                 <target>Maßeinheiten verwalten</target>
             </trans-unit>
+            <trans-unit id="FMD.recipes">
+                <source>Recipes</source>
+                <target>Rezepte</target>
+            </trans-unit>
             <trans-unit id="FMD.recipe_list.0">
                 <source>Recipe list</source>
                 <target>Rezeptliste</target>
@@ -50,6 +54,14 @@
                 <target>Fügt der Seite eine Rezeptliste hinzu</target>
             </trans-unit>
             <trans-unit id="FMD.recipe_reader.0">
+                <source>Recipe reader</source>
+                <target>Rezeptleser</target>
+            </trans-unit>
+            <trans-unit id="FMD.recipe_reader.1">
+                <source>Shows the details of a recipe</source>
+                <target>Stellt einen einzelnes Rezept dar</target>
+            </trans-unit>
+            <trans-unit id="FMD.recipe_filter.0">
                 <source>Recipe reader</source>
                 <target>Rezeptleser</target>
             </trans-unit>
