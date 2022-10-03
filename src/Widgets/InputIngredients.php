@@ -59,7 +59,7 @@ class InputIngredients extends Widget
 
     public function setUnitSelectString($id, $currentValue, $name, $i, $arrUnits): string
     {
-        $unitSelect = '<select id="' . $id . '_unit_' . $i . ' " name="' . $id . '[' . $i . '][1]" class="tl_select" onfocus="Backend.getScrollOffset()">';
+        $unitSelect = '<select id="' . $id . '_unit_' . $i . ' " name="' . $id . '[' . $i . '][1]" class="unit_select tl_select tl_chosen" onfocus="Backend.getScrollOffset()">';
         ($currentValue[1] == '') ? $unitSelect .= '<option value="" selected>-</option>' : $unitSelect .= '<option value="">-</option>';
         foreach ($arrUnits as $key => $value) {
             ($currentValue[1] == $key) ? $unitSelect .= '<option value="' . $key . '" selected>' . $value . '</option>' : $unitSelect .= '<option value="' . $key . '">' . $value . '</option>';
@@ -70,7 +70,7 @@ class InputIngredients extends Widget
 
     public function setIngredientSelectString($id, $currentValue, $name, $i, $arrIngredients): string
     {
-        $ingredientSelect = '<select id="' . $id . '_ingredient_' . $i . '" name="' . $id . '[' . $i . '][2]" class="tl_select" onfocus="Backend.getScrollOffset()">';
+        $ingredientSelect = '<select id="' . $id . '_ingredient_' . $i . '" name="' . $id . '[' . $i . '][2]" class="ingredient_select tl_select tl_chosen" onfocus="Backend.getScrollOffset()">';
         ($currentValue[2] == '') ? $ingredientSelect .= '<option value="" selected>-</option>' : $ingredientSelect .= '<option value="">-</option>';
         foreach ($arrIngredients as $key => $value) {
             ($currentValue[2] == $key) ? $ingredientSelect .= '<option value="' . $key . '" selected>' . $value . '</option>' : $ingredientSelect .= '<option value="' . $key . '">' . $value . '</option>';
