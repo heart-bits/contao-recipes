@@ -31,7 +31,8 @@ class CacheListener implements CacheWarmerInterface
     {
         $this->framework->initialize();
         $rootPath = $this->projectDir . '/';
-        $pluginPath = $rootPath . 'web/bundles/contaocore/core.min.js';
+        (file_exists($rootPath . 'web/')) ? $rootFolder = 'web/' : $rootFolder = 'public/';
+        $pluginPath = $rootPath . $rootFolder . 'bundles/contaocore/core.min.js';
 
         if (file_exists($pluginPath)) {
             // Fix input/select names after row copy

@@ -23,7 +23,7 @@ class RecipeStepController extends AbstractContentElementController
             if ($model->headline) $template->title = StringUtil::deserialize($model->headline)['value'];
             if ($model->text) $template->wildcard = $model->text;
         } else {
-            if ($model->singleSRC !== '') {
+            if ($model->singleSRC) {
                 $container = System::getContainer();
                 $rootDir = $container->getParameter('kernel.project_dir');
                 $objFile = FilesModel::findByUuid($model->singleSRC);
