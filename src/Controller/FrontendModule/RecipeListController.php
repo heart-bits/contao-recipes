@@ -126,7 +126,7 @@ class RecipeListController extends AbstractFrontendModuleController
                                 }
                                 break;
                             case 'singleSRC':
-                                if ($value !== '') {
+                                if ($value) {
                                     $objFile = FilesModel::findByUuid($value);
                                     $path = $objFile->path;
                                     if ($objFile !== null || is_file(System::getContainer()->getParameter('kernel.project_dir') . '/' . $path)) {
