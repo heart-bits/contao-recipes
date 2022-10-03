@@ -6,7 +6,7 @@
 
     <?php foreach ($this->recipes as $recipe): ?>
     <div class="recipe">
-        <?php if ($recipe['singleSRC']): ?>
+        <?php if (isset($recipe['singleSRC'])): ?>
             <div class="recipe-image">
                 <?php $this->insert('image', $recipe['singleSRC']); ?>
             </div>
