@@ -58,20 +58,9 @@ $GLOBALS['TL_DCA']['tl_recipe_category'] = [
             ],
             'toggle' => [
                 'label' => &$GLOBALS['TL_LANG']['tl_recipe']['toggle'],
+                'href' => 'act=toggle&amp;field=published',
                 'icon' => 'visible.svg',
-                'haste_ajax_operation' => [
-                    'field' => 'published',
-                    'options' => [
-                        [
-                            'value' => '',
-                            'icon' => 'invisible.svg'
-                        ],
-                        [
-                            'value' => '1',
-                            'icon' => 'visible.svg'
-                        ]
-                    ]
-                ]
+                'showInHeader' => true,
             ],
             'show' => [
                 'label' => &$GLOBALS['TL_LANG']['tl_recipe_category']['show'],
@@ -139,8 +128,9 @@ $GLOBALS['TL_DCA']['tl_recipe_category'] = [
         'published' => [
             'exclude' => true,
             'filter' => true,
+            'toggle' => true,
             'inputType' => 'checkbox',
-            'sql' => "char(1) NOT NULL default ''"
+            'sql' => "char(1) NOT NULL default 1"
         ],
     ]
 ];

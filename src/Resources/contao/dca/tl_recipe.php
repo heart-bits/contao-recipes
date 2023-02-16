@@ -87,37 +87,15 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
             ],
             'feature' => [
                 'label' => &$GLOBALS['TL_LANG']['tl_recipe']['feature'],
+                'href' => 'act=toggle&amp;field=featured',
                 'icon' => 'featured.svg',
-                'haste_ajax_operation' => [
-                    'field' => 'featured',
-                    'options' => [
-                        [
-                            'value' => '',
-                            'icon' => 'featured_.svg'
-                        ],
-                        [
-                            'value' => '1',
-                            'icon' => 'featured.svg'
-                        ]
-                    ]
-                ]
+                'showInHeader' => true,
             ],
             'toggle' => [
                 'label' => &$GLOBALS['TL_LANG']['tl_recipe']['toggle'],
+                'href' => 'act=toggle&amp;field=published',
                 'icon' => 'visible.svg',
-                'haste_ajax_operation' => [
-                    'field' => 'published',
-                    'options' => [
-                        [
-                            'value' => '',
-                            'icon' => 'invisible.svg'
-                        ],
-                        [
-                            'value' => '1',
-                            'icon' => 'visible.svg'
-                        ]
-                    ]
-                ]
+                'showInHeader' => true,
             ],
         ]
     ],
@@ -316,6 +294,7 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
         'featured' => [
             'exclude' => true,
             'filter' => true,
+            'toggle' => true,
             'inputType' => 'checkbox',
             'eval' => [
                 'tl_class' => 'w50',
@@ -326,6 +305,7 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
         'published' => [
             'exclude' => true,
             'filter' => true,
+            'toggle' => true,
             'inputType' => 'checkbox',
             'eval' => [
                 'tl_class' => 'w50',
