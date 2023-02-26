@@ -29,8 +29,7 @@
   },
   "require": {
     "php": ">=8.0",
-    "contao/core-bundle": "~4.13",
-    "codefog/contao-haste": "~4.25"
+    "contao/core-bundle": "~4.13"
   },
   "require-dev": {
     "contao/manager-bundle": "~4.13"

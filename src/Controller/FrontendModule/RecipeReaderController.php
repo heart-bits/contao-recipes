@@ -13,6 +13,7 @@ use Contao\Environment;
 use Contao\FilesModel;
 use Contao\Input;
 use Contao\ModuleModel;
+use Contao\Model\Collection;
 use Contao\System;
 use Contao\StringUtil;
 use Contao\Template;
@@ -33,18 +34,17 @@ class RecipeReaderController extends AbstractFrontendModuleController
 
     protected function getResponse(Template $template, ModuleModel $model, Request $request): Response
     {
-        if (System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest(System::getContainer()->get('request_stack')->getCurrentRequest())) {
+        if (System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest($request)) {
             $template = new BackendTemplate('be_wildcard');
             $template->title = $GLOBALS['TL_LANG']['FMD'][RecipeReaderController::TYPE][0];
         } else {
             $alias = Input::get('auto_item');
             $t = RecipeModel::getTable();
             $objRecipe = RecipeModel::findOneByAlias($alias);
-            $objContent = ContentModel::findPublishedByPidAndTable($objRecipe->id, $t);
 
-            if ($objRecipe && $objContent) {
+            if ($objRecipe instanceof RecipeModel && ($objContent = ContentModel::findPublishedByPidAndTable($objRecipe->id, $t)) instanceof Collection) {
                 $this->overwriteMetaData($objRecipe);
-                $GLOBALS['TL_HEAD'][] = '<script type="application/ld+json">' . $this->writeStructuredData($objRecipe) . '</script>';
+                //$GLOBALS['TL_HEAD'][] = '<script type="application/ld+json">' . $this->writeStructuredData($objRecipe) . '</script>';
 
                 foreach ($objRecipe->row() as $key => $value) {
                     switch ($key) {
