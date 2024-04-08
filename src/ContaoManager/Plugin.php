@@ -13,7 +13,7 @@ class Plugin implements BundlePluginInterface
     public function getBundles(ParserInterface $parser)
     {
         return [
-            BundleConfig::create(HeartbitsContaoRecipesBundle::class)
+            (new BundleConfig(HeartbitsContaoRecipesBundle::class))
                 ->setLoadAfter([ContaoCoreBundle::class])
         ];
     }

@@ -29,26 +29,23 @@
   },
   "require": {
     "php": ">=8.0",
-    "contao/core-bundle": "~4.13"
-  },
-  "require-dev": {
-    "contao/manager-bundle": "~4.13"
+    "contao/core-bundle": "^4.13 || ^5.0"
   },
   "autoload": {
     "psr-4": {
       "Heartbits\\ContaoRecipes\\": "src/"
-    },
-    "classmap": [
-      "src/Resources/contao/"
-    ],
-    "exclude-from-classmap": [
-      "src/Resources/contao/config/",
-      "src/Resources/contao/dca/",
-      "src/Resources/contao/languages/",
-      "src/Resources/contao/templates/"
-    ]
+    }
   },
   "extra": {
     "contao-manager-plugin": "Heartbits\\ContaoRecipes\\ContaoManager\\Plugin"
-  }
+  },
+  "config": {
+    "allow-plugins": {
+      "contao-components/installer": true,
+      "contao/manager-plugin": true,
+      "contao-community-alliance/composer-plugin": true,
+      "php-http/discovery": false
+    }
+  },
+  "prefer-stable": true
 }

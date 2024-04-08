@@ -1,6 +1,7 @@
 <?php
 
 use Heartbits\ContaoRecipes\EventListener\DataContainer\RecipeCallbackListener;
+use Contao\DC_Table;
 use Contao\System;
 
 System::loadLanguageFile('default');
@@ -8,7 +9,7 @@ System::loadLanguageFile('default');
 $GLOBALS['TL_DCA']['tl_recipe_unit'] = [
     // Config
     'config' => [
-        'dataContainer' => 'Table',
+        'dataContainer' => DC_Table::class,
         'enableVersioning' => true,
         'sql' => [
             'keys' => [

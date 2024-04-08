@@ -1,7 +1,6 @@
 <?xml version="1.0" ?>
 <xliff version="1.1">
-    <file datatype="php" original="src/Resources/contao/languages/en/tl_module.php" source-language="en"
-          target-language="en">
+    <file datatype="php" source-language="en" target-language="en">
         <body>
             <trans-unit id="tl_module.recipe_featured.0">
                 <source>Featured recipes</source>
