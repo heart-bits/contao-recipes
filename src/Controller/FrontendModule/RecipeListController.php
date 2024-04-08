@@ -31,7 +31,7 @@ class RecipeListController extends AbstractFrontendModuleController
 
     protected function getResponse(Template $template, ModuleModel $model, Request $request): Response
     {
-        if (System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest(System::getContainer()->get('request_stack')->getCurrentRequest())) {
+        if (System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest($request)) {
             $template = new BackendTemplate('be_wildcard');
             $template->title = $GLOBALS['TL_LANG']['FMD'][RecipeListController::TYPE][0];
         } else {
@@ -126,8 +126,7 @@ class RecipeListController extends AbstractFrontendModuleController
                                 }
                                 break;
                             case 'singleSRC':
-                                if ($value) {
-                                    $objFile = FilesModel::findByUuid($value);
+                                if ($value && ($objFile = FilesModel::findByUuid($value)) instanceof FilesModel) {
                                     $path = $objFile->path;
                                     if ($objFile !== null || is_file(System::getContainer()->getParameter('kernel.project_dir') . '/' . $path)) {
                                         $picture = $container
