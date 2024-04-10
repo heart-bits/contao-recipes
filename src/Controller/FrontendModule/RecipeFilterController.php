@@ -3,7 +3,7 @@
 namespace Heartbits\ContaoRecipes\Controller\FrontendModule;
 
 use Contao\CoreBundle\Controller\FrontendModule\AbstractFrontendModuleController;
-use Contao\CoreBundle\ServiceAnnotation\FrontendModule;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsFrontendModule;
 use Contao\BackendTemplate;
 use Contao\Input;
 use Contao\ModuleModel;
@@ -12,9 +12,7 @@ use Contao\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * @FrontendModule(RecipeFilterController::TYPE, category="recipes")
- */
+#[AsFrontendModule(RecipeFilterController::TYPE, category: 'recipes')]
 class RecipeFilterController extends AbstractFrontendModuleController
 {
     public const TYPE = 'recipe_filter';

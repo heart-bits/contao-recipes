@@ -62,12 +62,12 @@
                 <target>Stellt einen einzelnes Rezept dar</target>
             </trans-unit>
             <trans-unit id="FMD.recipe_filter.0">
-                <source>Recipe reader</source>
-                <target>Rezeptleser</target>
+                <source>Recipe filter</source>
+                <target>Rezepte-Filter</target>
             </trans-unit>
-            <trans-unit id="FMD.recipe_reader.1">
-                <source>Shows the details of a recipe</source>
-                <target>Stellt einen einzelnes Rezept dar</target>
+            <trans-unit id="FMD.recipe_filter.1">
+                <source>Shows the filter of recipes</source>
+                <target>Stellt den Filter für Rezepte dar</target>
             </trans-unit>
         </body>
     </file>

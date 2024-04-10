@@ -28,8 +28,8 @@
     "source": "https://github.com/heart-bits/contao-recipes"
   },
   "require": {
-    "php": ">=8.0",
-    "contao/core-bundle": "^4.13 || ^5.0"
+    "php": "^8.2",
+    "contao/core-bundle": "^4.13 || ^5.3"
   },
   "autoload": {
     "psr-4": {
