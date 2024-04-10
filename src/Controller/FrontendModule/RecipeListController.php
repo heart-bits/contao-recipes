@@ -3,8 +3,8 @@
 namespace Heartbits\ContaoRecipes\Controller\FrontendModule;
 
 use Contao\CoreBundle\Controller\FrontendModule\AbstractFrontendModuleController;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsFrontendModule;
 use Contao\CoreBundle\Exception\PageNotFoundException;
-use Contao\CoreBundle\ServiceAnnotation\FrontendModule;
 use Contao\Model\Collection;
 use Contao\ContentModel;
 use Contao\Config;
@@ -22,9 +22,7 @@ use Heartbits\ContaoRecipes\Models\RecipeModel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * @FrontendModule(RecipeListController::TYPE, category="recipes")
- */
+#[AsFrontendModule(RecipeListController::TYPE, category: 'recipes')]
 class RecipeListController extends AbstractFrontendModuleController
 {
     public const TYPE = 'recipe_list';
