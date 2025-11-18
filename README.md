@@ -50,3 +50,4 @@ Possible elements currently include:
 ## Roadmap
 
 * Filter frontend module for ingredients and categories
+* Add week plan for logged in frontend users
