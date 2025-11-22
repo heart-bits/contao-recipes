@@ -31,7 +31,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['recipe_featured'] = [
     'sql' => "varchar(32) COLLATE ascii_bin NOT NULL default 'all_recipes'"
 ];
 
-$GLOBALS['TL_DCA']['tl_module']['fields']['recipe_order'] = array
+$GLOBALS['TL_DCA']['tl_content']['fields']['recipe_order'] = array
 (
     'exclude' => true,
     'inputType' => 'select',

@@ -1,3 +1,45 @@
 services:
   _defaults:
+    autowire: true
     autoconfigure: true
+
+  heartbits.contaorecipes.service.recipe_list:
+    class: Heartbits\ContaoRecipes\Controller\ContentElement\RecipeListController
+    arguments:
+      - '@contao.routing.scope_matcher'
+      - '@translator'
+    tags:
+      - { name: contao.content_element, category: recipes }
+
+  heartbits.contaorecipes.service.recipe_reader:
+    class: Heartbits\ContaoRecipes\Controller\ContentElement\RecipeReaderController
+    arguments:
+      - '@contao.routing.scope_matcher'
+      - '@translator'
+      - '@contao.routing.response_context_accessor'
+    tags:
+      - { name: contao.content_element, category: recipes }
+
+  heartbits.contaorecipes.service.recipe_filter:
+    class: Heartbits\ContaoRecipes\Controller\ContentElement\RecipeFilterController
+    arguments:
+      - '@contao.routing.scope_matcher'
+      - '@translator'
+    tags:
+      - { name: contao.content_element, category: recipes }
+
+  heartbits.contaorecipes.service.recipe_step:
+    class: Heartbits\ContaoRecipes\Controller\ContentElement\RecipeStepController
+    arguments:
+      - '@contao.routing.scope_matcher'
+      - '@translator'
+    tags:
+      - { name: contao.content_element, category: recipes }
+
+  heartbits.contaorecipes.service.recipe_image:
+    class: Heartbits\ContaoRecipes\Controller\ContentElement\RecipeImageController
+    arguments:
+      - '@contao.routing.scope_matcher'
+      - '@translator'
+    tags:
+      - { name: contao.content_element, category: recipes }

@@ -5,44 +5,38 @@ namespace Heartbits\ContaoRecipes\Controller\ContentElement;
 use Contao\CoreBundle\Controller\ContentElement\AbstractContentElementController;
 use Contao\BackendTemplate;
 use Contao\ContentModel;
+use Contao\CoreBundle\Routing\ScopeMatcher;
 use Contao\FilesModel;
 use Contao\StringUtil;
 use Contao\System;
 use Contao\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[AsFrontendModule(RecipeReaderController::TYPE, category: 'recipes')]
 class RecipeStepController extends AbstractContentElementController
 {
-    public const TYPE = 'recipe_step';
+    public const string TYPE = 'recipe_step';
+
+    public function __construct(
+        private readonly ScopeMatcher $scopeMatcher,
+        private readonly TranslatorInterface $translator
+    )
+    {
+    }
 
     protected function getResponse(Template $template, ContentModel $model, Request $request): Response
     {
-        if (System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest(System::getContainer()->get('request_stack')->getCurrentRequest())) {
+        if ($this->scopeMatcher->isBackendRequest($request)) {
             $template = new BackendTemplate('be_wildcard');
             if ($model->headline) $template->title = StringUtil::deserialize($model->headline)['value'];
             if ($model->text) $template->wildcard = $model->text;
-        } else {
-            if ($model->singleSRC) {
-                $container = System::getContainer();
-                $rootDir = $container->getParameter('kernel.project_dir');
-                $objFile = FilesModel::findByUuid($model->singleSRC);
-                $path = $objFile->path;
-                if ($objFile !== null || is_file($container->getParameter('kernel.project_dir') . '/' . $path)) {
-                    $picture = $container
-                        ->get('contao.image.picture_factory')
-                        ->create($rootDir . '/' . $path, StringUtil::deserialize($model->size));
-                    $data = [
-                        'picture' => [
-                            'img' => $picture->getImg($rootDir),
-                            'sources' => $picture->getSources($rootDir),
-                        ]
-                    ];
-                    $template->singleSRC = $data;
-                }
-            }
+
+            return $template->getResponse();
         }
+
+        $template->singleSRC = $model->singleSRC;
+        $template->text = $model->text;
 
         return $template->getResponse();
     }

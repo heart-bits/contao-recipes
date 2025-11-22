@@ -30,7 +30,7 @@ class RecipeCallbackListener
     public function loadCategoriesCallback(DataContainer $dc): array
     {
         $options = [];
-        $objCategories = CategoryModel::findPublished([]);
+        $objCategories = CategoryModel::findAllPublished([]);
         if ($objCategories) {
             foreach ($objCategories as $category) {
                 $options[$category->id] = $category->title;

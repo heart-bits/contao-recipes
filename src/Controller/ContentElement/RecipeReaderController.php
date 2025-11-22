@@ -6,9 +6,10 @@ use Contao\BackendTemplate;
 use Contao\ContentModel;
 use Contao\Controller;
 use Contao\CoreBundle\Controller\ContentElement\AbstractContentElementController;
-use Contao\CoreBundle\DependencyInjection\Attribute\AsContentElement;
 use Contao\CoreBundle\Exception\PageNotFoundException;
+use Contao\CoreBundle\Image\PictureFactoryInterface;
 use Contao\CoreBundle\Routing\ResponseContext\HtmlHeadBag\HtmlHeadBag;
+use Contao\CoreBundle\Routing\ResponseContext\ResponseContextAccessor;
 use Contao\CoreBundle\Routing\ScopeMatcher;
 use Contao\CoreBundle\Twig\FragmentTemplate;
 use Contao\Environment;
@@ -16,20 +17,23 @@ use Contao\FilesModel;
 use Contao\Input;
 use Contao\Model\Collection;
 use Contao\StringUtil;
-use Contao\System;
 use Heartbits\ContaoRecipes\Models\CategoryModel;
 use Heartbits\ContaoRecipes\Models\IngredientModel;
 use Heartbits\ContaoRecipes\Models\RecipeModel;
 use Heartbits\ContaoRecipes\Models\UnitModel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[AsContentElement(RecipeReaderController::TYPE, category: 'recipes')]
 class RecipeReaderController extends AbstractContentElementController
 {
-    public const TYPE = 'recipe_reader';
+    public const string TYPE = 'recipe_reader';
 
-    public function __construct(private readonly ScopeMatcher $scopeMatcher)
+    public function __construct(
+        private readonly ScopeMatcher $scopeMatcher,
+        private readonly TranslatorInterface $translator,
+        private readonly ResponseContextAccessor $responseContext
+    )
     {
     }
 
@@ -37,7 +41,9 @@ class RecipeReaderController extends AbstractContentElementController
     {
         if ($this->scopeMatcher->isBackendRequest($request)) {
             $template = new BackendTemplate('be_wildcard');
-            $template->title = $GLOBALS['TL_LANG']['FMD'][RecipeReaderController::TYPE][0];
+            $template->title = $this->translator->trans('CTE.'.RecipeReaderController::TYPE.'.0', [], 'contao_default');
+
+            return $template->getResponse();
         }
 
         $alias = Input::get('auto_item');
@@ -70,11 +76,6 @@ class RecipeReaderController extends AbstractContentElementController
                                     ]
                                 ];
 
-                                if ($objIngredient->singleSRC !== '') {
-                                    $objFile = FilesModel::findByUuid($objIngredient->singleSRC);
-                                    if ($objFile) $this->getImageData($objFile, $model->imgSize);
-                                }
-
                                 $i++;
                             }
                             $template->$key = $arrIngredients;
@@ -97,7 +98,7 @@ class RecipeReaderController extends AbstractContentElementController
                     case 'singleSRC':
                         if ($value !== '') {
                             $objFile = FilesModel::findByUuid($value);
-                            if ($objFile) $template->$key = $this->getImageData($objFile, $model->imgSize);
+                            if ($objFile) $template->$key = $value;
                         }
                         break;
                     default:
@@ -129,49 +130,24 @@ class RecipeReaderController extends AbstractContentElementController
         return $content;
     }
 
-    public function getImageData(FilesModel $objFile, $size): array
-    {
-        $data = [];
-        $container = System::getContainer();
-        $rootDir = $container->getParameter('kernel.project_dir');
-        $path = $objFile->path;
-        if ($objFile !== null || is_file(System::getContainer()->getParameter('kernel.project_dir') . '/' . $path)) {
-            $picture = $container
-                ->get('contao.image.picture_factory')
-                ->create($rootDir . '/' . $path, StringUtil::deserialize($size));
-            $data = [
-                'picture' => [
-                    'img' => $picture->getImg($rootDir),
-                    'sources' => $picture->getSources($rootDir),
-                ]
-            ];
-        }
-        return $data;
-    }
-
     public function overwriteMetaData(RecipeModel $objRecipe): void
     {
-        $responseContext = System::getContainer()->get('contao.routing.response_context_accessor')->getResponseContext();
+        $responseContext = $this->responseContext->getResponseContext();
 
-        if ($responseContext && $responseContext->has(HtmlHeadBag::class))
-        {
+        if ($responseContext && $responseContext->has(HtmlHeadBag::class)) {
             $htmlHeadBag = $responseContext->get(HtmlHeadBag::class);
-            $htmlDecoder = System::getContainer()->get('contao.string.html_decoder');
 
-            if ($objRecipe->title)
-            {
+            if ($objRecipe->title) {
                 $title = $objRecipe->title;
                 if ($objRecipe->subheadline) $title .= ' – ' . $objRecipe->subheadline;
                 $htmlHeadBag->setTitle($title);
             }
 
-            if ($objRecipe->teaser)
-            {
-                $htmlHeadBag->setMetaDescription($htmlDecoder->htmlToPlainText($objRecipe->teaser));
+            if ($objRecipe->teaser) {
+                $htmlHeadBag->setMetaDescription($objRecipe->teaser);
             }
 
-            if ($objRecipe->robots)
-            {
+            if ($objRecipe->robots) {
                 $htmlHeadBag->setMetaRobots($objRecipe->robots);
             }
         }
@@ -180,9 +156,7 @@ class RecipeReaderController extends AbstractContentElementController
     public function writeStructuredData(RecipeModel $objRecipe): string
     {
         $json = [];
-
         $json['@context'] = 'https://schema.org/';
-
         $json['@type'] = 'type';
 
         if ($objRecipe->title) $json['name'] = $objRecipe->title;

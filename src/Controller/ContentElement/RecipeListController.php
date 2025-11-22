@@ -2,10 +2,10 @@
 
 namespace Heartbits\ContaoRecipes\Controller\ContentElement;
 
+use Contao\BackendTemplate;
 use Contao\Config;
 use Contao\ContentModel;
 use Contao\CoreBundle\Controller\ContentElement\AbstractContentElementController;
-use Contao\CoreBundle\DependencyInjection\Attribute\AsContentElement;
 use Contao\CoreBundle\Exception\PageNotFoundException;
 use Contao\CoreBundle\Routing\ScopeMatcher;
 use Contao\CoreBundle\Twig\FragmentTemplate;
@@ -18,18 +18,20 @@ use Contao\Pagination;
 use Contao\StringUtil;
 use Contao\System;
 use Contao\Template;
-use Heartbits\ContaoRecipes\Controller\FrontendModule\BackendTemplate;
 use Heartbits\ContaoRecipes\Models\CategoryModel;
 use Heartbits\ContaoRecipes\Models\RecipeModel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[AsContentElement(RecipeListController::TYPE, category: 'recipes')]
 class RecipeListController extends AbstractContentElementController
 {
-    public const TYPE = 'recipe_list';
+    public const string TYPE = 'recipe_list';
 
-    public function __construct(private readonly ScopeMatcher $scopeMatcher)
+    public function __construct(
+        private readonly ScopeMatcher $scopeMatcher,
+        private readonly TranslatorInterface $translator
+    )
     {
     }
 
@@ -37,7 +39,7 @@ class RecipeListController extends AbstractContentElementController
     {
         if ($this->scopeMatcher->isBackendRequest($request)) {
             $template = new BackendTemplate('be_wildcard');
-            $template->title = $GLOBALS['TL_LANG']['FMD'][RecipeListController::TYPE][0];
+            $template->title = $this->translator->trans('CTE.'.RecipeListController::TYPE.'.0', [], 'contao_default');
 
             return $template->getResponse();
         }
