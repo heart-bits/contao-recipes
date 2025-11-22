@@ -1,0 +1,39 @@
+{% extends "@Contao/content_element/_base.html.twig" %}
+{% use "@Contao/component/_figure.html.twig" %}
+{% use "@Contao/component/_rich_text.html.twig" %}
+
+{% block text_media %}
+    {% if recipe.singleSRC %}
+        <div class="recipe-image">
+            {% with {figure: figure(recipe.singleSRC, size)} %}{{ block('figure_component') }}{% endwith %}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% if recipes is not empty %}
+        {% for recipe in recipes %}
+            <div class="recipe">
+                {{ block('text_media') }}
+                {% block text %}
+                    <div class="recipe-info">
+                        <h3>{{ recipe.title }}</h3>
+                        {% if recipe.subheadline %}<span class="subheadline">{{ recipe.subheadline }}</span>{% endif %}
+                        {% if recipe.categories is not empty %}
+                        <div class="categories">
+                            {% for category in recipe.categories %}
+                                <span class="category category_{{ category.alias }}">{{ category.title }}</span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if recipe.time > 0 %}<span class="recipe-time">{{ recipe.time }}</span>{% endif %}
+                        {% if recipe.teaser %}{% with {'text': recipe.teaser} %}{{ block('rich_text_component') }}{% endwith %}{% endif %}
+                        {% if recipe.jumpTo and recipe.hasContent %}<a href="{{ recipe.jumpTo }}">Zur Detailseite</a>{% endif %}
+                    </div>
+                {% endblock text %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>{{ message }}</p>
+    {% endif %}
+{% endblock content %}

@@ -37,6 +37,7 @@ class RecipeImageController extends AbstractContentElementController
         }
 
         $template->singleSRC = $model->singleSRC;
+        $template->size = $model->size;
 
         return $template->getResponse();
     }

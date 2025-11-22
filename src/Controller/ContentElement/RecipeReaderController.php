@@ -112,6 +112,8 @@ class RecipeReaderController extends AbstractContentElementController
             throw new PageNotFoundException('Page not found: ' . Environment::get('uri'));
         }
 
+        $template->size = $model->size;
+
         return $template->getResponse();
     }
 

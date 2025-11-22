@@ -36,6 +36,8 @@ class RecipeStepController extends AbstractContentElementController
         }
 
         $template->singleSRC = $model->singleSRC;
+        $template->size = $model->size;
+        $template->floating = $model->floating;
         $template->text = $model->text;
 
         return $template->getResponse();

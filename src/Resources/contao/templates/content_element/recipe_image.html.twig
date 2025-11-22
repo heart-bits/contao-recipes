@@ -1,0 +1,12 @@
+{% extends "@Contao/content_element/_base.html.twig" %}
+{% use "@Contao/component/_figure.html.twig" %}
+
+{% block text_media %}
+    {% if singleSRC %}
+        {% with {figure: figure(singleSRC, size)} %}{{ block('figure_component') }}{% endwith %}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {{ block('text_media') }}
+{% endblock %}

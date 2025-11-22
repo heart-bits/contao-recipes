@@ -103,8 +103,6 @@ class RecipeListController extends AbstractContentElementController
         if ($objRecipes) {
             $t = RecipeModel::getTable();
             $ct = ContentModel::getTable();
-            $container = System::getContainer();
-            $rootDir = $container->getParameter('kernel.project_dir');
             $i = 0;
             while ($objRecipes->next()) {
                 foreach ($objRecipes->row() as $key => $value) {
@@ -121,8 +119,8 @@ class RecipeListController extends AbstractContentElementController
                             $arrRecipes[$i][$key] = $value;
                             break;
                         case 'categories':
+                            $categories = [];
                             if ($value) {
-                                $categories = [];
                                 $arrCategories = StringUtil::deserialize($value);
                                 foreach ($arrCategories as $category) {
                                     $objCategory = CategoryModel::findByIdOrAlias($category);
@@ -132,23 +130,6 @@ class RecipeListController extends AbstractContentElementController
                                     ];
                                 }
                                 $arrRecipes[$i][$key] = $categories;
-                            }
-                            break;
-                        case 'singleSRC':
-                            if ($value && ($objFile = FilesModel::findByUuid($value)) instanceof FilesModel) {
-                                $path = $objFile->path;
-                                if ($objFile !== null || is_file(System::getContainer()->getParameter('kernel.project_dir') . '/' . $path)) {
-                                    $picture = $container
-                                        ->get('contao.image.picture_factory')
-                                        ->create($rootDir . '/' . $path, StringUtil::deserialize($model->imgSize));
-                                    $data = [
-                                        'picture' => [
-                                            'img' => $picture->getImg($rootDir),
-                                            'sources' => $picture->getSources($rootDir),
-                                        ]
-                                    ];
-                                    $arrRecipes[$i][$key] = $data;
-                                }
                             }
                             break;
                         default:
@@ -161,11 +142,11 @@ class RecipeListController extends AbstractContentElementController
         }
 
         if (empty($arrRecipes)) {
-            System::loadLanguageFile('tl_recipe');
-            $template->message = $GLOBALS['TL_LANG']['tl_recipe']['noEntriesFound'];
-        } else {
-            $template->recipes = $arrRecipes;
+            $template->message = $this->translator->trans('tl_recipe.noEntriesFound', [], 'contao_tl_recipe');
         }
+
+        $template->recipes = $arrRecipes;
+        $template->size = $model->size;
 
         return $template->getResponse();
     }

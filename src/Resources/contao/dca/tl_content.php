@@ -12,8 +12,8 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['type']['eval']['mandatory'] = true;
 $GLOBALS['TL_DCA']['tl_content']['fields']['type']['eval']['includeBlankOption'] = true;
 $GLOBALS['TL_DCA']['tl_content']['palettes'][RecipeImageController::TYPE] = '{type_legend},type;{image_legend},singleSRC,size;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop';
 $GLOBALS['TL_DCA']['tl_content']['palettes'][RecipeStepController::TYPE] = '{type_legend},type,headline;{text_legend},text;{image_legend},addImage;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop';
-$GLOBALS['TL_DCA']['tl_content']['palettes'][RecipeListController::TYPE] = '{title_legend},name,type;{source_legend},imgSize;{redirect_legend},jumpTo;{config_legend},numberOfItems,skipFirst,recipe_featured,recipe_order,perPage;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
-$GLOBALS['TL_DCA']['tl_content']['palettes'][RecipeReaderController::TYPE] = '{title_legend},name,type;{source_legend},imgSize;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
+$GLOBALS['TL_DCA']['tl_content']['palettes'][RecipeListController::TYPE] = '{title_legend},name,type;{source_legend},size;{redirect_legend},jumpTo;{config_legend},numberOfItems,skipFirst,recipe_featured,recipe_order,perPage;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
+$GLOBALS['TL_DCA']['tl_content']['palettes'][RecipeReaderController::TYPE] = '{title_legend},name,type;{source_legend},size;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['recipe_featured'] = [
     'exclude' => true,

@@ -69,8 +69,14 @@ $GLOBALS['TL_DCA'][RecipeModel::getTable()] = [
                 'href' => 'act=toggle&amp;field=featured',
                 'icon' => 'featured.svg',
                 'showInHeader' => true,
+                'primary' => true,
             ],
-            'toggle',
+            'toggle' => [
+                'href' => 'act=toggle&amp;field=published',
+                'icon' => 'visible.svg',
+                'showInHeader' => true,
+                'primary' => true,
+            ],
         ]
     ],
     'palettes' => [
