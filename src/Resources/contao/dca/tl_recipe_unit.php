@@ -1,13 +1,9 @@
 <?php
 
-use Heartbits\ContaoRecipes\EventListener\DataContainer\RecipeCallbackListener;
 use Contao\DC_Table;
-use Contao\System;
+use Heartbits\ContaoRecipes\Models\UnitModel;
 
-System::loadLanguageFile('default');
-
-$GLOBALS['TL_DCA']['tl_recipe_unit'] = [
-    // Config
+$GLOBALS['TL_DCA'][UnitModel::getTable()] = [
     'config' => [
         'dataContainer' => DC_Table::class,
         'enableVersioning' => true,
@@ -18,7 +14,6 @@ $GLOBALS['TL_DCA']['tl_recipe_unit'] = [
         ],
         'backlink' => 'do=recipe',
     ],
-    // List
     'list' => [
         'sorting' => [
             'mode' => 1,
@@ -31,56 +26,25 @@ $GLOBALS['TL_DCA']['tl_recipe_unit'] = [
             'format' => '%s',
         ],
         'global_operations' => [
-            'all' => [
-                'label' => &$GLOBALS['TL_LANG']['MSC']['all'],
-                'href' => 'act=select',
-                'class' => 'header_edit_all',
-                'attributes' => 'onclick="Backend.getScrollOffset()" accesskey="e"'
-            ]
+            'all'
         ],
         'operations' => [
-            'edit' => [
-                'label' => &$GLOBALS['TL_LANG']['tl_recipe_category']['edit'],
-                'href' => 'act=edit',
-                'icon' => 'edit.svg'
-            ],
-            'copy' => [
-                'label' => &$GLOBALS['TL_LANG']['tl_recipe_category']['copy'],
-                'href' => 'act=copy',
-                'icon' => 'copy.svg',
-                'attributes' => 'onclick="Backend.getScrollOffset()"'
-            ],
-            'delete' => [
-                'label' => &$GLOBALS['TL_LANG']['tl_recipe_category']['delete'],
-                'href' => 'act=delete',
-                'icon' => 'delete.svg',
-                'attributes' => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
-            ],
-            'show' => [
-                'label' => &$GLOBALS['TL_LANG']['tl_recipe_category']['show'],
-                'href' => 'act=show',
-                'icon' => 'show.svg',
-                'attributes' => 'style="margin-right:3px"'
-            ],
+            'edit',
+            'copy',
+            'delete',
+            'show',
         ]
     ],
-
-    // Palettes
     'palettes' => [
-        '__selector__' => ['title'],
-        'default' => '{unit_legend},title,alias,shortcode;{expert_legend:hide},invisible;',
+        'default' => '{unit_legend},title,alias,shortcode;',
     ],
-
-    // Fields
     'fields' => [
         'id' => [
             'sql' => "int(10) unsigned NOT NULL auto_increment"
         ],
-
         'tstamp' => [
             'sql' => "int(10) unsigned NOT NULL default '0'"
         ],
-
         'title' => [
             'inputType' => 'text',
             'exclude' => true,
@@ -94,7 +58,6 @@ $GLOBALS['TL_DCA']['tl_recipe_unit'] = [
             ],
             'sql' => "varchar(255) NOT NULL default ''"
         ],
-
         'alias' => [
             'inputType' => 'text',
             'exclude' => true,
@@ -106,7 +69,6 @@ $GLOBALS['TL_DCA']['tl_recipe_unit'] = [
             ],
             'sql' => "varchar(255) NOT NULL default ''"
         ],
-
         'shortcode' => [
             'inputType' => 'text',
             'exclude' => true,

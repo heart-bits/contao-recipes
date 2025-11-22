@@ -8,7 +8,6 @@ use Doctrine\DBAL\Connection;
 
 class BasicUnitMigration extends AbstractMigration
 {
-    private Connection $connection;
     private string $table = 'tl_recipe_unit';
     private array $units = [
         ['title' => 'Bund', 'alias' => 'bd', 'shortcode' => 'Bd'],
@@ -33,14 +32,13 @@ class BasicUnitMigration extends AbstractMigration
         ['title' => 'Tropfen', 'alias' => 'tr', 'shortcode' => 'Tr'],
     ];
 
-    public function __construct(Connection $connection)
+    public function __construct(private readonly Connection $connection)
     {
-        $this->connection = $connection;
     }
 
     public function shouldRun(): bool
     {
-        $schemaManager = $this->connection->getSchemaManager();
+        $schemaManager = $this->connection->createSchemaManager();
 
         if (!$schemaManager->tablesExist([$this->table])) {
             return false;
@@ -57,7 +55,7 @@ class BasicUnitMigration extends AbstractMigration
 
         // Import basic units into table
         foreach ($this->units as $unit) {
-            $this->connection->executeUpdate('INSERT INTO ' . $this->table . ' (tstamp, title, alias, shortcode) VALUES (' . $date->getTimestamp() . ', "' . $unit['title'] . '", "' . $unit['alias'] . '", "' . $unit['shortcode'] . '")');
+            $this->connection->executeStatement('INSERT INTO ' . $this->table . ' (tstamp, title, alias, shortcode) VALUES (' . $date->getTimestamp() . ', "' . $unit['title'] . '", "' . $unit['alias'] . '", "' . $unit['shortcode'] . '")');
         }
 
         return new MigrationResult(

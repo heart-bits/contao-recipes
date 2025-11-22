@@ -1,261 +1,197 @@
 <?xml version="1.0" ?><xliff version="1.1">
-    <file datatype="php" source-language="en" target-language="en">
+    <file datatype="php" source-language="en">
         <body>
             <trans-unit id="tl_recipe.recipe_legend">
                 <source>Recipe</source>
-                <target>Recipe</target>
             </trans-unit>
             <trans-unit id="tl_recipe.ingredients_legend">
                 <source>Ingredients</source>
-                <target>Ingredients</target>
             </trans-unit>
             <trans-unit id="tl_recipe.image_legend">
                 <source>Image</source>
-                <target>Image</target>
             </trans-unit>
             <trans-unit id="tl_recipe.nutritional_legend">
                 <source>Nutritional values</source>
-                <target>Nutritional values</target>
             </trans-unit>
             <trans-unit id="tl_recipe.categories_legend">
                 <source>Categories</source>
-                <target>Categories</target>
             </trans-unit>
             <trans-unit id="tl_recipe.expert_legend">
                 <source>Expert settings</source>
-                <target>Expert settings</target>
             </trans-unit>
             <trans-unit id="tl_recipe.unit_legend.0">
                 <source>Units</source>
-                <target>Units</target>
             </trans-unit>
             <trans-unit id="tl_recipe.unit_legend.1">
                 <source>Edit units</source>
-                <target>Edit units</target>
             </trans-unit>
             <trans-unit id="tl_recipe.ingredient_legend.0">
                 <source>Ingredients</source>
-                <target>Ingredients</target>
             </trans-unit>
             <trans-unit id="tl_recipe.ingredient_legend.1">
                 <source>Edit ingredients</source>
-                <target>Edit ingredients</target>
             </trans-unit>
             <trans-unit id="tl_recipe.category_legend.0">
                 <source>Categories</source>
-                <target>Categories</target>
             </trans-unit>
             <trans-unit id="tl_recipe.category_legend.1">
                 <source>Edit categories</source>
-                <target>Edit categories</target>
             </trans-unit>
             <trans-unit id="tl_recipe.new.0">
                 <source>New recipe</source>
-                <target>New recipe</target>
             </trans-unit>
             <trans-unit id="tl_recipe.new.1">
                 <source>Add a new recipe</source>
-                <target>Add a new recipe</target>
             </trans-unit>
             <trans-unit id="tl_recipe.edit.0">
                 <source>Edit recipe</source>
-                <target>Edit recipe</target>
             </trans-unit>
             <trans-unit id="tl_recipe.edit.1">
                 <source>Edit recipe ID %s</source>
-                <target>Edit recipe ID %s</target>
             </trans-unit>
             <trans-unit id="tl_recipe.delete.0">
                 <source>Delete recipe</source>
-                <target>Delete recipe</target>
             </trans-unit>
             <trans-unit id="tl_recipe.delete.1">
                 <source>Delete recipe ID %s</source>
-                <target>Delete recipe ID %s</target>
             </trans-unit>
             <trans-unit id="tl_recipe.show.0">
                 <source>Details</source>
-                <target>Details</target>
             </trans-unit>
             <trans-unit id="tl_recipe.show.1">
                 <source>Details of the recipe ID %s</source>
-                <target>Details of the recipe ID %s</target>
             </trans-unit>
             <trans-unit id="tl_recipe.feature.0">
                 <source>Feature/unfeature</source>
-                <target>Feature/unfeature</target>
             </trans-unit>
             <trans-unit id="tl_recipe.feature.1">
                 <source>Feature/unfeature recipe ID %s</source>
-                <target>Feature/unfeature recipe ID %s</target>
             </trans-unit>
             <trans-unit id="tl_recipe.toggle.0">
                 <source>Publish/unpublish</source>
-                <target>Publish/unpublish</target>
             </trans-unit>
             <trans-unit id="tl_recipe.toggle.1">
                 <source>Publish/unpublish the recipe ID %s</source>
-                <target>Publish/unpublish the recipe ID %s</target>
             </trans-unit>
             <trans-unit id="tl_recipe.title.0">
                 <source>Name</source>
-                <target>Name</target>
             </trans-unit>
             <trans-unit id="tl_recipe.title.1">
                 <source>Add the name of the recipe</source>
-                <target>Add the name of the recipe</target>
             </trans-unit>
             <trans-unit id="tl_recipe.subheadline.0">
                 <source>Subheadline</source>
-                <target>Subheadline</target>
             </trans-unit>
             <trans-unit id="tl_recipe.subheadline.1">
                 <source>Here you can enter a subheadline.</source>
-                <target>Here you can enter a subheadline.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.alias.0">
                 <source>Alias</source>
-                <target>Alias</target>
             </trans-unit>
             <trans-unit id="tl_recipe.alias.1">
                 <source>Add the alias of the recipe</source>
-                <target>Add the alias of the recipe</target>
             </trans-unit>
             <trans-unit id="tl_recipe.categories.0">
                 <source></source>
-                <target></target>
             </trans-unit>
             <trans-unit id="tl_recipe.categories.1">
                 <source>Select the categories for this recipe.</source>
-                <target>Select the categories for this recipe.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.teaser.0">
                 <source>Recipe teaser</source>
-                <target>Recipe teaser</target>
             </trans-unit>
             <trans-unit id="tl_recipe.teaser.1">
                 <source>The recipe teaser can be shown in a recipe list instead of the full recipe. A &quot;read more …&quot; link will be added automatically.</source>
-                <target>The recipe teaser can be shown in a recipe list instead of the full recipe. A &quot;read more …&quot; link will be added automatically.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.ingredients.0">
                 <source></source>
-                <target></target>
             </trans-unit>
             <trans-unit id="tl_recipe.ingredients.1">
                 <source>Enter the ingredients for this recipe.</source>
-                <target>Enter the ingredients for this recipe.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.rating.0">
                 <source>Rating</source>
-                <target>Rating</target>
             </trans-unit>
             <trans-unit id="tl_recipe.rating.1">
                 <source>Enter your rating for this recipe.</source>
-                <target>Enter your rating for this recipe.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.portions.0">
                 <source>Portions</source>
-                <target>Portions</target>
             </trans-unit>
             <trans-unit id="tl_recipe.portions.1">
                 <source>Enter the amount of portions included for this recipe.</source>
-                <target>Enter the amount of portions included for this recipe.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.time.0">
                 <source>Preparation time (m)</source>
-                <target>Preparation time (m)</target>
             </trans-unit>
             <trans-unit id="tl_recipe.time.1">
                 <source>Enter an estimated preparation time for this recipe in minutes.</source>
-                <target>Enter an estimated preparation time for this recipe in minutes.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.recipe_author.0">
                 <source>Author</source>
-                <target>Author</target>
             </trans-unit>
             <trans-unit id="tl_recipe.recipe_author.1">
                 <source>Here you can change the author of the recipe.</source>
-                <target>Here you can change the author of the recipe.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.recipe_date.0">
                 <source>Date</source>
-                <target>Date</target>
             </trans-unit>
             <trans-unit id="tl_news.recipe_date.1">
                 <source>Please enter the date according to the global date format.</source>
-                <target>Please enter the date according to the global date format.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.singleSRC.0">
                 <source>Source file</source>
-                <target>Source file</target>
             </trans-unit>
             <trans-unit id="tl_recipe.singleSRC.1">
                 <source>Please select a file or folder from the files directory.</source>
-                <target>Please select a file or folder from the files directory.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.calories.0">
                 <source>Calories (kcal)</source>
-                <target>Calories (kcal)</target>
             </trans-unit>
             <trans-unit id="tl_recipe.calories.1">
                 <source>Enter the calories value for 1 portion in kcal.</source>
-                <target>Enter the calories value for 1 portion in kcal.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.protein.0">
                 <source>Protein (g)</source>
-                <target>Protein (g)</target>
             </trans-unit>
             <trans-unit id="tl_recipe.protein.1">
                 <source>Enter the protein value for 1 portion in g.</source>
-                <target>Enter the protein value for 1 portion in g.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.fat.0">
                 <source>Fat (g)</source>
-                <target>Fat (g)</target>
             </trans-unit>
             <trans-unit id="tl_recipe.fat.1">
                 <source>Enter the fat value for 1 portion in g.</source>
-                <target>Enter the fat value for 1 portion in g.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.carbohydrates.0">
                 <source>Carbohydrates (g)</source>
-                <target>Carbohydrates (g)</target>
             </trans-unit>
             <trans-unit id="tl_recipe.carbohydrates.1">
                 <source>Enter the carbohydrates value for 1 portion in g.</source>
-                <target>Geben Sie den Kohlenhydrategehalt je Portion in g an.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.published.0">
                 <source>Publish recipe</source>
-                <target>Publish recipe</target>
             </trans-unit>
             <trans-unit id="tl_recipe.published.1">
                 <source>Make the recipe publicly visible on the website.</source>
-                <target>Make the recipe publicly visible on the website.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.featured.0">
                 <source>Feature recipe</source>
-                <target>Feature recipe</target>
             </trans-unit>
             <trans-unit id="tl_recipe.featured.1">
                 <source>Feature the recipe on the website.</source>
-                <target>Feature the recipe on the website.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.noEntriesFound">
                 <source>There were no recipes found for your selection.</source>
-                <target>There were no recipes found for your selection.</target>
             </trans-unit>
             <trans-unit id="tl_recipe.headers.amount">
                 <source>Amount</source>
-                <target>Amount</target>
             </trans-unit>
             <trans-unit id="tl_recipe.headers.unit">
                 <source>Unit</source>
-                <target>Unit</target>
             </trans-unit>
             <trans-unit id="tl_recipe.headers.ingredient">
                 <source>Ingredien</source>
-                <target>Ingredien</target>
             </trans-unit>
         </body>
     </file>

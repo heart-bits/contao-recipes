@@ -8,7 +8,6 @@ use Doctrine\DBAL\Connection;
 
 class BasicIngredientMigration extends AbstractMigration
 {
-    private Connection $connection;
     private string $table = 'tl_recipe_ingredient';
     // TODO: Add more basic ingredients
     private array $ingredients = [
@@ -184,14 +183,13 @@ class BasicIngredientMigration extends AbstractMigration
         ['title' => 'Zwiebel', 'alias' => 'zwiebel']
     ];
 
-    public function __construct(Connection $connection)
+    public function __construct(private readonly Connection $connection)
     {
-        $this->connection = $connection;
     }
 
     public function shouldRun(): bool
     {
-        $schemaManager = $this->connection->getSchemaManager();
+        $schemaManager = $this->connection->createSchemaManager();
 
         if (!$schemaManager->tablesExist([$this->table])) {
             return false;
@@ -208,7 +206,7 @@ class BasicIngredientMigration extends AbstractMigration
 
         // Import basic ingredients into table
         foreach ($this->ingredients as $ingredient) {
-            $this->connection->executeUpdate('INSERT INTO ' . $this->table . ' (tstamp, title, alias) VALUES (' . $date->getTimestamp() . ', "' . $ingredient['title'] . '", "' . $ingredient['alias'] . '")');
+            $this->connection->executeStatement('INSERT INTO ' . $this->table . ' (tstamp, title, alias) VALUES (' . $date->getTimestamp() . ', "' . $ingredient['title'] . '", "' . $ingredient['alias'] . '")');
         }
 
         return new MigrationResult(

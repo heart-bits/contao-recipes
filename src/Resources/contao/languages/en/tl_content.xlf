@@ -1,25 +1,44 @@
 <?xml version="1.0" ?><xliff version="1.1">
-    <file datatype="php" source-language="en" target-language="en">
+    <file datatype="php" source-language="en">
         <body>
-            <trans-unit id="CTE.recipes">
-                <source>Recipes</source>
-                <target>Recipes</target>
+            <trans-unit id="tl_content.recipe_featured.0">
+                <source>Featured recipes</source>
             </trans-unit>
-            <trans-unit id="CTE.recipe_image.0">
-                <source>Recipe image</source>
-                <target>Recipe image</target>
+            <trans-unit id="tl_content.recipe_featured.1">
+                <source>Here you can choose how featured recipes are handled.</source>
             </trans-unit>
-            <trans-unit id="CTE.recipe_image.1">
-                <source>Generates a recipe image.</source>
-                <target>Generates a recipe image.</target>
+            <trans-unit id="tl_content.recipe_order.0">
+                <source>Sort order</source>
             </trans-unit>
-            <trans-unit id="CTE.recipe_step.0">
-                <source>Recipe step</source>
-                <target>Recipe step</target>
+            <trans-unit id="tl_content.recipe_order.1">
+                <source>Here you can choose the sort order.</source>
             </trans-unit>
-            <trans-unit id="CTE.recipe_step.1">
-                <source>Generates a recipe step.</source>
-                <target>Generates a recipe step.</target>
+            <trans-unit id="tl_content.all_recipes">
+                <source>Show all recipes</source>
+            </trans-unit>
+            <trans-unit id="tl_content.featured_recipes">
+                <source>Show featured recipes only</source>
+            </trans-unit>
+            <trans-unit id="tl_content.unfeatured_recipes">
+                <source>Skip featured recipes</source>
+            </trans-unit>
+            <trans-unit id="tl_content.featured_recipes_first">
+                <source>Show featured recipes first</source>
+            </trans-unit>
+            <trans-unit id="tl_content.order_date_asc">
+                <source>Date ascending</source>
+            </trans-unit>
+            <trans-unit id="tl_content.order_date_desc">
+                <source>Date descending</source>
+            </trans-unit>
+            <trans-unit id="tl_content.order_title_asc">
+                <source>Title ascending</source>
+            </trans-unit>
+            <trans-unit id="tl_content.order_title_desc">
+                <source>Title descending</source>
+            </trans-unit>
+            <trans-unit id="tl_content.order_random">
+                <source>Random order</source>
             </trans-unit>
         </body>
     </file>

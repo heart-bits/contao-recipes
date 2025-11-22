@@ -1,0 +1,50 @@
+<?xml version="1.0" ?><xliff version="1.1">
+    <file datatype="php" source-language="en" target-language="de">
+        <body>
+            <trans-unit id="CTE.recipes">
+                <source>Recipes</source>
+                <target>Rezepte</target>
+            </trans-unit>
+            <trans-unit id="CTE.recipe_list.0">
+                <source>Recipe list</source>
+                <target>Rezeptliste</target>
+            </trans-unit>
+            <trans-unit id="CTE.recipe_list.1">
+                <source>Adds a list of recipes to the page</source>
+                <target>Fügt der Seite eine Rezeptliste hinzu</target>
+            </trans-unit>
+            <trans-unit id="CTE.recipe_reader.0">
+                <source>Recipe reader</source>
+                <target>Rezeptleser</target>
+            </trans-unit>
+            <trans-unit id="CTE.recipe_reader.1">
+                <source>Shows the details of a recipe</source>
+                <target>Stellt einen einzelnes Rezept dar</target>
+            </trans-unit>
+            <trans-unit id="CTE.recipe_filter.0">
+                <source>Recipe filter</source>
+                <target>Rezepte-Filter</target>
+            </trans-unit>
+            <trans-unit id="CTE.recipe_filter.1">
+                <source>Shows the filter of recipes</source>
+                <target>Stellt den Filter für Rezepte dar</target>
+            </trans-unit>
+            <trans-unit id="CTE.recipe_image.0">
+                <source>Recipe image</source>
+                <target>Rezept-Bild</target>
+            </trans-unit>
+            <trans-unit id="CTE.recipe_image.1">
+                <source>Generates a recipe image.</source>
+                <target>Erzeugt einen Rezept-Bild.</target>
+            </trans-unit>
+            <trans-unit id="CTE.recipe_step.0">
+                <source>Recipe step</source>
+                <target>Rezept-Schritt</target>
+            </trans-unit>
+            <trans-unit id="CTE.recipe_step.1">
+                <source>Generates a recipe step.</source>
+                <target>Erzeugt einen Rezept-Schritt.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -10,7 +10,7 @@ class CategoryModel extends Model
 {
     protected static $strTable = 'tl_recipe_category';
 
-    public static function findPublished(array $arrOptions=[]) {
+    public static function findAllPublished(array $arrOptions=[]) {
         $t = static::$strTable;
         $arrColumns = [];
 

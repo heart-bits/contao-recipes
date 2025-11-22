@@ -10,7 +10,7 @@ class RecipeModel extends Model
 {
     protected static $strTable = 'tl_recipe';
 
-    public static function countPublished($blnFeatured=null, array $arrOptions=[])
+    public static function countAllPublished($blnFeatured=null, array $arrOptions=[])
     {
         $t = static::$strTable;
         $arrColumns = [];
@@ -31,7 +31,7 @@ class RecipeModel extends Model
         return static::countBy($arrColumns, null, $arrOptions);
     }
 
-    public static function findPublished($blnFeatured = false, int $intLimit = 0, int $intOffset = 0, array $arrOptions = [])
+    public static function findAllPublished($blnFeatured = false, int $intLimit = 0, int $intOffset = 0, array $arrOptions = [])
     {
         $t = static::$strTable;
         $arrColumns = [];

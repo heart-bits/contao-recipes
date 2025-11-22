@@ -12,6 +12,7 @@ use Contao\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+#[AsFrontendModule(RecipeReaderController::TYPE, category: 'recipes')]
 class RecipeStepController extends AbstractContentElementController
 {
     public const TYPE = 'recipe_step';

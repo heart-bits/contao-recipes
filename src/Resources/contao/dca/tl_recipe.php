@@ -2,18 +2,19 @@
 
 use Contao\Config;
 use Contao\BackendUser;
+use Contao\ContentModel;
 use Contao\DataContainer;
 use Contao\DC_Table;
-use Contao\System;
-use Heartbits\ContaoRecipes\EventListener\DataContainer\RecipeCallbackListener;
+use Heartbits\ContaoRecipes\Models\CategoryModel;
+use Heartbits\ContaoRecipes\Models\IngredientModel;
+use Heartbits\ContaoRecipes\Models\RecipeModel;
+use Heartbits\ContaoRecipes\Models\UnitModel;
 
-System::loadLanguageFile('default');
-
-$GLOBALS['TL_DCA']['tl_recipe'] = [
+$GLOBALS['TL_DCA'][RecipeModel::getTable()] = [
     'config' => [
         'dataContainer' => DC_Table::class,
         'ctable' => [
-            'tl_content'
+            ContentModel::getTable()
         ],
         'switchToEdit' => true,
         'enableVersioning' => true,
@@ -36,73 +37,43 @@ $GLOBALS['TL_DCA']['tl_recipe'] = [
         ],
         'global_operations' => [
             'units' => [
-                'label' => &$GLOBALS['TL_LANG']['tl_recipe']['unit_legend'],
-                'href' => 'table=tl_recipe_unit',
+                'label' => &$GLOBALS['TL_LANG'][RecipeModel::getTable()]['unit_legend'],
+                'href' => 'table='.UnitModel::getTable(),
                 'icon' => 'bundles/heartbitscontaorecipes/img/units.svg',
                 'attributes' => 'onclick="Backend.getScrollOffset()" accesskey="c"',
+                'primary' => true
             ],
             'ingredients' => [
-                'label' => &$GLOBALS['TL_LANG']['tl_recipe']['ingredient_legend'],
-                'href' => 'table=tl_recipe_ingredient',
+                'label' => &$GLOBALS['TL_LANG'][RecipeModel::getTable()]['ingredient_legend'],
+                'href' => 'table='.IngredientModel::getTable(),
                 'icon' => 'bundles/heartbitscontaorecipes/img/ingredients.svg',
                 'attributes' => 'onclick="Backend.getScrollOffset()" accesskey="c"',
+                'primary' => true
             ],
             'categories' => [
-                'label' => &$GLOBALS['TL_LANG']['tl_recipe']['category_legend'],
-                'href' => 'table=tl_recipe_category',
+                'label' => &$GLOBALS['TL_LANG'][RecipeModel::getTable()]['category_legend'],
+                'href' => 'table='.CategoryModel::getTable(),
                 'icon' => 'bundles/heartbitscontaorecipes/img/categories.svg',
                 'attributes' => 'onclick="Backend.getScrollOffset()" accesskey="c"',
+                'primary' => true
             ],
-            'all' => [
-                'label' => &$GLOBALS['TL_LANG']['MSC']['all'],
-                'href' => 'act=select',
-                'class' => 'header_edit_all',
-                'attributes' => 'onclick="Backend.getScrollOffset()" accesskey="e"'
-            ]
+            'all'
         ],
         'operations' => [
-            'edit' => [
-                'label' => &$GLOBALS['TL_LANG']['tl_recipe']['edit'],
-                'href' => 'table=tl_content',
-                'icon' => 'edit.svg',
-            ],
-            'editheader' => [
-                'label' => &$GLOBALS['TL_LANG']['tl_recipe']['editheader'],
-                'href' => 'act=edit',
-                'icon' => 'header.svg'
-            ],
-            'copy' => [
-                'label' => &$GLOBALS['TL_LANG']['tl_recipe']['copy'],
-                'href' => 'act=copy',
-                'icon' => 'copy.svg'
-            ],
-            'delete' => [
-                'label' => &$GLOBALS['TL_LANG']['tl_recipe']['delete'],
-                'href' => 'act=delete',
-                'icon' => 'delete.svg',
-                'attributes' => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
-            ],
-            'show' => [
-                'label' => &$GLOBALS['TL_LANG']['tl_recipe']['show'],
-                'href' => 'act=show',
-                'icon' => 'show.svg',
-            ],
+            'edit',
+            'children',
+            'copy',
+            'delete',
+            'show',
             'feature' => [
-                'label' => &$GLOBALS['TL_LANG']['tl_recipe']['feature'],
                 'href' => 'act=toggle&amp;field=featured',
                 'icon' => 'featured.svg',
                 'showInHeader' => true,
             ],
-            'toggle' => [
-                'label' => &$GLOBALS['TL_LANG']['tl_recipe']['toggle'],
-                'href' => 'act=toggle&amp;field=published',
-                'icon' => 'visible.svg',
-                'showInHeader' => true,
-            ],
+            'toggle',
         ]
     ],
     'palettes' => [
-        '__selector__' => ['title'],
         'default' => '{recipe_legend},title,alias,subheadline,recipe_author,recipe_date,time,rating,teaser;{ingredients_legend},ingredients,portions;{image_legend},singleSRC;{nutritional_legend},calories,protein,fat,carbohydrates;{categories_legend},categories;{expert_legend:hide},published,featured;',
     ],
     'fields' => [

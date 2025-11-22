@@ -1,26 +1,20 @@
 services:
-    _defaults:
-        autoconfigure: true
+  _defaults:
+    autoconfigure: true
 
-    heartbits.contaorecipes.listener.cache_warmup:
-        class: Heartbits\ContaoRecipes\EventListener\CacheListener
-        arguments:
-            - '@contao.framework'
-            - '%kernel.project_dir%'
-        tags:
-            - { name: kernel.cache_warmer, priority: 0 }
+  heartbits.contaorecipes.listener.content:
+    class: Heartbits\ContaoRecipes\EventListener\DataContainer\ContentCallbackListener
+    tags:
+      - { name: contao.callback, table: tl_content, target: fields.type.options, method: onLoadTypeCallback, priority: 100 }
 
-    heartbits.contaorecipes.listener.content:
-        class: Heartbits\ContaoRecipes\EventListener\DataContainer\ContentCallbackListener
-        tags:
-            - { name: contao.callback, table: tl_content, target: fields.type.options, method: onLoadTypeCallback, priority: 100 }
-
-    heartbits.contaorecipes.listener.recipe:
-        class: Heartbits\ContaoRecipes\EventListener\DataContainer\RecipeCallbackListener
-        tags:
-            - { name: contao.callback, table: tl_recipe, target: fields.categories.options, method: loadCategoriesCallback, priority: 100 }
-            - { name: contao.callback, table: tl_recipe, target: fields.alias.save, method: onSaveCallback, priority: 100 }
-            - { name: contao.callback, table: tl_recipe, target: fields.recipe_date.load, method: loadDate, priority: 100 }
-            - { name: contao.callback, table: tl_recipe_category, target: fields.alias.save, method: onSaveCallback, priority: 100 }
-            - { name: contao.callback, table: tl_recipe_ingredient, target: fields.alias.save, method: onSaveCallback, priority: 100 }
-            - { name: contao.callback, table: tl_recipe_unit, target: fields.alias.save, method: onSaveCallback, priority: 100 }
+  heartbits.contaorecipes.listener.recipe:
+    class: Heartbits\ContaoRecipes\EventListener\DataContainer\RecipeCallbackListener
+    arguments:
+      - '@contao.slug'
+    tags:
+      - { name: contao.callback, table: tl_recipe, target: fields.categories.options, method: loadCategoriesCallback, priority: 100 }
+      - { name: contao.callback, table: tl_recipe, target: fields.alias.save, method: onSaveCallback, priority: 100 }
+      - { name: contao.callback, table: tl_recipe, target: fields.recipe_date.load, method: loadDate, priority: 100 }
+      - { name: contao.callback, table: tl_recipe_category, target: fields.alias.save, method: onSaveCallback, priority: 100 }
+      - { name: contao.callback, table: tl_recipe_ingredient, target: fields.alias.save, method: onSaveCallback, priority: 100 }
+      - { name: contao.callback, table: tl_recipe_unit, target: fields.alias.save, method: onSaveCallback, priority: 100 }

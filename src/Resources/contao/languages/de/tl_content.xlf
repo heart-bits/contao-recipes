@@ -1,25 +1,57 @@
 <?xml version="1.0" ?><xliff version="1.1">
     <file datatype="php" source-language="en" target-language="de">
         <body>
-            <trans-unit id="CTE.recipes">
-                <source>Recipes</source>
-                <target>Rezepte</target>
+            <trans-unit id="tl_content.recipe_featured.0">
+                <source>Featured recipes</source>
+                <target>Hervorgehobene Rezepte</target>
             </trans-unit>
-            <trans-unit id="CTE.recipe_image.0">
-                <source>Recipe image</source>
-                <target>Rezept-Bild</target>
+            <trans-unit id="tl_content.recipe_featured.1">
+                <source>Here you can choose how featured recipes are handled.</source>
+                <target>Hier legen Sie fest, wie hervorgehobene Rezepte gehandhabt werden.</target>
             </trans-unit>
-            <trans-unit id="CTE.recipe_image.1">
-                <source>Generates a recipe image.</source>
-                <target>Erzeugt einen Rezept-Bild.</target>
+            <trans-unit id="tl_content.recipe_order.0">
+                <source>Sort order</source>
+                <target>Sortierreihenfolge</target>
             </trans-unit>
-            <trans-unit id="CTE.recipe_step.0">
-                <source>Recipe step</source>
-                <target>Rezept-Schritt</target>
+            <trans-unit id="tl_content.recipe_order.1">
+                <source>Here you can choose the sort order.</source>
+                <target>Hier können Sie die Sortierreihenfolge festlegen.</target>
             </trans-unit>
-            <trans-unit id="CTE.recipe_step.1">
-                <source>Generates a recipe step.</source>
-                <target>Erzeugt einen Rezept-Schritt.</target>
+            <trans-unit id="tl_content.all_recipes">
+                <source>Show all recipes</source>
+                <target>Alle Rezepte anzeigen</target>
+            </trans-unit>
+            <trans-unit id="tl_content.featured_recipes">
+                <source>Show featured recipes only</source>
+                <target>Nur hervorgehobene Rezepte anzeigen</target>
+            </trans-unit>
+            <trans-unit id="tl_content.unfeatured_recipes">
+                <source>Skip featured recipes</source>
+                <target>Hervorgehobene Rezepte überspringen</target>
+            </trans-unit>
+            <trans-unit id="tl_content.featured_recipes_first">
+                <source>Show featured recipes first</source>
+                <target>Hervorgehobene Rezepte zuerst anzeigen</target>
+            </trans-unit>
+            <trans-unit id="tl_content.order_date_asc">
+                <source>Date ascending</source>
+                <target>Datum aufsteigend</target>
+            </trans-unit>
+            <trans-unit id="tl_content.order_date_desc">
+                <source>Date descending</source>
+                <target>Datum absteigend</target>
+            </trans-unit>
+            <trans-unit id="tl_content.order_title_asc">
+                <source>Title ascending</source>
+                <target>Name aufsteigend</target>
+            </trans-unit>
+            <trans-unit id="tl_content.order_title_desc">
+                <source>Title descending</source>
+                <target>Name absteigend</target>
+            </trans-unit>
+            <trans-unit id="tl_content.order_random">
+                <source>Random order</source>
+                <target>Zufällige Reihenfolge</target>
             </trans-unit>
         </body>
     </file>

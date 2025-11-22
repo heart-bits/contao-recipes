@@ -5,6 +5,10 @@
                 <source>Category</source>
                 <target>Kategorie</target>
             </trans-unit>
+            <trans-unit id="tl_recipe_category.image_legend">
+                <source>Image</source>
+                <target>Bild</target>
+            </trans-unit>
             <trans-unit id="tl_recipe_category.expert_legend">
                 <source>Expert settings</source>
                 <target>Experten-Einstellungen</target>

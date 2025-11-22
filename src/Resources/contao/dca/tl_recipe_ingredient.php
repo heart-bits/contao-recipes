@@ -2,13 +2,8 @@
 
 use Contao\Config;
 use Contao\DC_Table;
-use Contao\System;
-use Heartbits\ContaoRecipes\EventListener\DataContainer\RecipeCallbackListener;
-
-System::loadLanguageFile('default');
 
 $GLOBALS['TL_DCA']['tl_recipe_ingredient'] = [
-    // Config
     'config' => [
         'dataContainer' => DC_Table::class,
         'enableVersioning' => true,
@@ -19,7 +14,6 @@ $GLOBALS['TL_DCA']['tl_recipe_ingredient'] = [
         ],
         'backlink' => 'do=recipe',
     ],
-    // List
     'list' => [
         'sorting' => [
             'mode' => 1,
@@ -32,60 +26,26 @@ $GLOBALS['TL_DCA']['tl_recipe_ingredient'] = [
             'format' => '%s',
         ],
         'global_operations' => [
-            'all' => [
-                'label' => &$GLOBALS['TL_LANG']['MSC']['all'],
-                'href' => 'act=select',
-                'class' => 'header_edit_all',
-                'attributes' => 'onclick="Backend.getScrollOffset()" accesskey="e"'
-            ]
+            'all'
         ],
         'operations' => [
-            'edit' => [
-                'label' => &$GLOBALS['TL_LANG']['tl_recipe_ingredient']['edit'],
-                'href' => 'act=edit',
-                'icon' => 'edit.svg'
-            ],
-            'copy' => [
-                'label' => &$GLOBALS['TL_LANG']['tl_recipe_ingredient']['copy'],
-                'href' => 'act=paste&amp;mode=copy',
-                'icon' => 'copy.svg',
-                'attributes' => 'onclick="Backend.getScrollOffset()"'
-            ],
-            'cut' => [
-                'href' => 'act=paste&amp;mode=cut',
-                'icon' => 'cut.svg'
-            ],
-            'delete' => [
-                'label' => &$GLOBALS['TL_LANG']['tl_recipe_ingredient']['delete'],
-                'href' => 'act=delete',
-                'icon' => 'delete.svg',
-                'attributes' => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
-            ],
-            'show' => [
-                'label' => &$GLOBALS['TL_LANG']['tl_recipe_ingredient']['show'],
-                'href' => 'act=show',
-                'icon' => 'show.svg',
-                'attributes' => 'style="margin-right:3px"'
-            ],
+            'edit',
+            'copy',
+            'cut',
+            'delete',
+            'show',
         ]
     ],
-
-    // Palettes
     'palettes' => [
-        '__selector__' => ['title'],
         'default' => '{ingredient_legend},title,alias;{image_legend},singleSRC;',
     ],
-
-    // Fields
     'fields' => [
         'id' => [
             'sql' => "int(10) unsigned NOT NULL auto_increment"
         ],
-
         'tstamp' => [
             'sql' => "int(10) unsigned NOT NULL default '0'"
         ],
-
         'title' => [
             'inputType' => 'text',
             'exclude' => true,
@@ -99,7 +59,6 @@ $GLOBALS['TL_DCA']['tl_recipe_ingredient'] = [
             ],
             'sql' => "varchar(255) NOT NULL default ''"
         ],
-
         'alias' => [
             'inputType' => 'text',
             'exclude' => true,
@@ -111,7 +70,6 @@ $GLOBALS['TL_DCA']['tl_recipe_ingredient'] = [
             ],
             'sql' => "varchar(255) NOT NULL default ''"
         ],
-
         'singleSRC' => [
             'exclude' => true,
             'inputType' => 'fileTree',

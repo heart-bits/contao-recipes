@@ -1,23 +1,22 @@
 <?php
 
-namespace Heartbits\ContaoRecipes\Controller\FrontendModule;
+namespace Heartbits\ContaoRecipes\Controller\ContentElement;
 
-use Contao\CoreBundle\Controller\FrontendModule\AbstractFrontendModuleController;
-use Contao\CoreBundle\DependencyInjection\Attribute\AsFrontendModule;
-use Contao\CoreBundle\Exception\PageNotFoundException;
-use Contao\CoreBundle\Routing\ResponseContext\HtmlHeadBag\HtmlHeadBag;
 use Contao\BackendTemplate;
 use Contao\ContentModel;
 use Contao\Controller;
+use Contao\CoreBundle\Controller\ContentElement\AbstractContentElementController;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsContentElement;
+use Contao\CoreBundle\Exception\PageNotFoundException;
+use Contao\CoreBundle\Routing\ResponseContext\HtmlHeadBag\HtmlHeadBag;
+use Contao\CoreBundle\Routing\ScopeMatcher;
+use Contao\CoreBundle\Twig\FragmentTemplate;
 use Contao\Environment;
 use Contao\FilesModel;
 use Contao\Input;
-use Contao\ModuleModel;
 use Contao\Model\Collection;
-use Contao\System;
 use Contao\StringUtil;
-use Contao\Template;
-use Heartbits\ContaoRecipes\Controller\ContentElement\RecipeStepController;
+use Contao\System;
 use Heartbits\ContaoRecipes\Models\CategoryModel;
 use Heartbits\ContaoRecipes\Models\IngredientModel;
 use Heartbits\ContaoRecipes\Models\RecipeModel;
@@ -25,87 +24,91 @@ use Heartbits\ContaoRecipes\Models\UnitModel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-#[AsFrontendModule(RecipeReaderController::TYPE, category: 'recipes')]
-class RecipeReaderController extends AbstractFrontendModuleController
+#[AsContentElement(RecipeReaderController::TYPE, category: 'recipes')]
+class RecipeReaderController extends AbstractContentElementController
 {
     public const TYPE = 'recipe_reader';
 
-    protected function getResponse(Template $template, ModuleModel $model, Request $request): Response
+    public function __construct(private readonly ScopeMatcher $scopeMatcher)
     {
-        if (System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest($request)) {
+    }
+
+    protected function getResponse(FragmentTemplate $template, ContentModel $model, Request $request): Response
+    {
+        if ($this->scopeMatcher->isBackendRequest($request)) {
             $template = new BackendTemplate('be_wildcard');
             $template->title = $GLOBALS['TL_LANG']['FMD'][RecipeReaderController::TYPE][0];
-        } else {
-            $alias = Input::get('auto_item');
-            $t = RecipeModel::getTable();
-            $objRecipe = RecipeModel::findOneByAlias($alias);
+        }
 
-            if ($objRecipe instanceof RecipeModel && ($objContent = ContentModel::findPublishedByPidAndTable($objRecipe->id, $t)) instanceof Collection) {
-                $this->overwriteMetaData($objRecipe);
-                //$GLOBALS['TL_HEAD'][] = '<script type="application/ld+json">' . $this->writeStructuredData($objRecipe) . '</script>';
+        $alias = Input::get('auto_item');
+        $t = RecipeModel::getTable();
+        $objRecipe = RecipeModel::findOneByAlias($alias);
 
-                foreach ($objRecipe->row() as $key => $value) {
-                    switch ($key) {
-                        case 'ingredients':
-                            if (is_array($ingredients = StringUtil::deserialize($value))) {
-                                $arrIngredients = [];
-                                $i = 0;
-                                foreach ($ingredients as $ingredient) {
-                                    $objUnit = UnitModel::findOneByAlias($ingredient[1]);
-                                    $objIngredient = IngredientModel::findOneByAlias($ingredient[2]);
+        if ($objRecipe instanceof RecipeModel && ($objContent = ContentModel::findPublishedByPidAndTable($objRecipe->id, $t)) instanceof Collection) {
+            $this->overwriteMetaData($objRecipe);
+            //$GLOBALS['TL_HEAD'][] = '<script type="application/ld+json">' . $this->writeStructuredData($objRecipe) . '</script>';
 
-                                    $arrIngredients[$i] = [
-                                        'amount' => $ingredient[0],
-                                        'unit' => [
-                                            'alias' => $objUnit->alias,
-                                            'title' => $objUnit->title
-                                        ],
-                                        'ingredient' => [
-                                            'alias' => $objIngredient->alias,
-                                            'title' => $objIngredient->title
-                                        ]
-                                    ];
+            foreach ($objRecipe->row() as $key => $value) {
+                switch ($key) {
+                    case 'ingredients':
+                        if (is_array($ingredients = StringUtil::deserialize($value))) {
+                            $arrIngredients = [];
+                            $i = 0;
+                            foreach ($ingredients as $ingredient) {
+                                $objUnit = UnitModel::findOneByAlias($ingredient[1]);
+                                $objIngredient = IngredientModel::findOneByAlias($ingredient[2]);
 
-                                    if ($objIngredient->singleSRC !== '') {
-                                        $objFile = FilesModel::findByUuid($objIngredient->singleSRC);
-                                        if ($objFile) $this->getImageData($objFile, $model->imgSize);
-                                    }
+                                $arrIngredients[$i] = [
+                                    'amount' => $ingredient[0],
+                                    'unit' => [
+                                        'alias' => $objUnit->alias,
+                                        'title' => $objUnit->title
+                                    ],
+                                    'ingredient' => [
+                                        'alias' => $objIngredient->alias,
+                                        'title' => $objIngredient->title
+                                    ]
+                                ];
 
-                                    $i++;
+                                if ($objIngredient->singleSRC !== '') {
+                                    $objFile = FilesModel::findByUuid($objIngredient->singleSRC);
+                                    if ($objFile) $this->getImageData($objFile, $model->imgSize);
                                 }
-                                $template->$key = $arrIngredients;
+
+                                $i++;
                             }
-                            break;
-                        case 'categories':
-                            if ($value) {
-                                $categories = [];
-                                $arrCategories = StringUtil::deserialize($value);
-                                foreach ($arrCategories as $category) {
-                                    $objCategory = CategoryModel::findByIdOrAlias($category);
-                                    $categories[] = [
-                                        'title' => $objCategory->title,
-                                        'alias' => $objCategory->alias
-                                    ];
-                                }
-                                $template->$key = $categories;
+                            $template->$key = $arrIngredients;
+                        }
+                        break;
+                    case 'categories':
+                        if ($value) {
+                            $categories = [];
+                            $arrCategories = StringUtil::deserialize($value);
+                            foreach ($arrCategories as $category) {
+                                $objCategory = CategoryModel::findByIdOrAlias($category);
+                                $categories[] = [
+                                    'title' => $objCategory->title,
+                                    'alias' => $objCategory->alias
+                                ];
                             }
-                            break;
-                        case 'singleSRC':
-                            if ($value !== '') {
-                                $objFile = FilesModel::findByUuid($value);
-                                if ($objFile) $template->$key = $this->getImageData($objFile, $model->imgSize);
-                            }
-                            break;
-                        default:
-                            $template->$key = $value;
-                            break;
-                    }
+                            $template->$key = $categories;
+                        }
+                        break;
+                    case 'singleSRC':
+                        if ($value !== '') {
+                            $objFile = FilesModel::findByUuid($value);
+                            if ($objFile) $template->$key = $this->getImageData($objFile, $model->imgSize);
+                        }
+                        break;
+                    default:
+                        $template->$key = $value;
+                        break;
                 }
-
-                $template->content = $this->setRecipeContent($request, $objContent);
-            } else {
-                throw new PageNotFoundException('Page not found: ' . Environment::get('uri'));
             }
+
+            $template->content = $this->setRecipeContent($request, $objContent);
+        } else {
+            throw new PageNotFoundException('Page not found: ' . Environment::get('uri'));
         }
 
         return $template->getResponse();
