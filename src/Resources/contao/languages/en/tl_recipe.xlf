@@ -191,7 +191,7 @@
                 <source>Unit</source>
             </trans-unit>
             <trans-unit id="tl_recipe.headers.ingredient">
-                <source>Ingredien</source>
+                <source>Ingredient</source>
             </trans-unit>
         </body>
     </file>

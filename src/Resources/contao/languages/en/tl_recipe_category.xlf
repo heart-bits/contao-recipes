@@ -34,16 +34,16 @@
             <trans-unit id="tl_recipe_category.show.1">
                 <source>Details of the category ID %s</source>
             </trans-unit>
-            <trans-unit id="tl_recipe_ingredient.title.0">
+            <trans-unit id="tl_recipe_category.title.0">
                 <source>Name</source>
             </trans-unit>
-            <trans-unit id="tl_recipe_ingredient.title.1">
+            <trans-unit id="tl_recipe_category.title.1">
                 <source>Add the name of the ingredient.</source>
             </trans-unit>
-            <trans-unit id="tl_recipe_ingredient.alias.0">
+            <trans-unit id="tl_recipe_category.alias.0">
                 <source>Alias</source>
             </trans-unit>
-            <trans-unit id="tl_recipe_ingredient.alias.1">
+            <trans-unit id="tl_recipe_category.alias.1">
                 <source>Add the alias of the ingredient.</source>
             </trans-unit>
             <trans-unit id="tl_recipe_category.singleSRC.0">
