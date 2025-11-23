@@ -2,20 +2,43 @@
     background: url('../img/recipes.svg') 3px 2px no-repeat
 }
 
+#inputIngredient,
+#inputIngredient * {
+    box-sizing: border-box;
+}
+
 #inputIngredient table {
     width: 100%
 }
 
+#inputIngredient .recipe_drag {
+    width: 2%;
+    min-width: 16px;
+}
+
 #inputIngredient .recipe_amount {
-    max-width: 100px
+    width: 25%;
+    padding-right: 10px;
+}
+
+#inputIngredient .recipe_amount .tl_text {
+    width: 100%;
 }
 
 #inputIngredient .recipe_unit {
-    max-width: 100px
+    width: 25%;
+    padding-right: 10px;
 }
 
 #inputIngredient .recipe_ingredient {
-    min-width: 200px
+    width: 40%;
+    padding-right: 10px;
+}
+
+#inputIngredient .recipe_buttons {
+    width: 4%;
+    min-width: 36px;
+    text-align: right;
 }
 
 .rating-container {
