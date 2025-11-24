@@ -61,11 +61,11 @@ class RecipeReaderController extends AbstractContentElementController
                             $arrIngredients = [];
                             $i = 0;
                             foreach ($ingredients as $ingredient) {
-                                $objUnit = UnitModel::findOneByAlias($ingredient[1]);
-                                $objIngredient = IngredientModel::findOneByAlias($ingredient[2]);
+                                $objUnit = UnitModel::findOneByAlias($ingredient['unit']);
+                                $objIngredient = IngredientModel::findOneByAlias($ingredient['ingredient']);
 
                                 $arrIngredients[$i] = [
-                                    'amount' => $ingredient[0],
+                                    'amount' => $ingredient['amount'],
                                     'unit' => [
                                         'alias' => $objUnit->alias,
                                         'title' => $objUnit->title
@@ -206,9 +206,9 @@ class RecipeReaderController extends AbstractContentElementController
 
         if (is_array($arrIngredients = StringUtil::deserialize($objRecipe->ingredients))) {
             foreach ($arrIngredients as $ingredient) {
-                $objUnit = UnitModel::findOneByAlias($ingredient[1]);
-                $objIngredient = IngredientModel::findOneByAlias($ingredient[2]);
-                if ($objUnit instanceof UnitModel && $objIngredient instanceof IngredientModel) $json['recipeIngredient'][] = $ingredient[0] . ' ' . $objUnit->title . ' ' . $objIngredient->title;
+                $objUnit = UnitModel::findOneByAlias($ingredient['unit']);
+                $objIngredient = IngredientModel::findOneByAlias($ingredient['ingredient']);
+                if ($objUnit instanceof UnitModel && $objIngredient instanceof IngredientModel) $json['recipeIngredient'][] = $ingredient['amount'] . ' ' . $objUnit->title . ' ' . $objIngredient->title;
             }
         }
         if (($objContent = ContentModel::findBy(['tl_content.pid=? AND tl_content.ptable=? AND tl_content.type=?'], [$objRecipe->id, 'tl_recipe', RecipeStepController::TYPE], ['order' => 'tl_content.sorting'])) instanceof ContentModel) {
