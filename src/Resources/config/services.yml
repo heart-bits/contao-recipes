@@ -8,6 +8,7 @@ services:
     arguments:
       - '@contao.routing.scope_matcher'
       - '@translator'
+      - '%kernel.project_dir%'
     tags:
       - { name: contao.content_element, category: recipes }
 
@@ -17,6 +18,7 @@ services:
       - '@contao.routing.scope_matcher'
       - '@translator'
       - '@contao.routing.response_context_accessor'
+      - '%kernel.project_dir%'
     tags:
       - { name: contao.content_element, category: recipes }
 

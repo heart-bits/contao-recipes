@@ -30,7 +30,8 @@ class RecipeListController extends AbstractContentElementController
 
     public function __construct(
         private readonly ScopeMatcher $scopeMatcher,
-        private readonly TranslatorInterface $translator
+        private readonly TranslatorInterface $translator,
+        private readonly string $projectDir
     )
     {
     }
@@ -109,7 +110,7 @@ class RecipeListController extends AbstractContentElementController
                     switch ($key) {
                         case 'id':
                             $arrRecipes[$i][$key] = $value;
-                            $objContent = ContentModel::findBy(["$ct.ptable='$t'", "$ct.pid='$value'", "$ct.invisible=''"], null);
+                            $objContent = ContentModel::findBy(["$ct.ptable='$t'", "$ct.pid='$value'", "$ct.published=1"], null);
                             (!$objContent) ? $arrRecipes[$i]['hasContent'] = false : $arrRecipes[$i]['hasContent'] = true;
                             break;
                         case 'alias':
@@ -126,10 +127,16 @@ class RecipeListController extends AbstractContentElementController
                                     $objCategory = CategoryModel::findByIdOrAlias($category);
                                     $categories[] = [
                                         'title' => $objCategory->title,
-                                        'alias' => $objCategory->alias
+                                        'alias' => $objCategory->alias,
+                                        'singleSRC' => (null !== ($objFile = FilesModel::findByUuid($value)) && is_file($this->projectDir . '/' . $objFile->path)) ? $objCategory->singleSRC : '',
                                     ];
                                 }
                                 $arrRecipes[$i][$key] = $categories;
+                            }
+                            break;
+                        case 'singleSRC':
+                            if (null !== ($objFile = FilesModel::findByUuid($value)) && is_file($this->projectDir . '/' . $objFile->path)) {
+                                $arrRecipes[$i][$key] = $value;
                             }
                             break;
                         default:

@@ -32,7 +32,8 @@ class RecipeReaderController extends AbstractContentElementController
     public function __construct(
         private readonly ScopeMatcher $scopeMatcher,
         private readonly TranslatorInterface $translator,
-        private readonly ResponseContextAccessor $responseContext
+        private readonly ResponseContextAccessor $responseContext,
+        private readonly string $projectDir
     )
     {
     }
@@ -57,7 +58,7 @@ class RecipeReaderController extends AbstractContentElementController
             foreach ($objRecipe->row() as $key => $value) {
                 switch ($key) {
                     case 'ingredients':
-                        if (is_array($ingredients = StringUtil::deserialize($value))) {
+                        if (is_array($ingredients = StringUtil::deserialize($value)) && !empty($ingredients)) {
                             $arrIngredients = [];
                             $i = 0;
                             foreach ($ingredients as $ingredient) {
@@ -65,14 +66,15 @@ class RecipeReaderController extends AbstractContentElementController
                                 $objIngredient = IngredientModel::findOneByAlias($ingredient['ingredient']);
 
                                 $arrIngredients[$i] = [
-                                    'amount' => $ingredient['amount'],
+                                    'amount' => $ingredient['amount'] ?? '',
                                     'unit' => [
-                                        'alias' => $objUnit->alias,
-                                        'title' => $objUnit->title
+                                        'alias' => $objUnit->alias ?? '',
+                                        'title' => $objUnit->title ?? ''
                                     ],
                                     'ingredient' => [
-                                        'alias' => $objIngredient->alias,
-                                        'title' => $objIngredient->title
+                                        'alias' => $objIngredient->alias ?? '',
+                                        'title' => $objIngredient->title ?? '',
+                                        'singleSRC' => (null !== ($objFile = FilesModel::findByUuid($objIngredient->singleSRC)) && is_file($this->projectDir . '/' . $objFile->path)) ? $objIngredient->singleSRC : '',
                                     ]
                                 ];
 
@@ -85,20 +87,22 @@ class RecipeReaderController extends AbstractContentElementController
                         if ($value) {
                             $categories = [];
                             $arrCategories = StringUtil::deserialize($value);
-                            foreach ($arrCategories as $category) {
-                                $objCategory = CategoryModel::findByIdOrAlias($category);
-                                $categories[] = [
-                                    'title' => $objCategory->title,
-                                    'alias' => $objCategory->alias
-                                ];
+                            if (!empty($arrCategories)) {
+                                foreach ($arrCategories as $category) {
+                                    $objCategory = CategoryModel::findByIdOrAlias($category);
+                                    $categories[] = [
+                                        'title' => $objCategory->title,
+                                        'alias' => $objCategory->alias,
+                                        'singleSRC' => (null !== ($objFile = FilesModel::findByUuid($value)) && is_file($this->projectDir . '/' . $objFile->path)) ? $objCategory->singleSRC : '',
+                                    ];
+                                }
                             }
                             $template->$key = $categories;
                         }
                         break;
                     case 'singleSRC':
-                        if ($value !== '') {
-                            $objFile = FilesModel::findByUuid($value);
-                            if ($objFile) $template->$key = $value;
+                        if (null !== ($objFile = FilesModel::findByUuid($value)) && is_file($this->projectDir . '/' . $objFile->path)) {
+                            $template->$key = $value;
                         }
                         break;
                     default:
