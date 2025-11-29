@@ -3,7 +3,7 @@
 {% use "@Contao/component/_rich_text.html.twig" %}
 
 {% block text_media %}
-    {% if singleSRC %}
+    {% if singleSRC is defined and singleSRC %}
         <div class="recipe-image">
             {% with {figure: figure(singleSRC, size)} %}{{ block('figure_component') }}{% endwith %}
         </div>
