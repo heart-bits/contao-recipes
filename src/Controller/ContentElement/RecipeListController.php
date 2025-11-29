@@ -110,7 +110,7 @@ class RecipeListController extends AbstractContentElementController
                     switch ($key) {
                         case 'id':
                             $arrRecipes[$i][$key] = $value;
-                            $objContent = ContentModel::findBy(["$ct.ptable='$t'", "$ct.pid='$value'", "$ct.published=1"], null);
+                            $objContent = ContentModel::findBy(["$ct.ptable='$t'", "$ct.pid='$value'", "$ct.invisible=''"], null);
                             (!$objContent) ? $arrRecipes[$i]['hasContent'] = false : $arrRecipes[$i]['hasContent'] = true;
                             break;
                         case 'alias':
