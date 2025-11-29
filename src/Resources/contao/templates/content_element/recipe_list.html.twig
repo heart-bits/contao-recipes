@@ -16,7 +16,7 @@
             {% for recipe in recipes %}
                 <div class="recipe">
                     {{ block('text_media') }}
-                    {% block text %}
+                    {% block info %}
                         <div class="recipe-info">
                             {% block title %}
                                 <h3>{{ recipe.title }}</h3>
@@ -34,14 +34,14 @@
                             {% block time %}
                                 {% if recipe.time > 0 %}<span class="recipe-time">{{ recipe.time }}</span>{% endif %}
                             {% endblock time %}
-                            {% block text %}
+                            {% block teaser %}
                                 {% if recipe.teaser is defined and recipe.teaser %}{% with {'text': recipe.teaser} %}{{ block('rich_text_component') }}{% endwith %}{% endif %}
-                            {% endblock text %}
+                            {% endblock teaser %}
                             {% block link %}
                                 {% if recipe.jumpTo and recipe.hasContent %}<a href="{{ recipe.jumpTo }}">Zur Detailseite</a>{% endif %}
                             {% endblock link %}
                         </div>
-                    {% endblock text %}
+                    {% endblock info %}
                 </div>
             {% endfor %}
         {% endblock recipe %}

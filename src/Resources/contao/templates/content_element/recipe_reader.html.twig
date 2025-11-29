@@ -30,7 +30,7 @@
             {% block time %}
                 {% if time > 0 %}<span class="recipe-time">{{ time }}</span>{% endif %}
             {% endblock time %}
-            {% block categories %}
+            {% block ingredients %}
                 {% if ingredients is not empty %}
                     <div class="recipe-ingredients">
                         {% for ingredient in ingredients %}
@@ -42,7 +42,7 @@
                         {% endfor %}
                     </div>
                 {% endif %}
-            {% endblock categories %}
+            {% endblock ingredients %}
             {% block text %}
                 {% if content %}{% with {'text': content} %}{{ block('rich_text_component') }}{% endwith %}{% endif %}
             {% endblock text %}
