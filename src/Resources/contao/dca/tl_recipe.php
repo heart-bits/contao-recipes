@@ -173,7 +173,6 @@ $GLOBALS['TL_DCA'][RecipeModel::getTable()] = [
             'exclude' => true,
             'inputType' => 'textarea',
             'eval' => [
-                'mandatory' => true,
                 'rte' => 'tinyMCE',
                 'helpwizard' => true,
                 'tl_class' => 'clr'
