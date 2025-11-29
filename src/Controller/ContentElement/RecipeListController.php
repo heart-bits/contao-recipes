@@ -114,9 +114,7 @@ class RecipeListController extends AbstractContentElementController
                             (!$objContent) ? $arrRecipes[$i]['hasContent'] = false : $arrRecipes[$i]['hasContent'] = true;
                             break;
                         case 'alias':
-                            if ($objJumpTo instanceof PageModel) {
-                                $arrRecipes[$i]['jumpTo'] = $objJumpTo->getAbsoluteUrl('/' . $value);
-                            }
+                            $arrRecipes[$i]['jumpTo'] = ($objJumpTo instanceof PageModel) ? $objJumpTo->getAbsoluteUrl('/' . $value) : '';
                             $arrRecipes[$i][$key] = $value;
                             break;
                         case 'categories':
