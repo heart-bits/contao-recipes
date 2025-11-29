@@ -12,30 +12,40 @@
 
 {% block content %}
     {{ block('text_media') }}
-    {% block text %}
+    {% block recipe %}
         <div class="recipe-info">
-            <h1>{{ title }}</h1>
-            {% if subheadline %}<span class="subheadline">{{ subheadline }}</span>{% endif %}
-            {% if categories is not empty %}
-                <div class="categories">
-                    {% for category in categories %}
-                        <span class="category category_{{ category.alias }}">{{ category.title }}</span>
-                    {% endfor %}
-                </div>
-            {% endif %}
-            {% if time > 0 %}<span class="recipe-time">{{ time }}</span>{% endif %}
-            {% if ingredients is not empty %}
-                <div class="recipe-ingredients">
-                    {% for ingredient in ingredients %}
-                        <div class="ingredient ingredient_{{ ingredient.ingredient.alias }}">
-                            <span class="amount">{{ ingredient.amount }}</span>
-                            <span class="unit unit_{{ ingredient.unit.alias }}">{{ ingredient.unit.title }}</span>
-                            <span class="title">{{ ingredient.ingredient.title }}</span>
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-            {% if content %}{% with {'text': content} %}{{ block('rich_text_component') }}{% endwith %}{% endif %}
+            {% block title %}
+                <h1>{{ title }}</h1>
+                {% if subheadline %}<span class="subheadline">{{ subheadline }}</span>{% endif %}
+            {% endblock title %}
+            {% block categories %}
+                {% if categories is not empty %}
+                    <div class="categories">
+                        {% for category in categories %}
+                            <span class="category category_{{ category.alias }}">{{ category.title }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endblock categories %}
+            {% block time %}
+                {% if time > 0 %}<span class="recipe-time">{{ time }}</span>{% endif %}
+            {% endblock time %}
+            {% block categories %}
+                {% if ingredients is not empty %}
+                    <div class="recipe-ingredients">
+                        {% for ingredient in ingredients %}
+                            <div class="ingredient ingredient_{{ ingredient.ingredient.alias }}">
+                                <span class="amount">{{ ingredient.amount }}</span>
+                                <span class="unit unit_{{ ingredient.unit.alias }}">{{ ingredient.unit.title }}</span>
+                                <span class="title">{{ ingredient.ingredient.title }}</span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endblock categories %}
+            {% block text %}
+                {% if content %}{% with {'text': content} %}{{ block('rich_text_component') }}{% endwith %}{% endif %}
+            {% endblock text %}
         </div>
-    {% endblock text %}
+    {% endblock recipe %}
 {% endblock content %}

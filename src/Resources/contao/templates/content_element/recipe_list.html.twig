@@ -12,27 +12,39 @@
 
 {% block content %}
     {% if recipes is not empty %}
-        {% for recipe in recipes %}
-            <div class="recipe">
-                {{ block('text_media') }}
-                {% block text %}
-                    <div class="recipe-info">
-                        <h3>{{ recipe.title }}</h3>
-                        {% if recipe.subheadline %}<span class="subheadline">{{ recipe.subheadline }}</span>{% endif %}
-                        {% if recipe.categories is not empty %}
-                        <div class="categories">
-                            {% for category in recipe.categories %}
-                                <span class="category category_{{ category.alias }}">{{ category.title }}</span>
-                            {% endfor %}
+        {% block recipe %}
+            {% for recipe in recipes %}
+                <div class="recipe">
+                    {{ block('text_media') }}
+                    {% block text %}
+                        <div class="recipe-info">
+                            {% block title %}
+                                <h3>{{ recipe.title }}</h3>
+                                {% if recipe.subheadline %}<span class="subheadline">{{ recipe.subheadline }}</span>{% endif %}
+                            {% endblock title %}
+                            {% block categories %}
+                                {% if recipe.categories is not empty %}
+                                    <div class="categories">
+                                        {% for category in recipe.categories %}
+                                            <span class="category category_{{ category.alias }}">{{ category.title }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            {% endblock categories %}
+                            {% block time %}
+                                {% if recipe.time > 0 %}<span class="recipe-time">{{ recipe.time }}</span>{% endif %}
+                            {% endblock time %}
+                            {% block text %}
+                                {% if recipe.teaser is defined and recipe.teaser %}{% with {'text': recipe.teaser} %}{{ block('rich_text_component') }}{% endwith %}{% endif %}
+                            {% endblock text %}
+                            {% block link %}
+                                {% if recipe.jumpTo and recipe.hasContent %}<a href="{{ recipe.jumpTo }}">Zur Detailseite</a>{% endif %}
+                            {% endblock link %}
                         </div>
-                        {% endif %}
-                        {% if recipe.time > 0 %}<span class="recipe-time">{{ recipe.time }}</span>{% endif %}
-                        {% if recipe.teaser is defined and recipe.teaser %}{% with {'text': recipe.teaser} %}{{ block('rich_text_component') }}{% endwith %}{% endif %}
-                        {% if recipe.jumpTo and recipe.hasContent %}<a href="{{ recipe.jumpTo }}">Zur Detailseite</a>{% endif %}
-                    </div>
-                {% endblock text %}
-            </div>
-        {% endfor %}
+                    {% endblock text %}
+                </div>
+            {% endfor %}
+        {% endblock recipe %}
     {% else %}
         <p>{{ message }}</p>
     {% endif %}
