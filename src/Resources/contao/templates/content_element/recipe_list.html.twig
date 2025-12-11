@@ -2,20 +2,20 @@
 {% use "@Contao/component/_figure.html.twig" %}
 {% use "@Contao/component/_rich_text.html.twig" %}
 
-{% block image %}
+{% block text_media %}
     {% if recipe.singleSRC is defined and recipe.singleSRC %}
         <div class="recipe-image">
             {% with {figure: figure(recipe.singleSRC, size)} %}{{ block('figure_component') }}{% endwith %}
         </div>
     {% endif %}
-{% endblock %}
+{% endblock text_media %}
 
 {% block content %}
     {% if recipes is not empty %}
         {% block recipe %}
             {% for recipe in recipes %}
                 <div class="recipe">
-                    {{ block('image') }}
+                    {{ block('text_media') }}
                     {% block info %}
                         <div class="recipe-info">
                             {% block title %}
