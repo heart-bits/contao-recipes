@@ -127,16 +127,16 @@
             <trans-unit id="tl_recipe.time.1">
                 <source>Enter an estimated preparation time for this recipe in minutes.</source>
             </trans-unit>
-            <trans-unit id="tl_recipe.recipe_author.0">
+            <trans-unit id="tl_recipe.author.0">
                 <source>Author</source>
             </trans-unit>
-            <trans-unit id="tl_recipe.recipe_author.1">
+            <trans-unit id="tl_recipe.author.1">
                 <source>Here you can change the author of the recipe.</source>
             </trans-unit>
-            <trans-unit id="tl_recipe.recipe_date.0">
+            <trans-unit id="tl_recipe.date.0">
                 <source>Date</source>
             </trans-unit>
-            <trans-unit id="tl_news.recipe_date.1">
+            <trans-unit id="tl_news.date.1">
                 <source>Please enter the date according to the global date format.</source>
             </trans-unit>
             <trans-unit id="tl_recipe.singleSRC.0">
