@@ -80,7 +80,7 @@ $GLOBALS['TL_DCA'][RecipeModel::getTable()] = [
         ]
     ],
     'palettes' => [
-        'default' => '{recipe_legend},title,alias,subheadline,recipe_author,recipe_date,time,rating,teaser;{ingredients_legend},ingredients,portions;{image_legend},singleSRC;{nutritional_legend},calories,protein,fat,carbohydrates;{categories_legend},categories;{expert_legend:hide},published,featured;',
+        'default' => '{recipe_legend},title,alias,subheadline,author,date,time,rating,teaser;{ingredients_legend},ingredients,portions;{image_legend},singleSRC;{nutritional_legend},calories,protein,fat,carbohydrates;{categories_legend},categories;{expert_legend:hide},published,featured;',
     ],
     'fields' => [
         'id' => [
