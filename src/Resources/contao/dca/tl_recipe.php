@@ -121,7 +121,7 @@ $GLOBALS['TL_DCA'][RecipeModel::getTable()] = [
             ],
             'sql' => "varchar(255) NOT NULL default ''"
         ],
-        'recipe_author' => [
+        'author' => [
             'default' => BackendUser::getInstance()->id,
             'exclude' => true,
             'search' => true,
@@ -143,7 +143,7 @@ $GLOBALS['TL_DCA'][RecipeModel::getTable()] = [
                 'load' => 'lazy'
             ]
         ],
-        'recipe_date' => [
+        'date' => [
             'default' => time(),
             'exclude' => true,
             'filter' => true,

@@ -2,7 +2,7 @@
 {% use "@Contao/component/_figure.html.twig" %}
 {% use "@Contao/component/_rich_text.html.twig" %}
 
-{% block text_media %}
+{% block image %}
     {% if singleSRC is defined and singleSRC %}
         <div class="recipe-image">
             {% with {figure: figure(singleSRC, size)} %}{{ block('figure_component') }}{% endwith %}
@@ -11,13 +11,23 @@
 {% endblock %}
 
 {% block content %}
-    {{ block('text_media') }}
+    {{ block('image') }}
     {% block recipe %}
         <div class="recipe-info">
             {% block title %}
-                <h1>{{ title }}</h1>
-                {% if subheadline %}<span class="subheadline">{{ subheadline }}</span>{% endif %}
+                <h1 class="recipe-title">{{ title }}</h1>
+                {% if subheadline %}<span class="recipe-subtitle">{{ subheadline }}</span>{% endif %}
             {% endblock title %}
+            {% block data %}
+                <div class="recipe-data">
+                    {% if time %}
+                        <span class="data-time">{{ 'tl_recipe.time.0' | trans({}, 'contao_tl_recipe') }}: {{ time }} Min.</span>
+                    {% endif %}
+                    {% if portions %}
+                        <span class="data-portions">{{ 'tl_recipe.portions.0' | trans({}, 'contao_tl_recipe') }}: {{ portions }} Portion{% if portions > 1 %}en{% endif %}</span>
+                    {% endif %}
+                </div>
+            {% endblock data %}
             {% block rating %}
                 <div class="recipe-rating">
                     {% for i in 0..5 %}
@@ -32,29 +42,42 @@
             {% endblock rating %}
             {% block categories %}
                 {% if categories is not empty %}
-                    <div class="categories">
+                    <div class="recipe-categories">
                         {% for category in categories %}
-                            <span class="category category_{{ category.alias }}">{{ category.title }}</span>
+                            <span class="recipe-category category_{{ category.alias }}">{{ category.title }}</span>
                         {% endfor %}
                     </div>
                 {% endif %}
             {% endblock categories %}
-            {% block time %}
-                {% if time > 0 %}<span class="recipe-time">{{ time }}</span>{% endif %}
-            {% endblock time %}
             {% block ingredients %}
                 {% if ingredients is not empty %}
                     <div class="recipe-ingredients">
                         {% for ingredient in ingredients %}
-                            <div class="ingredient ingredient_{{ ingredient.ingredient.alias }}">
-                                <span class="amount">{{ ingredient.amount }}</span>
-                                <span class="unit unit_{{ ingredient.unit.alias }}">{{ ingredient.unit.title }}</span>
-                                <span class="title">{{ ingredient.ingredient.title }}</span>
+                            <div class="recipe-ingredient ingredient_{{ ingredient.ingredient.alias }}">
+                                <span class="ingredient-amount">{{ ingredient.amount }}</span>
+                                <span class="ingredient-unit unit_{{ ingredient.unit.alias }}">{{ ingredient.unit.title }}</span>
+                                <span class="ingredient-title">{{ ingredient.ingredient.title }}</span>
                             </div>
                         {% endfor %}
                     </div>
                 {% endif %}
             {% endblock ingredients %}
+            {% block nutrition %}
+                <div class="recipe-nutrition">
+                    {% if calories %}
+                        <span class="nutrition-calories">{{ 'tl_recipe.calories.0' | trans({}, 'contao_tl_recipe') }}: {{ calories }} kcal</span>
+                    {% endif %}
+                    {% if protein %}
+                        <span class="nutrition-protein">{{ 'tl_recipe.protein.0' | trans({}, 'contao_tl_recipe') }}: {{ protein }} g</span>
+                    {% endif %}
+                    {% if fat %}
+                        <span class="nutrition-fat">{{ 'tl_recipe.fat.0' | trans({}, 'contao_tl_recipe') }}: {{ fat }} g</span>
+                    {% endif %}
+                    {% if carbohydrates %}
+                        <span class="nutrition-carbohydrates">{{ 'tl_recipe.carbohydrates.0' | trans({}, 'contao_tl_recipe') }}: {{ carbohydrates }} g</span>
+                    {% endif %}
+                </div>
+            {% endblock nutrition %}
             {% block text %}
                 {% if content %}{% with {'text': content} %}{{ block('rich_text_component') }}{% endwith %}{% endif %}
             {% endblock text %}
