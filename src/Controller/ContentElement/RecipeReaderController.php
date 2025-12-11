@@ -117,6 +117,7 @@ class RecipeReaderController extends AbstractContentElementController
         }
 
         $template->size = $model->size;
+        $template->text = $model->text;
 
         return $template->getResponse();
     }

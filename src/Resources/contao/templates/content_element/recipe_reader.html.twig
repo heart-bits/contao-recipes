@@ -11,6 +11,11 @@
 {% endblock text_media %}
 
 {% block content %}
+    {% if text %}
+        <div class="rte">
+            {{ text | raw }}
+        </div>
+    {% endif %}
     {{ block('text_media') }}
     {% block recipe %}
         <div class="recipe-info">

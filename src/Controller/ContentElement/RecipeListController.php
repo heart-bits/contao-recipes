@@ -152,6 +152,7 @@ class RecipeListController extends AbstractContentElementController
 
         $template->recipes = $arrRecipes;
         $template->size = $model->size;
+        $template->text = $model->text;
 
         return $template->getResponse();
     }
