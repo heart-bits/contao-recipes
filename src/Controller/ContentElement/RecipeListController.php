@@ -184,11 +184,11 @@ class RecipeListController extends AbstractContentElementController
                 break;
 
             case 'order_date_asc':
-                $order .= "$t.recipe_date";
+                $order .= "$t.date";
                 break;
 
             default:
-                $order .= "$t.recipe_date DESC";
+                $order .= "$t.date DESC";
         }
 
         return RecipeModel::findAllPublished($blnFeatured, $limit, $offset, ['order' => $order]);
