@@ -31,7 +31,7 @@ class RecipeImageController extends AbstractContentElementController
         if ($this->scopeMatcher->isBackendRequest($request)) {
             $template = new BackendTemplate('be_wildcard');
             if ($model->headline) $template->title = StringUtil::deserialize($model->headline)['value'];
-            if ($model->text) $template->wildcard = $model->text;
+            if ($model->text) $template->wildcard = strip_tags($model->text);
 
             return $template->getResponse();
         }

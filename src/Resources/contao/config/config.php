@@ -1,5 +1,6 @@
 <?php
 
+use Contao\ContentModel;
 use Contao\System;
 use Heartbits\ContaoRecipes\Models\CategoryModel;
 use Heartbits\ContaoRecipes\Models\IngredientModel;
@@ -16,7 +17,7 @@ if (System::getContainer()->get('contao.routing.scope_matcher')->isBackendReques
 
 // Backend modules
 $GLOBALS['BE_MOD']['recipes']['recipe'] = [
-    'tables' => ['tl_recipe', 'tl_recipe_ingredient', 'tl_recipe_category', 'tl_recipe_unit', 'tl_content']
+    'tables' => [RecipeModel::getTable(), IngredientModel::getTable(), CategoryModel::getTable(), UnitModel::getTable(), ContentModel::getTable()]
 ];
 
 // Backend form fields

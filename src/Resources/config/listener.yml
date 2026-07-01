@@ -5,7 +5,8 @@ services:
   heartbits.contaorecipes.listener.content:
     class: Heartbits\ContaoRecipes\EventListener\DataContainer\ContentCallbackListener
     tags:
-      - { name: contao.callback, table: tl_content, target: fields.type.options, method: onLoadTypeCallback, priority: 100 }
+      - { name: contao.callback, table: tl_content, target: fields.type.options, method: typeOptionsCallback, priority: 100 }
+      - { name: contao.callback, table: tl_content, target: fields.type.load, method: onLoadTypeCallback, priority: 100 }
 
   heartbits.contaorecipes.listener.recipe:
     class: Heartbits\ContaoRecipes\EventListener\DataContainer\RecipeCallbackListener
