@@ -19,6 +19,7 @@ use Contao\StringUtil;
 use Contao\System;
 use Contao\Template;
 use Heartbits\ContaoRecipes\Models\CategoryModel;
+use Heartbits\ContaoRecipes\Models\IngredientModel;
 use Heartbits\ContaoRecipes\Models\RecipeModel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -100,6 +101,8 @@ class RecipeListController extends AbstractContentElementController
         $objJumpTo = PageModel::findPublishedById($model->jumpTo);
         $objRecipes = $this->fetchItems($model, $blnFeatured, ($limit ?: 0), $offset);
         $arrRecipes = [];
+        $filterCategories = [];
+        $filterIngredients = [];
 
         if ($objRecipes) {
             $t = RecipeModel::getTable();
@@ -128,8 +131,29 @@ class RecipeListController extends AbstractContentElementController
                                         'alias' => $objCategory->alias,
                                         'singleSRC' => (null !== ($objFile = FilesModel::findByUuid($value)) && is_file($this->projectDir . '/' . $objFile->path)) ? $objCategory->singleSRC : '',
                                     ];
+                                    if (!isset($filterCategories[$objCategory->alias])) {
+                                        $filterCategories[$objCategory->alias] = $objCategory->title;
+                                    }
                                 }
                                 $arrRecipes[$i][$key] = $categories;
+                            }
+                            break;
+                        case 'ingredients':
+                            $ingredients = [];
+                            if ($value) {
+                                $arrIngredients = StringUtil::deserialize($value);
+                                foreach ($arrIngredients as $ingredient) {
+                                    $objIngredient = IngredientModel::findByIdOrAlias($ingredient['ingredient']);
+                                    $ingredients[] = [
+                                        'title' => $objIngredient->title,
+                                        'alias' => $objIngredient->alias,
+                                        'singleSRC' => (null !== ($objFile = FilesModel::findByUuid($value)) && is_file($this->projectDir . '/' . $objFile->path)) ? $objIngredient->singleSRC : '',
+                                    ];
+                                }
+                                if (!isset($filterIngredients[$objIngredient->alias])) {
+                                    $filterIngredients[$objIngredient->alias] = $objIngredient->title;
+                                }
+                                $arrRecipes[$i][$key] = $ingredients;
                             }
                             break;
                         case 'singleSRC':
@@ -151,6 +175,9 @@ class RecipeListController extends AbstractContentElementController
         }
 
         $template->recipes = $arrRecipes;
+        $template->ingredients = $filterIngredients;
+        $template->categories = $filterCategories;
+        $template->addRecipeFilter = $model->addRecipeFilter;
         $template->size = $model->size;
         $template->text = $model->text;
 

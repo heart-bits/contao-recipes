@@ -1,0 +1,25 @@
+{% if categories is not empty and ingredients is not empty %}
+    <form id="recipe-filters" aria-label="Rezeptfilter">
+        <fieldset>
+            <legend>Kategorie</legend>
+            {% for alias, title in categories %}
+                <div class="checkbox-row">
+                    <input type="checkbox" id="cat-{{ alias }}" name="category" value="{{ alias }}">
+                    <label for="cat-{{ alias }}">{{ title }}</label>
+                </div>
+            {% endfor %}
+        </fieldset>
+
+        <fieldset>
+            <legend>Zutaten</legend>
+            {% for alias, title in ingredients %}
+                <div class="checkbox-row">
+                    <input type="checkbox" id="ing-{{ alias }}" name="ingredient" value="{{ alias }}">
+                    <label for="ing-{{ alias }}">{{ title }}</label>
+                </div>
+            {% endfor %}
+        </fieldset>
+
+        <button type="button" class="reset-btn" id="reset-filters">Filter zurücksetzen</button>
+    </form>
+{% endif %}

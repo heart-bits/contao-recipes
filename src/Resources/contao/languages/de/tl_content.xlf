@@ -17,6 +17,14 @@
                 <source>Here you can choose the sort order.</source>
                 <target>Hier können Sie die Sortierreihenfolge festlegen.</target>
             </trans-unit>
+            <trans-unit id="tl_content.addRecipeFilter.0">
+                <source>Add filter</source>
+                <target>Filter hinzufügen</target>
+            </trans-unit>
+            <trans-unit id="tl_content.addRecipeFilter.1">
+                <source>Choose, if users should be able to filter the entries.</source>
+                <target>Wählen Sie, ob Nutzer die Möglichkeit haben sollen, Einträge zu filtern.</target>
+            </trans-unit>
             <trans-unit id="tl_content.all_recipes">
                 <source>Show all recipes</source>
                 <target>Alle Rezepte anzeigen</target>

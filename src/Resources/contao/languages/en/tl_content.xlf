@@ -13,6 +13,12 @@
             <trans-unit id="tl_content.recipe_order.1">
                 <source>Here you can choose the sort order.</source>
             </trans-unit>
+            <trans-unit id="tl_content.addRecipeFilter.0">
+                <source>Add filter</source>
+            </trans-unit>
+            <trans-unit id="tl_content.addRecipeFilter.1">
+                <source>Choose, if users should be able to filter the entries.</source>
+            </trans-unit>
             <trans-unit id="tl_content.all_recipes">
                 <source>Show all recipes</source>
             </trans-unit>

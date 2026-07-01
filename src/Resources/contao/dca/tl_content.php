@@ -6,13 +6,12 @@ use Heartbits\ContaoRecipes\Controller\ContentElement\RecipeReaderController;
 use Heartbits\ContaoRecipes\Controller\ContentElement\RecipeStepController;
 use Heartbits\ContaoRecipes\EventListener\DataContainer\ContentCallbackListener;
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['type']['options_callback'] = [[ContentCallbackListener::class, 'onLoadTypeCallback']];
 $GLOBALS['TL_DCA']['tl_content']['fields']['type']['sql']['default'] = '';
 $GLOBALS['TL_DCA']['tl_content']['fields']['type']['eval']['mandatory'] = true;
 $GLOBALS['TL_DCA']['tl_content']['fields']['type']['eval']['includeBlankOption'] = true;
 $GLOBALS['TL_DCA']['tl_content']['palettes'][RecipeImageController::TYPE] = '{type_legend},title,type;{image_legend},singleSRC,size;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop';
 $GLOBALS['TL_DCA']['tl_content']['palettes'][RecipeStepController::TYPE] = '{type_legend},title,type,headline;{text_legend},text;{image_legend},addImage;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop';
-$GLOBALS['TL_DCA']['tl_content']['palettes'][RecipeListController::TYPE] = '{title_legend},title,type;{text_legend},headline,text;{source_legend},size;{redirect_legend},jumpTo;{config_legend},numberOfItems,skipFirst,recipe_featured,recipe_order,perPage;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
+$GLOBALS['TL_DCA']['tl_content']['palettes'][RecipeListController::TYPE] = '{title_legend},title,type,addRecipeFilter;{text_legend},headline,text;{source_legend},size;{redirect_legend},jumpTo;{config_legend},numberOfItems,skipFirst,recipe_featured,recipe_order,perPage;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
 $GLOBALS['TL_DCA']['tl_content']['palettes'][RecipeReaderController::TYPE] = '{title_legend},title,type;{text_legend},headline,text;{source_legend},size;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['recipe_featured'] = [
@@ -31,8 +30,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['recipe_featured'] = [
     'sql' => "varchar(32) COLLATE ascii_bin NOT NULL default 'all_recipes'"
 ];
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['recipe_order'] = array
-(
+$GLOBALS['TL_DCA']['tl_content']['fields']['recipe_order'] = [
     'exclude' => true,
     'inputType' => 'select',
     'options' => [
@@ -47,4 +45,12 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['recipe_order'] = array
         'tl_class' => 'w50'
     ],
     'sql' => "varchar(32) COLLATE ascii_bin NOT NULL default 'order_date_desc'"
-);
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['addRecipeFilter'] = [
+    'inputType' => 'checkbox',
+    'sql' => [
+        'type' => 'boolean',
+        'default' => false
+    ]
+];
