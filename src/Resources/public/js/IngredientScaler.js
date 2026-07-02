@@ -55,7 +55,9 @@ class RecipeIngredientScaler {
    * @param {number} [options.minPortions=1] Untere Grenze für die Portionszahl
    * @param {number} [options.maxPortions=99] Obere Grenze für die Portionszahl
    * @param {number} [options.step=1] Schrittweite für +/- Buttons
-   * @param {number} [options.decimalPlaces=1] Max. Nachkommastellen bei der Anzeige
+   * @param {string} [options.portion] Übersetzung für Portion (Singular)
+   * @param {string} [options.portions] Übersetzung für Portionen (Plural)
+   * @param {string} [options.statusContent]
    */
   constructor(container, options = {}) {
     this.container =
@@ -65,7 +67,8 @@ class RecipeIngredientScaler {
       throw new Error('RecipeIngredientScaler: Container element not found.');
     }
 
-    this.list = this.container.querySelector('[data-ingredient-list]');
+    this.ingredientList = this.container.querySelector('[data-ingredient-list]');
+    this.nutritionList = this.container.querySelector('[data-nutrition-list]');
     this.input = this.container.querySelector('[data-portion-input]');
     this.decreaseBtn = this.container.querySelector('[data-action="decrease"]');
     this.increaseBtn = this.container.querySelector('[data-action="increase"]');
@@ -73,14 +76,14 @@ class RecipeIngredientScaler {
     this.status = this.container.querySelector('[data-scaler-status]');
 
     if (!this.input) {
-      throw new Error('RecipeIngredientScaler: [data-portion-input] fehlt im Markup.');
+      throw new Error('RecipeIngredientScaler: [data-portion-input] missing from the markup.');
     }
 
     const basePortionsAttr = this.input.dataset.basePortions;
     this.basePortions = parseFloat(basePortionsAttr ?? this.input.value ?? 4);
     if (!this.basePortions || this.basePortions <= 0) {
       throw new Error(
-        'RecipeIngredientScaler: Ungültige oder fehlende data-base-portions / value am Eingabefeld.'
+        'RecipeIngredientScaler: Invalid or missing data-base-portions / value in the input field.'
       );
     }
 
@@ -89,8 +92,12 @@ class RecipeIngredientScaler {
     this.maxPortions = options.maxPortions ?? parseFloat(this.input.max) ?? 99;
     this.step = options.step ?? parseFloat(this.input.step) ?? 1;
     this.decimalPlaces = options.decimalPlaces ?? 1;
+    this.portion = options.portion ?? 'Portion';
+    this.portions = options.portions ?? 'Portions';
+    this.statusContent = options.statusContent ?? 'Ingredients and nutritional information calculated for {count} {unit}.';
 
     this.ingredients = this._collectIngredients();
+    this.nutrition = this._collectNutrition();
 
     this._bindEvents();
     this._render();
@@ -98,8 +105,24 @@ class RecipeIngredientScaler {
 
   /** Liest alle Zutat-Elemente mit Basismenge aus dem DOM ein. */
   _collectIngredients() {
-    if (!this.list) return [];
-    return Array.from(this.list.querySelectorAll('[data-base-amount]'))
+    if (!this.ingredientList) return [];
+    return Array.from(this.ingredientList.querySelectorAll('[data-base-amount]'))
+      .map((el) => {
+        const baseAmount = parseFloat(el.dataset.baseAmount);
+        if (isNaN(baseAmount)) return null;
+        return {
+          element: el,
+          amountEl: el.querySelector('[data-amount]') || el,
+          baseAmount,
+        };
+      })
+      .filter(Boolean);
+  }
+
+  /** Liest alle Nährwert-Elemente mit Basismenge aus dem DOM ein. */
+  _collectNutrition() {
+    if (!this.nutritionList) return [];
+    return Array.from(this.nutritionList.querySelectorAll('[data-base-amount]'))
       .map((el) => {
         const baseAmount = parseFloat(el.dataset.baseAmount);
         if (isNaN(baseAmount)) return null;
@@ -175,6 +198,10 @@ class RecipeIngredientScaler {
       const scaled = ingredient.baseAmount * factor;
       ingredient.amountEl.textContent = this._formatAmount(scaled);
     });
+    this.nutrition.forEach((nutrition) => {
+      const scaled = nutrition.baseAmount * factor;
+      nutrition.amountEl.textContent = this._formatAmount(scaled);
+    });
   }
 
   /** Formatiert eine Zahl mit deutschem Dezimaltrennzeichen, ohne unnötige Nachkommastellen. */
@@ -199,9 +226,9 @@ class RecipeIngredientScaler {
   /** Kündigt die neue Portionszahl für Screenreader-Nutzer:innen an. */
   _announce() {
     if (!this.status) return;
-    const formatted = this._formatAmount(this.currentPortions);
-    const einheit = this.currentPortions === 1 ? 'Portion' : 'Portionen';
-    this.status.textContent = `Zutaten für ${formatted} ${einheit} berechnet.`;
+    const count = this._formatAmount(this.currentPortions);
+    const unit = this.currentPortions === 1 ? this.portion : this.portions;
+    this.status.textContent = this.statusContent.replaceAll('{count}', count).replaceAll('{unit}', unit);
   }
 }
 

@@ -146,25 +146,25 @@
                 <source>Please select a file or folder from the files directory.</source>
             </trans-unit>
             <trans-unit id="tl_recipe.calories.0">
-                <source>Calories (kcal)</source>
+                <source>Calories</source>
             </trans-unit>
             <trans-unit id="tl_recipe.calories.1">
                 <source>Enter the calories value for 1 portion in kcal.</source>
             </trans-unit>
             <trans-unit id="tl_recipe.protein.0">
-                <source>Protein (g)</source>
+                <source>Protein</source>
             </trans-unit>
             <trans-unit id="tl_recipe.protein.1">
                 <source>Enter the protein value for 1 portion in g.</source>
             </trans-unit>
             <trans-unit id="tl_recipe.fat.0">
-                <source>Fat (g)</source>
+                <source>Fat</source>
             </trans-unit>
             <trans-unit id="tl_recipe.fat.1">
                 <source>Enter the fat value for 1 portion in g.</source>
             </trans-unit>
             <trans-unit id="tl_recipe.carbohydrates.0">
-                <source>Carbohydrates (g)</source>
+                <source>Carbohydrates</source>
             </trans-unit>
             <trans-unit id="tl_recipe.carbohydrates.1">
                 <source>Enter the carbohydrates value for 1 portion in g.</source>

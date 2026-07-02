@@ -160,7 +160,7 @@ class RecipeReaderController extends AbstractContentElementController
         }
     }
 
-    public function writeStructuredData(RecipeModel $objRecipe): string
+    public function prepareStructuredData(RecipeModel $objRecipe): string
     {
         $json = [];
         $json['@context'] = 'https://schema.org/';

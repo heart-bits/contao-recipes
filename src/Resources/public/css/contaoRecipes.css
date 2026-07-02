@@ -1,0 +1,34 @@
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.recipe[hidden] {
+    display: none;
+}
+
+ul[data-ingredient-list],
+ul[data-nutrition-list] {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul[data-ingredient-list] li,
+ul[data-nutrition-list] li {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+[data-amount] {
+    font-variant-numeric: tabular-nums;
+    min-width: 3.5rem;
+    text-align: right;
+    font-weight: 600;
+}

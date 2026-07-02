@@ -105,8 +105,8 @@
 
 {% block style %}
     {% if addRecipeFilter %}
-        {% add 'recipe_filter_css' to stylesheets %}
-            {% with {file: recipe_filter_css_file|default(asset('bundles/heartbitscontaorecipes/css/RecipeFilter.css'))} %}
+        {% add 'heartbits_contao_recipes_css' to stylesheets %}
+            {% with {file: heartbits_contao_recipes_css_file|default(asset('bundles/heartbitscontaorecipes/css/contaoRecipes.min.css'))} %}
                 {{ block('stylesheet_component') }}
             {% endwith %}
         {% endadd %}

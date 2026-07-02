@@ -1,6 +1,7 @@
 {% extends "@Contao/content_element/_base.html.twig" %}
 {% use "@Contao/component/_figure.html.twig" %}
 {% use "@Contao/component/_rich_text.html.twig" %}
+{% use '@Contao/component/_stylesheet.html.twig' %}
 
 {% block text_media %}
     {% if singleSRC is defined and singleSRC %}
@@ -46,36 +47,36 @@
                     </div>
                 {% endif %}
             {% endblock categories %}
+            {% if portions %}
+                <div data-recipe-scaler>
+                    <div class="portion-control" role="group" aria-labelledby="portion-heading">
+                        <span id="portion-heading" class="visually-hidden">Portionen anpassen</span>
+                        <label for="portion-input">Portionen</label>
+                        <button type="button" data-action="decrease" class="stepper-btn" aria-label="Portionen verringern">&minus;</button>
+                        <input
+                                type="number"
+                                id="portion-input"
+                                data-portion-input
+                                data-base-portions="{{ portions }}"
+                                value="{{ portions }}"
+                                min="1"
+                                max="20"
+                                step="1"
+                                inputmode="numeric"
+                                aria-describedby="portion-hint"
+                        >
+                        <button type="button" data-action="increase" class="stepper-btn" aria-label="Portionen erhöhen">&plus;</button>
+                        <button type="button" data-action="reset" class="reset-btn">Zurücksetzen</button>
+                    </div>
+                    <p id="portion-hint" class="visually-hidden">Mindestens 1, maximal 20 Portionen. Menge kann auch direkt eingetippt werden.</p>
+                    <p data-scaler-status class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
+            {% endif %}
             {% block ingredients %}
                 {% if ingredients is not empty %}
-                    {% if portions %}
-                        <div data-recipe-scaler>
-                            <div class="portion-control" role="group" aria-labelledby="portion-heading">
-                                <span id="portion-heading" class="visually-hidden">Portionen anpassen</span>
-                                <label for="portion-input">Portionen</label>
-                                <button type="button" data-action="decrease" class="stepper-btn" aria-label="Portionen verringern">&minus;</button>
-                                <input
-                                        type="number"
-                                        id="portion-input"
-                                        data-portion-input
-                                        data-base-portions="{{ portions }}"
-                                        value="{{ portions }}"
-                                        min="1"
-                                        max="20"
-                                        step="1"
-                                        inputmode="numeric"
-                                        aria-describedby="portion-hint"
-                                >
-                                <button type="button" data-action="increase" class="stepper-btn" aria-label="Portionen erhöhen">&plus;</button>
-                                <button type="button" data-action="reset" class="reset-btn">Zurücksetzen</button>
-                            </div>
-                            <p id="portion-hint" class="visually-hidden">Mindestens 1, maximal 20 Portionen. Menge kann auch direkt eingetippt werden.</p>
-                            <p data-scaler-status class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
-                    {% endif %}
                     <div class="recipe-ingredients">
                         <ul data-ingredient-list>
                             {% for ingredient in ingredients %}
-                                <li class="recipe-ingredient ingredient_{{ ingredient.ingredient.alias }}" data-base-amount="{{ ingredient.amount }}" data-unit="g">
+                                <li class="recipe-ingredient ingredient_{{ ingredient.ingredient.alias }}" data-base-amount="{{ ingredient.amount }}" data-unit="{{ ingredient.unit.alias }}">
                                     <span class="ingredient-amount" data-amount>{{ ingredient.amount }}</span>
                                     <span class="ingredient-unit unit_{{ ingredient.unit.alias }}">{{ ingredient.unit.title }}</span>
                                     <span class="ingredient-title">{{ ingredient.ingredient.title }}</span>
@@ -83,27 +84,44 @@
                             {% endfor %}
                         </ul>
                     </div>
-                    {% if portions %}
-                        </div>
-                    {% endif %}
                 {% endif %}
             {% endblock ingredients %}
             {% block nutrition %}
                 <div class="recipe-nutrition">
-                    {% if calories %}
-                        <span class="nutrition-calories">{{ 'tl_recipe.calories.0' | trans({}, 'contao_tl_recipe') }}: {{ calories }} kcal</span>
-                    {% endif %}
-                    {% if protein %}
-                        <span class="nutrition-protein">{{ 'tl_recipe.protein.0' | trans({}, 'contao_tl_recipe') }}: {{ protein }} g</span>
-                    {% endif %}
-                    {% if fat %}
-                        <span class="nutrition-fat">{{ 'tl_recipe.fat.0' | trans({}, 'contao_tl_recipe') }}: {{ fat }} g</span>
-                    {% endif %}
-                    {% if carbohydrates %}
-                        <span class="nutrition-carbohydrates">{{ 'tl_recipe.carbohydrates.0' | trans({}, 'contao_tl_recipe') }}: {{ carbohydrates }} g</span>
-                    {% endif %}
+                    <ul data-nutrition-list>
+                        {% if calories %}
+                            <li class="recipe-nutrition nutrition-calories" data-base-amount="{{ calories }}" data-unit="kcal">
+                                <span class="nutrition-amount" data-amount>{{ calories }}</span>
+                                <span class="nutrition-unit unit_calories">kcal</span>
+                            </li>
+                        {% endif %}
+                        {% if protein %}
+                            <li class="recipe-nutrition nutrition-protein" data-base-amount="{{ protein }}" data-unit="g">
+                                <span class="nutrition-amount" data-amount>{{ protein }}</span>
+                                <span class="nutrition-unit unit_protein">g</span>
+                                <span class="nutrition-title">{{ 'tl_recipe.protein.0' | trans({}, 'contao_tl_recipe') }}</span>
+                            </li>
+                        {% endif %}
+                        {% if fat %}
+                            <li class="recipe-nutrition nutrition-fat" data-base-amount="{{ fat }}" data-unit="g">
+                                <span class="nutrition-amount" data-amount>{{ fat }}</span>
+                                <span class="nutrition-unit unit_fat">g</span>
+                                <span class="nutrition-title">{{ 'tl_recipe.fat.0' | trans({}, 'contao_tl_recipe') }}</span>
+                            </li>
+                        {% endif %}
+                        {% if carbohydrates %}
+                            <li class="recipe-nutrition nutrition-carbohydrates" data-base-amount="{{ carbohydrates }}" data-unit="g">
+                                <span class="nutrition-amount" data-amount>{{ carbohydrates }}</span>
+                                <span class="nutrition-unit unit_carbohydrates">g</span>
+                                <span class="nutrition-title">{{ 'tl_recipe.carbohydrates.0' | trans({}, 'contao_tl_recipe') }}</span>
+                            </li>
+                        {% endif %}
+                    </ul>
                 </div>
             {% endblock nutrition %}
+            {% if portions %}
+                </div>
+            {% endif %}
             {% block text %}
                 {% if content %}{% with {'text': content} %}{{ block('rich_text_component') }}{% endwith %}{% endif %}
             {% endblock text %}
@@ -119,7 +137,17 @@
         %}
         <script src="{{ asset('bundles/heartbitscontaorecipes/js/IngredientScaler.min.js') }}"></script>
         <script{{ script_attributes }}>
-          new RecipeIngredientScaler('[data-recipe-scaler]');
+          new RecipeIngredientScaler('[data-recipe-scaler]', {
+
+          });
         </script>
     {% endadd %}
 {% endblock script %}
+
+{% block style %}
+    {% add 'heartbits_contao_recipes_css' to stylesheets %}
+        {% with {file: heartbits_contao_recipes_css_file|default(asset('bundles/heartbitscontaorecipes/css/contaoRecipes.min.css'))} %}
+            {{ block('stylesheet_component') }}
+        {% endwith %}
+    {% endadd %}
+{% endblock style %}
