@@ -7,6 +7,7 @@ use Contao\Config;
 use Contao\ContentModel;
 use Contao\CoreBundle\Controller\ContentElement\AbstractContentElementController;
 use Contao\CoreBundle\Exception\PageNotFoundException;
+use Contao\CoreBundle\Routing\ContentUrlGenerator;
 use Contao\CoreBundle\Routing\ScopeMatcher;
 use Contao\CoreBundle\Twig\FragmentTemplate;
 use Contao\Environment;
@@ -32,7 +33,8 @@ class RecipeListController extends AbstractContentElementController
     public function __construct(
         private readonly ScopeMatcher $scopeMatcher,
         private readonly TranslatorInterface $translator,
-        private readonly string $projectDir
+        private readonly string $projectDir,
+        private ContentUrlGenerator $urlGenerator
     )
     {
     }
@@ -117,7 +119,7 @@ class RecipeListController extends AbstractContentElementController
                             (!$objContent) ? $arrRecipes[$i]['hasContent'] = false : $arrRecipes[$i]['hasContent'] = true;
                             break;
                         case 'alias':
-                            $arrRecipes[$i]['jumpTo'] = ($objJumpTo instanceof PageModel) ? $objJumpTo->getAbsoluteUrl('/' . $value) : '';
+                            $arrRecipes[$i]['jumpTo'] = ($objJumpTo instanceof PageModel) ? $this->urlGenerator->generate($objJumpTo, ['parameters' => '/' . $value]) : '';
                             $arrRecipes[$i][$key] = $value;
                             break;
                         case 'categories':
