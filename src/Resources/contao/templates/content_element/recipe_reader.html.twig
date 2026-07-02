@@ -76,9 +76,9 @@
                     <div class="recipe-ingredients">
                         <ul data-ingredient-list>
                             {% for ingredient in ingredients %}
-                                <li class="recipe-ingredient ingredient_{{ ingredient.ingredient.alias }}" data-base-amount="{{ ingredient.amount }}" data-unit="{{ ingredient.unit.alias }}">
+                                <li class="recipe-ingredient ingredient_{{ ingredient.ingredient.alias }}" data-base-amount="{{ ingredient.amount }}" data-unit="{{ ingredient.unit.shortcode }}">
                                     <span class="ingredient-amount" data-amount>{{ ingredient.amount }}</span>
-                                    <span class="ingredient-unit unit_{{ ingredient.unit.alias }}">{{ ingredient.unit.alias }}</span>
+                                    <span class="ingredient-unit unit_{{ ingredient.unit.alias }}">{{ ingredient.unit.shortcode }}</span>
                                     <span class="ingredient-title">{{ ingredient.ingredient.title }}</span>
                                 </li>
                             {% endfor %}

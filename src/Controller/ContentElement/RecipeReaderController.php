@@ -69,6 +69,7 @@ class RecipeReaderController extends AbstractContentElementController
                                     'amount' => $ingredient['amount'] ?? '',
                                     'unit' => [
                                         'alias' => $objUnit->alias ?? '',
+                                        'shortcode' => $objUnit->shortcode ?? '',
                                         'title' => $objUnit->title ?? ''
                                     ],
                                     'ingredient' => [
