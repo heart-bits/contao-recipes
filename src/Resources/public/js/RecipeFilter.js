@@ -255,6 +255,6 @@ class RecipeFilter {
     this.statusEl.textContent =
       count === total
         ? this.statusText.replaceAll('{count}', count.toString()).replaceAll('{total}', total.toString())
-        : this.statusText.replaceAll('{count}', count.toString()).replaceAll('{total}', total.toString()) + '(' + this.statusFiltered + ')';
+        : this.statusText.replaceAll('{count}', count.toString()).replaceAll('{total}', total.toString()) + ' (' + this.statusFiltered + ')';
   }
 }
