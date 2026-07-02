@@ -83,100 +83,19 @@
             <script src="{{ asset('bundles/heartbitscontaorecipes/js/RecipeFilter.min.js') }}"></script>
             <script{{ script_attributes }}>
               document.addEventListener("DOMContentLoaded", () => {
-                const filter = new RecipeFilter({
+                new RecipeFilter({
                   listSelector: "#recipe-list",
                   itemSelector: ".recipe",
                   categoryAttr: "categories",
                   ingredientAttr: "ingredients",
                   statusSelector: "#filter-status",
                   noResultsSelector: "#no-results",
-                });
-
-                const form = document.getElementById("recipe-filters");
-
-                // ---------------------------------------------------------------------
-                // URL-Sync: Filterzustand als Query-Parameter abbilden
-                // (?kategorie=vegan,glutenfrei&zutat=tomate)
-                // ---------------------------------------------------------------------
-                const URL_PARAM_CATEGORY = "category";
-                const URL_PARAM_INGREDIENT = "ingredient";
-
-                function readActiveValues(name) {
-                  return Array.from(
-                    form.querySelectorAll(`input[name="${name}"]:checked`)
-                  ).map((input) => input.value);
-                }
-
-                /** Schreibt den aktuellen Filterzustand in die URL, ohne die Seite neu zu laden
-                 *  und ohne den Fokus zu verschieben. replaceState statt pushState, damit nicht
-                 *  jede einzelne Checkbox einen eigenen Browser-History-Eintrag erzeugt. */
-                function syncUrlFromFilters(categories, ingredients) {
-                  const params = new URLSearchParams(window.location.search);
-
-                  categories.length ? params.set(URL_PARAM_CATEGORY, categories.join(",")) : params.delete(URL_PARAM_CATEGORY);
-                  ingredients.length ? params.set(URL_PARAM_INGREDIENT, ingredients.join(",")) : params.delete(URL_PARAM_INGREDIENT);
-
-                  const queryString = params.toString();
-                  const newUrl = `${window.location.pathname}${queryString ? "?" + queryString : ""}${window.location.hash}`;
-                  history.replaceState(null, "", newUrl);
-                }
-
-                /** Liest kommagetrennte Werte für einen Query-Parameter aus der aktuellen URL */
-                function readUrlParamValues(paramName) {
-                  const params = new URLSearchParams(window.location.search);
-                  const raw = params.get(paramName);
-                  return raw ? raw.split(",").map((v) => v.trim()).filter(Boolean) : [];
-                }
-
-                /** Setzt die Checkboxen anhand einer Liste von Werten (z. B. aus der URL) */
-                function setCheckedValues(name, values) {
-                  const valueSet = new Set(values);
-                  form.querySelectorAll(`input[name="${name}"]`).forEach((cb) => {
-                    cb.checked = valueSet.has(cb.value);
-                  });
-                }
-
-                function updateFilters() {
-                  const categories = readActiveValues("category");
-                  const ingredients = readActiveValues("ingredient");
-
-                  filter.setFilters({ categories, ingredients });
-                  syncUrlFromFilters(categories, ingredients);
-                }
-
-                // "change" statt "click": funktioniert identisch mit Maus, Touch UND
-                // Tastatur (Leertaste auf fokussierter Checkbox) — wichtig für volle
-                // Tastaturbedienbarkeit.
-                form.addEventListener("change", updateFilters);
-
-                document.getElementById("reset-filters").addEventListener("click", () => {
-                  form.querySelectorAll('input[type="checkbox"]').forEach((cb) => (cb.checked = false));
-                  filter.reset();
-                  syncUrlFromFilters([], []);
-                  // Fokus bleibt auf dem Button, kein Fokusverlust nach Reset
-                });
-
-                // Reagiert auf Vor-/Zurück-Navigation des Browsers (z. B. wenn jemand von
-                // einer anderen Seite zurückkommt, die per pushState erreicht wurde, oder
-                // einen geteilten/gebookmarkten Link mit Filterzustand öffnet).
-                window.addEventListener("popstate", () => {
-                  setCheckedValues("category", readUrlParamValues(URL_PARAM_CATEGORY));
-                  setCheckedValues("ingredient", readUrlParamValues(URL_PARAM_INGREDIENT));
-                  filter.setFilters({
-                    categories: readActiveValues("category"),
-                    ingredients: readActiveValues("ingredient"),
-                  });
-                });
-
-                // ---------------------------------------------------------------------
-                // Initialer Zustand: Filter aus der URL übernehmen, falls vorhanden
-                // (z. B. bei geteiltem Link oder Lesezeichen), sonst alles anzeigen.
-                // ---------------------------------------------------------------------
-                setCheckedValues("category", readUrlParamValues(URL_PARAM_CATEGORY));
-                setCheckedValues("ingredient", readUrlParamValues(URL_PARAM_INGREDIENT));
-                filter.setFilters({
-                  categories: readActiveValues("category"),
-                  ingredients: readActiveValues("ingredient"),
+                  formSelector: "#recipe-filters",
+                  resetButtonSelector: "#reset-filters",
+                  urlCategoryParam: "category",
+                  urlIngredientParam: "ingredient",
+                  statusText: "{count} von {total} Rezepten werden angezeigt",
+                  statusFiltered: "gefiltert",
                 });
               });
             </script>
