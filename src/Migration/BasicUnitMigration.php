@@ -44,9 +44,9 @@ class BasicUnitMigration extends AbstractMigration
             return false;
         }
 
-        $rowCount = $this->connection->executeQuery("SELECT * FROM " . $this->table)->rowCount();
+        $rowCount = $this->connection->fetchOne("SELECT COUNT(*) FROM " . $this->table);
 
-        return ($rowCount === 0);
+        return ($rowCount == 0);
     }
 
     public function run(): MigrationResult
