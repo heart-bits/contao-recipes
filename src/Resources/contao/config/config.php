@@ -6,7 +6,6 @@ use Heartbits\ContaoRecipes\Models\CategoryModel;
 use Heartbits\ContaoRecipes\Models\IngredientModel;
 use Heartbits\ContaoRecipes\Models\RecipeModel;
 use Heartbits\ContaoRecipes\Models\UnitModel;
-use Heartbits\ContaoRecipes\Widgets\InputIngredients;
 use Heartbits\ContaoRecipes\Widgets\InputRating;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -21,7 +20,6 @@ $GLOBALS['BE_MOD']['recipes']['recipe'] = [
 ];
 
 // Backend form fields
-$GLOBALS['BE_FFL']['inputIngredient'] = InputIngredients::class;
 $GLOBALS['BE_FFL']['inputRating'] = InputRating::class;
 
 // Models

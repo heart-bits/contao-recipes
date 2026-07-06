@@ -5,6 +5,7 @@ use Contao\BackendUser;
 use Contao\ContentModel;
 use Contao\DataContainer;
 use Contao\DC_Table;
+use Doctrine\DBAL\Platforms\AbstractMySQLPlatform;
 use Heartbits\ContaoRecipes\Models\CategoryModel;
 use Heartbits\ContaoRecipes\Models\IngredientModel;
 use Heartbits\ContaoRecipes\Models\RecipeModel;
@@ -192,11 +193,37 @@ $GLOBALS['TL_DCA'][RecipeModel::getTable()] = [
             'sql' => "binary(16) NULL"
         ],
         'ingredients' => [
-            'inputType' => 'inputIngredient',
+            'inputType' => 'rowWizard',
+            'fields' => [
+                'amount' => [
+                    'label' => &$GLOBALS['TL_LANG']['tl_recipe']['headers']['amount'],
+                    'inputType' => 'text'
+                ],
+                'unit' => [
+                    'label' => &$GLOBALS['TL_LANG']['tl_recipe']['headers']['unit'],
+                    'inputType' => 'select',
+                    'options' => UnitModel::fetchOptionsForDca()
+                ],
+                'ingredient' => [
+                    'label' => &$GLOBALS['TL_LANG']['tl_recipe']['headers']['ingredient'],
+                    'inputType' => 'select',
+                    'options' => IngredientModel::fetchOptionsForDca()
+                ]
+            ],
             'eval' => [
                 'tl_class' => 'clr',
+                'actions' => [
+                    'copy',
+                    'delete'
+                ],
+                'sortable' => true,
+                'min' => 1
             ],
-            'sql' => "blob NULL"
+            'sql' => [
+                'type' => 'blob',
+                'length' => AbstractMySQLPlatform::LENGTH_LIMIT_BLOB,
+                'notnull' => false,
+            ]
         ],
         'portions' => [
             'inputType' => 'text',
