@@ -112,6 +112,15 @@ class RecipeFilter {
         this._onSheetClose = () => this.sheetEl.close();
         this.closeButtonEl.addEventListener("click", this._onSheetClose);
       }
+      if (this.sheetEl) {
+        // Klick aufs Backdrop hat als target das <dialog> selbst (Pseudo-Elemente
+        // können nicht direkt Ziel eines Events sein) - Klicks auf Inhalte innerhalb
+        // des Sheets haben dagegen ein Kind-Element als target.
+        this._onSheetBackdropClick = (event) => {
+          if (event.target === this.sheetEl) this.sheetEl.close();
+        };
+        this.sheetEl.addEventListener("click", this._onSheetBackdropClick);
+      }
 
       // --- Aktive Filter als Chips (mobil sichtbar, auch wenn das Sheet zu ist) ---
       this.chipsEl = chipsSelector ? document.querySelector(chipsSelector) : null;
@@ -152,6 +161,9 @@ class RecipeFilter {
     }
     if (this.closeButtonEl) {
       this.closeButtonEl.removeEventListener("click", this._onSheetClose);
+    }
+    if (this.sheetEl) {
+      this.sheetEl.removeEventListener("click", this._onSheetBackdropClick);
     }
     if (this.chipsEl) {
       this.chipsEl.removeEventListener("click", this._onChipClick);
