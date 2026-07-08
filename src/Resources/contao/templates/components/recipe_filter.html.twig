@@ -1,25 +1,38 @@
 {% if categories is not empty and ingredients is not empty %}
-    <form id="recipe-filters" aria-label="Rezeptfilter">
-        <fieldset>
-            <legend>Kategorie</legend>
-            {% for alias, title in categories %}
-                <div class="checkbox-row">
-                    <input type="checkbox" id="cat-{{ alias }}" name="category" value="{{ alias }}">
-                    <label for="cat-{{ alias }}">{{ title }}</label>
-                </div>
-            {% endfor %}
-        </fieldset>
+    <button type="button" class="filter-toggle" id="filter-toggle" aria-haspopup="dialog" aria-controls="recipe-filter-sheet">Filter</button>
 
-        <fieldset>
-            <legend>Zutaten</legend>
-            {% for alias, title in ingredients %}
-                <div class="checkbox-row">
-                    <input type="checkbox" id="ing-{{ alias }}" name="ingredient" value="{{ alias }}">
-                    <label for="ing-{{ alias }}">{{ title }}</label>
-                </div>
-            {% endfor %}
-        </fieldset>
+    <div class="active-filters" id="active-filters" hidden></div>
 
-        <button type="button" class="reset-btn" id="reset-filters">Filter zurücksetzen</button>
-    </form>
+    <dialog class="recipe-filter-sheet" id="recipe-filter-sheet" aria-label="Rezeptfilter">
+        <div class="filter-sheet-header">
+            <span>Filter</span>
+            <button type="button" class="filter-close" id="filter-close" aria-label="Filter schließen">&times;</button>
+        </div>
+
+        <form id="recipe-filters" aria-label="Rezeptfilter">
+            <fieldset>
+                <legend>Kategorie</legend>
+                <input type="search" class="filter-search" placeholder="Kategorie suchen" aria-label="Kategorien durchsuchen">
+                {% for alias, title in categories %}
+                    <div class="checkbox-row">
+                        <input type="checkbox" id="cat-{{ alias }}" name="category" value="{{ alias }}">
+                        <label for="cat-{{ alias }}">{{ title }}</label>
+                    </div>
+                {% endfor %}
+            </fieldset>
+
+            <fieldset>
+                <legend>Zutaten</legend>
+                <input type="search" class="filter-search" placeholder="Zutat suchen" aria-label="Zutaten durchsuchen">
+                {% for alias, title in ingredients %}
+                    <div class="checkbox-row">
+                        <input type="checkbox" id="ing-{{ alias }}" name="ingredient" value="{{ alias }}">
+                        <label for="ing-{{ alias }}">{{ title }}</label>
+                    </div>
+                {% endfor %}
+            </fieldset>
+
+            <button type="button" class="reset-btn" id="reset-filters">Filter zurücksetzen</button>
+        </form>
+    </dialog>
 {% endif %}

@@ -22,14 +22,6 @@ services:
     tags:
       - { name: contao.content_element, category: recipes }
 
-  heartbits.contaorecipes.service.recipe_filter:
-    class: Heartbits\ContaoRecipes\Controller\ContentElement\RecipeFilterController
-    arguments:
-      - '@contao.routing.scope_matcher'
-      - '@translator'
-    tags:
-      - { name: contao.content_element, category: recipes }
-
   heartbits.contaorecipes.service.recipe_step:
     class: Heartbits\ContaoRecipes\Controller\ContentElement\RecipeStepController
     arguments:

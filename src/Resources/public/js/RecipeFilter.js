@@ -33,6 +33,11 @@ class RecipeFilter {
    * @param {string} [options.ingredientInputName='ingredient'] - name-Attribut der Zutaten-Checkboxen
    * @param {string} [options.urlCategoryParam='kategorie'] - Query-Parameter-Name für Kategorien
    * @param {string} [options.urlIngredientParam='zutat'] - Query-Parameter-Name für Zutaten
+   * @param {string} [options.searchInputSelector='.filter-search'] - Selector der Such-Inputs je Fieldset
+   * @param {string} [options.sheetSelector] - Selector des <dialog>-Elements (mobiles Bottom-Sheet)
+   * @param {string} [options.openButtonSelector] - Selector des Buttons, der das Bottom-Sheet öffnet
+   * @param {string} [options.closeButtonSelector] - Selector des Buttons, der das Bottom-Sheet schließt
+   * @param {string} [options.chipsSelector] - Selector des Containers für aktive Filter-Chips
    */
   constructor({
                 listSelector,
@@ -49,6 +54,11 @@ class RecipeFilter {
                 urlIngredientParam = "ingredient",
                 statusText = "{count} of {total} recipes are shown",
                 statusFiltered = "filtered",
+                searchInputSelector = ".filter-search",
+                sheetSelector = null,
+                openButtonSelector = null,
+                closeButtonSelector = null,
+                chipsSelector = null,
               }) {
     this.listEl = document.querySelector(listSelector);
     if (!this.listEl) {
@@ -90,6 +100,31 @@ class RecipeFilter {
       }
       window.addEventListener("popstate", this._onPopState);
 
+      // --- Mobiles Bottom-Sheet (natives <dialog>, Öffnen/Schließen via showModal()/close()) ---
+      this.sheetEl = sheetSelector ? document.querySelector(sheetSelector) : null;
+      this.openButtonEl = openButtonSelector ? document.querySelector(openButtonSelector) : null;
+      this.closeButtonEl = closeButtonSelector ? document.querySelector(closeButtonSelector) : null;
+      if (this.sheetEl && this.openButtonEl) {
+        this._onSheetOpen = () => this.sheetEl.showModal();
+        this.openButtonEl.addEventListener("click", this._onSheetOpen);
+      }
+      if (this.sheetEl && this.closeButtonEl) {
+        this._onSheetClose = () => this.sheetEl.close();
+        this.closeButtonEl.addEventListener("click", this._onSheetClose);
+      }
+
+      // --- Aktive Filter als Chips (mobil sichtbar, auch wenn das Sheet zu ist) ---
+      this.chipsEl = chipsSelector ? document.querySelector(chipsSelector) : null;
+      if (this.chipsEl) {
+        this._onChipClick = this._handleChipClick.bind(this);
+        this.chipsEl.addEventListener("click", this._onChipClick);
+      }
+
+      // --- Suchfelder je Fieldset, blenden nicht passende checkbox-row aus ---
+      this._searchInputs = Array.from(this.formEl.querySelectorAll(searchInputSelector));
+      this._onSearchInput = (event) => this._filterRows(event.target);
+      this._searchInputs.forEach((input) => input.addEventListener("input", this._onSearchInput));
+
       // Initialer Zustand: Filter aus der URL übernehmen (z. B. bei geteiltem
       // Link oder Lesezeichen), Checkboxen entsprechend vorbelegen.
       this._applyUrlToCheckboxes();
@@ -112,6 +147,65 @@ class RecipeFilter {
       this.resetButtonEl.removeEventListener("click", this._onResetClick);
     }
     window.removeEventListener("popstate", this._onPopState);
+    if (this.openButtonEl) {
+      this.openButtonEl.removeEventListener("click", this._onSheetOpen);
+    }
+    if (this.closeButtonEl) {
+      this.closeButtonEl.removeEventListener("click", this._onSheetClose);
+    }
+    if (this.chipsEl) {
+      this.chipsEl.removeEventListener("click", this._onChipClick);
+    }
+    this._searchInputs.forEach((input) => input.removeEventListener("input", this._onSearchInput));
+  }
+
+  /** Blendet innerhalb des Fieldsets eines Such-Inputs alle checkbox-row aus,
+   *  deren Label nicht zum Suchbegriff passt */
+  _filterRows(searchInput) {
+    const query = searchInput.value.trim().toLowerCase();
+    searchInput.closest("fieldset").querySelectorAll(".checkbox-row").forEach((row) => {
+      const label = row.querySelector("label").textContent.toLowerCase();
+      row.hidden = query !== "" && !label.includes(query);
+    });
+  }
+
+  /** Handler: Klick auf einen Filter-Chip entfernt genau diesen Filter */
+  _handleChipClick(event) {
+    const chip = event.target.closest(".filter-chip");
+    if (!chip) return;
+    const input = this.formEl.querySelector(
+      `input[name="${chip.dataset.filterName}"][value="${CSS.escape(chip.dataset.filterValue)}"]`
+    );
+    if (input) input.checked = false;
+    this._handleFormChange();
+  }
+
+  /** Rendert die aktiven Kategorie-/Zutatenfilter als Chips (v. a. für mobil,
+   *  damit aktive Filter sichtbar bleiben, während das Bottom-Sheet zu ist) */
+  _renderChips() {
+    if (!this.chipsEl) return;
+
+    const chips = [
+      ...[...this.activeCategories].map((value) => ({ name: this.categoryInputName, value })),
+      ...[...this.activeIngredients].map((value) => ({ name: this.ingredientInputName, value })),
+    ];
+
+    this.chipsEl.innerHTML = "";
+    chips.forEach(({ name, value }) => {
+      const input = this.formEl.querySelector(`input[name="${name}"][value="${CSS.escape(value)}"]`);
+      const label = input ? this.formEl.querySelector(`label[for="${input.id}"]`).textContent : value;
+
+      const chip = document.createElement("button");
+      chip.type = "button";
+      chip.className = "filter-chip";
+      chip.dataset.filterName = name;
+      chip.dataset.filterValue = value;
+      chip.setAttribute("aria-label", `${label} entfernen`);
+      chip.textContent = label;
+      this.chipsEl.appendChild(chip);
+    });
+
+    this.chipsEl.hidden = chips.length === 0;
   }
 
   /** Liest die aktuell angehakten Checkbox-Werte für ein gegebenes name-Attribut */
@@ -217,6 +311,7 @@ class RecipeFilter {
   setFilters({ categories = [], ingredients = [] } = {}) {
     this.activeCategories = new Set(categories.map((c) => c.toLowerCase()));
     this.activeIngredients = new Set(ingredients.map((i) => i.toLowerCase()));
+    this._renderChips();
     this.apply();
   }
 
@@ -224,6 +319,7 @@ class RecipeFilter {
   reset() {
     this.activeCategories.clear();
     this.activeIngredients.clear();
+    this._renderChips();
     this.apply();
   }
 

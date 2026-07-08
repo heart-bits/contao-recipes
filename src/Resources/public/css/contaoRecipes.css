@@ -32,3 +32,106 @@ ul[data-nutrition-list] li {
     text-align: right;
     font-weight: 600;
 }
+
+.filter-search {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+}
+
+.checkbox-row[hidden] {
+    display: none;
+}
+
+.filter-toggle,
+.active-filters,
+.filter-sheet-header {
+    display: none;
+}
+
+.filter-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 999px;
+    background: #f5f5f5;
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+
+.filter-chip::after {
+    content: " ×";
+}
+
+/* Desktop: das <dialog> als normalen, immer sichtbaren Filterbereich anzeigen
+   (überschreibt die UA-Regel "dialog:not([open]) { display: none }") */
+@media (min-width: 768px) {
+    dialog.recipe-filter-sheet {
+        display: block;
+        position: static;
+        margin: 0;
+        padding: 0;
+        border: none;
+        max-width: none;
+        max-height: none;
+        background: none;
+        color: inherit;
+    }
+}
+
+/* Mobil: Filter als Bottom-Sheet über <dialog>.showModal(), aktive Filter als
+   Chips über der Rezept-Liste, damit sie bei geschlossenem Sheet sichtbar bleiben */
+@media (max-width: 767px) {
+    .filter-toggle {
+        display: inline-block;
+    }
+
+    .active-filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .active-filters[hidden] {
+        display: none;
+    }
+
+    dialog.recipe-filter-sheet {
+        position: fixed;
+        inset-inline: 0;
+        bottom: 0;
+        top: auto;
+        width: 100%;
+        max-width: none;
+        max-height: 80vh;
+        margin: 0;
+        border: none;
+        border-radius: 1rem 1rem 0 0;
+        padding: 1rem;
+        box-sizing: border-box;
+        overflow-y: auto;
+    }
+
+    dialog.recipe-filter-sheet::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .filter-sheet-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+    }
+
+    .filter-close {
+        border: none;
+        background: none;
+        font-size: 1.5rem;
+        line-height: 1;
+        cursor: pointer;
+    }
+}
