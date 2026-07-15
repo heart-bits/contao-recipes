@@ -37,6 +37,9 @@
             <trans-unit id="ERR.ingredientAmountExceeded">
                 <source>The amount for "%s" exceeds the remaining amount of %s in the recipe.</source>
             </trans-unit>
+            <trans-unit id="ERR.ingredientDuplicate">
+                <source>"%s" has already been selected in another row. Each ingredient can only be selected once per step.</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -97,12 +97,19 @@ class ContentCallbackListener
     public function onSaveIngredientsCallback(mixed $varValue, DataContainer $dc)
     {
         $availability = $this->getIngredientAvailability($dc);
+        $seen = [];
 
         foreach (StringUtil::deserialize($varValue, true) as $row) {
             if (empty($row['ingredient']) || $row['amount'] === '' || $row['amount'] === null) {
                 continue;
             }
 
+            if (isset($seen[$row['ingredient']])) {
+                $ingredient = IngredientModel::findOneByAlias($row['ingredient']);
+                throw new Exception(sprintf($GLOBALS['TL_LANG']['ERR']['ingredientDuplicate'], $ingredient->title ?? $row['ingredient']));
+            }
+
+            $seen[$row['ingredient']] = true;
             $remaining = $availability[$row['ingredient']]['remaining'] ?? 0;
 
             if ((float) $row['amount'] > $remaining) {

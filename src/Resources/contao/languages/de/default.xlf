@@ -49,6 +49,10 @@
                 <source>The amount for "%s" exceeds the remaining amount of %s in the recipe.</source>
                 <target>Die Menge für "%s" übersteigt die im Rezept verbleibende Menge von %s.</target>
             </trans-unit>
+            <trans-unit id="ERR.ingredientDuplicate">
+                <source>"%s" has already been selected in another row. Each ingredient can only be selected once per step.</source>
+                <target>"%s" wurde bereits in einer anderen Zeile ausgewählt. Jede Zutat kann pro Schritt nur einmal ausgewählt werden.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
