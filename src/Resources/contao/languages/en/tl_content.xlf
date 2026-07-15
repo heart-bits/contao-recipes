@@ -19,6 +19,21 @@
             <trans-unit id="tl_content.addRecipeFilter.1">
                 <source>Choose, if users should be able to filter the entries.</source>
             </trans-unit>
+            <trans-unit id="tl_content.ingredients_legend">
+                <source>Ingredients</source>
+            </trans-unit>
+            <trans-unit id="tl_content.ingredients.0">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tl_content.ingredients.1">
+                <source>Select the ingredients of the recipe that are needed for this step.</source>
+            </trans-unit>
+            <trans-unit id="tl_content.headers.ingredient">
+                <source>Ingredient</source>
+            </trans-unit>
+            <trans-unit id="tl_content.headers.amount">
+                <source>Amount</source>
+            </trans-unit>
             <trans-unit id="tl_content.all_recipes">
                 <source>Show all recipes</source>
             </trans-unit>

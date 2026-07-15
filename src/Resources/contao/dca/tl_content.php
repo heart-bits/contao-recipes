@@ -1,5 +1,6 @@
 <?php
 
+use Doctrine\DBAL\Platforms\AbstractMySQLPlatform;
 use Heartbits\ContaoRecipes\Controller\ContentElement\RecipeImageController;
 use Heartbits\ContaoRecipes\Controller\ContentElement\RecipeListController;
 use Heartbits\ContaoRecipes\Controller\ContentElement\RecipeReaderController;
@@ -10,7 +11,35 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['type']['sql']['default'] = '';
 $GLOBALS['TL_DCA']['tl_content']['fields']['type']['eval']['mandatory'] = true;
 $GLOBALS['TL_DCA']['tl_content']['fields']['type']['eval']['includeBlankOption'] = true;
 $GLOBALS['TL_DCA']['tl_content']['palettes'][RecipeImageController::TYPE] = '{type_legend},title,type;{image_legend},singleSRC,size;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop';
-$GLOBALS['TL_DCA']['tl_content']['palettes'][RecipeStepController::TYPE] = '{type_legend},title,type,headline;{text_legend},text;{image_legend},addImage;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop';
+$GLOBALS['TL_DCA']['tl_content']['palettes'][RecipeStepController::TYPE] = '{type_legend},title,type,headline;{text_legend},text;{ingredients_legend},ingredients;{image_legend},addImage;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop';
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['ingredients'] = [
+    'inputType' => 'rowWizard',
+    'fields' => [
+        'ingredient' => [
+            'label' => &$GLOBALS['TL_LANG']['tl_content']['headers']['ingredient'],
+            'inputType' => 'select',
+            'options_callback' => [ContentCallbackListener::class, 'stepIngredientOptionsCallback'],
+            'eval' => ['includeBlankOption' => true, 'chosen' => true],
+        ],
+        'amount' => [
+            'label' => &$GLOBALS['TL_LANG']['tl_content']['headers']['amount'],
+            'inputType' => 'select',
+            'options_callback' => [ContentCallbackListener::class, 'stepIngredientAmountOptionsCallback'],
+            'eval' => ['includeBlankOption' => true],
+        ],
+    ],
+    'eval' => [
+        'tl_class' => 'clr',
+        'actions' => ['copy', 'delete'],
+        'sortable' => true,
+    ],
+    'sql' => [
+        'type' => 'blob',
+        'length' => AbstractMySQLPlatform::LENGTH_LIMIT_BLOB,
+        'notnull' => false,
+    ],
+];
 $GLOBALS['TL_DCA']['tl_content']['palettes'][RecipeListController::TYPE] = '{title_legend},title,type,addRecipeFilter;{text_legend},headline,text;{source_legend},size;{redirect_legend},jumpTo;{config_legend},numberOfItems,skipFirst,recipe_featured,recipe_order,perPage;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
 $GLOBALS['TL_DCA']['tl_content']['palettes'][RecipeReaderController::TYPE] = '{title_legend},title,type;{text_legend},headline,text;{source_legend},size;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
 

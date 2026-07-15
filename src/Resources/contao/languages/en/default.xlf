@@ -34,6 +34,9 @@
             <trans-unit id="CTE.recipe_step.1">
                 <source>Generates a recipe step.</source>
             </trans-unit>
+            <trans-unit id="ERR.ingredientAmountExceeded">
+                <source>The amount for "%s" exceeds the remaining amount of %s in the recipe.</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

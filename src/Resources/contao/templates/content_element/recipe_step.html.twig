@@ -13,6 +13,20 @@
         {{ block('text_media') }}
     {% endif %}
 
+    {% block ingredients %}
+        {% if ingredients %}
+            <ul class="step-ingredients">
+                {% for ingredient in ingredients %}
+                    <li>
+                        <span class="ingredient-amount">{{ ingredient.amount }}</span>
+                        <span class="ingredient-unit">{{ ingredient.unit.shortcode }}</span>
+                        <span class="ingredient-title">{{ ingredient.ingredient.title }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endblock %}
+
     {# Richtext #}
     {% block text %}
         {% with {text, attributes: text_attributes|default} %}{{ block('rich_text_component') }}{% endwith %}
