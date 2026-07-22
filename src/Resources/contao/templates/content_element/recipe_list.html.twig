@@ -75,7 +75,7 @@
 
 {% block script %}
     {% if addRecipeFilter %}
-        {% add 'recipe_filter_js' to body %}
+        {% add 'recipe_filter_js' to head %}
             {% set script_attributes = attrs()
                 .setIfExists('nonce', csp_nonce('script-src'))
                 .mergeWith(script_attributes|default)
